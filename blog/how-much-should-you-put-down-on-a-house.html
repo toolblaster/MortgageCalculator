@@ -92,7 +92,7 @@
             { "@type": "HowToStep", "name": "Step 2: Create a Dedicated Savings Account", "text": "Open a high-yield savings account specifically for your down payment. This keeps the money separate and helps it grow faster." },
             { "@type": "HowToStep", "name": "Step 3: Automate Your Savings", "text": "Set up automatic monthly transfers from your checking account to your down payment account. Treat it like any other essential bill." },
             { "@type": "HowToStep", "name": "Step 4: Reduce Major Expenses", "text": "Temporarily cut back on large discretionary spending categories like dining out, vacations, and subscriptions. Every dollar saved gets you closer to your goal." },
-            { "@type": "HowToStep", "name": "Step 5: Look for Down Payment Assistance", "text": "Research local and state programs for first-time homebuyers. These can offer grants or low-interest loans to help you reach your down payment goal faster." }
+            { "@type":Yes, ready next: "HowToStep", "name": "Step 5: Look for Down Payment Assistance", "text": "Research local and state programs for first-time homebuyers. These can offer grants or low-interest loans to help you reach your down payment goal faster." }
           ]
         },
         {
@@ -131,8 +131,10 @@
 </head>
 <body class="bg-gray-100">
     <main class="content-wrapper">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-4 md:my-8">
-            <div class="relative max-w-4xl mx-auto">
+        <!-- UPDATED: Replaced max-w-7xl and padding with .container-global -->
+        <div class="container-global my-4 md:my-8">
+            <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
+            <div class="blog-layout-grid">
                 <article class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                     <header class="text-center mb-8">
                         <h1 class="text-2xl sm:text-3xl font-extrabold text-primary">How Much Should You Put Down on a House? (Complete Guide + Free Calculators)</h1>
@@ -281,10 +283,12 @@
                             </div>
                         </section>
                         
-                        <div id="share-section-placeholder" class="mt-6"></div>
+                        <!-- UPDATED: Replaced div with id="share-section-placeholder" -->
+                        <div id="share-section-placeholder" class="mt-6 border-t pt-6"></div>
                     </div>
                 </article>
-                <aside id="desktop-sidebar-placeholder" class="hidden lg:block absolute top-0 left-full ml-8 w-72"></aside>
+                <!-- UPDATED: Moved aside to be a sibling of article and removed all utility classes -->
+                <aside id="desktop-sidebar-placeholder"></aside>
             </div>
         </div>
         <div id="mobile-sidebar-placeholder"></div>
