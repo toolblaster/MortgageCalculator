@@ -206,60 +206,110 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('global-share-email').href = `mailto:?subject=${pageTitle}&body=Check out this helpful tool: ${pageUrl}`;
     }
 
-    // --- NEW: Centralized Related Articles ---
+    // --- UPDATED: Centralized Related Articles & Calculators ---
     function setupRelatedArticles() {
-        // --- ADDED CHECK ---
-        // Get the full path, including the filename
-        const fullPath = window.location.pathname;
-        // Check if the path ends with the specific index pages or their parent directories
-        if (fullPath.endsWith('/calculators/index.html') || fullPath.endsWith('/calculators/') ||
-            fullPath.endsWith('/blog/index.html') || fullPath.endsWith('/blog/')) {
-            return; // Do not add related articles to these index pages
-        }
-        // --- END ADDED CHECK ---
-
         const desktopPlaceholder = document.getElementById('desktop-sidebar-placeholder');
         const mobilePlaceholder = document.getElementById('mobile-sidebar-placeholder');
+        const fullPath = window.location.pathname;
 
-        const articles = [
-            { href: "how-to-buy-your-first-home-guide.html", title: "First-Time Home Buyer Guide", desc: "A step-by-step overview." },
-            { href: "mortgage-amortization-explained.html", title: "Mortgage Amortization Explained", desc: "See your loan cost breakdown." },
-            { href: "fixed-vs-variable-mortgage-guide.html", title: "Fixed vs. Variable Mortgage?", desc: "Choose the right loan type." },
-            { href: "how-much-house-can-i-afford.html", title: "How Much House Can I Afford?", desc: "A deep dive into budgeting." },
-            { href: "first-time-home-buyer-checklist.html", title: "First-Time Home Buyer's Checklist", desc: "Your essential 10-step guide." }
-        ];
+        // --- Check 1: Exit on index pages ---
+        if (fullPath.endsWith('/calculators/index.html') || fullPath.endsWith('/calculators/') ||
+            fullPath.endsWith('/blog/index.html') || fullPath.endsWith('/blog/')) {
+            return; // Do not add sidebars to these index pages
+        }
 
-        const currentPage = window.location.pathname.split('/').pop();
-        const relatedArticles = articles.filter(article => article.href !== currentPage).slice(0, 4); // Show 4 articles
+        // --- Check 2: Exit if no placeholders exist ---
+        if (!desktopPlaceholder && !mobilePlaceholder) {
+            return;
+        }
 
-        if (relatedArticles.length === 0) return;
+        const currentPage = fullPath.split('/').pop();
+        
+        let sidebarTitle = "";
+        let links = [];
 
-        // Use rootPath to correct the article hrefs
-        const generateDesktopLinksHTML = (articles) => {
-            return articles.map(article => `
+        // --- Check 3: Determine which sidebar to show ---
+        if (fullPath.includes('/blog/')) {
+            // --- BLOG PAGE: Show Related Guides ---
+            sidebarTitle = "Related Guides";
+            const articles = [
+                { href: "how-to-buy-your-first-home-guide.html", file: "how-to-buy-your-first-home-guide.html", title: "First-Time Home Buyer Guide", desc: "A step-by-step overview." },
+                { href: "mortgage-amortization-explained.html", file: "mortgage-amortization-explained.html", title: "Mortgage Amortization Explained", desc: "See your loan cost breakdown." },
+                { href: "fixed-vs-variable-mortgage-guide.html", file: "fixed-vs-variable-mortgage-guide.html", title: "Fixed vs. Variable Mortgage?", desc: "Choose the right loan type." },
+                { href: "how-much-house-can-i-afford.html", file: "how-much-house-can-i-afford.html", title: "How Much House Can I Afford?", desc: "A deep dive into budgeting." },
+                { href: "first-time-home-buyer-checklist.html", file: "first-time-home-buyer-checklist.html", title: "First-Time Home Buyer's Checklist", desc: "Your essential 10-step guide." }
+            ];
+            // Filter out the current page
+            links = articles.filter(article => article.file !== currentPage).slice(0, 4);
+
+        } else {
+            // --- CALCULATOR PAGE (or other page): Show Other Calculators ---
+            sidebarTitle = "Other Calculators";
+            const allTools = [
+                // Note: The hrefs are relative to the *current page's* directory.
+                // global-elements.js is loaded from `../` on calculator pages.
+                // rootPath is already calculated correctly (e.g., '../' for calc pages, './' for quiz page)
+                { href: `${rootPath}`, file: 'index.html', title: "All-in-One Planner", desc: "The main mortgage planner." },
+                { href: `${rootPath}calculators/down-payment-calculator.html`, file: 'down-payment-calculator.html', title: "Down Payment Calculator", desc: "Plan your upfront costs." },
+                { href: `${rootPath}calculators/extra-payment-calculator.html`, file: 'extra-payment-calculator.html', title: "Extra Payment Calculator", desc: "Pay off your loan faster." },
+                { href: `${rootPath}calculators/mortgage-amortisation-calculator.html`, file: 'mortgage-amortisation-calculator.html', title: "Amortisation Calculator", desc: "View your loan schedule." },
+                { href: `${rootPath}calculators/home-equity-calculator.html`, file: 'home-equity-calculator.html', title: "Home Equity Calculator", desc: "Compare HELOC vs. Refi." },
+                { href: `${rootPath}calculators/property-tax-calculator.html`, file: 'property-tax-calculator.html', title: "Property Tax Calculator", desc: "Estimate local taxes." },
+                { href: `${rootPath}calculators/closing-cost-calculator.html`, file: 'closing-cost-calculator.html', title: "Closing Cost Calculator", desc: "Estimate fees to close." },
+                { href: `${rootPath}Refinance-Readiness-Quiz.html`, file: 'Refinance-Readiness-Quiz.html', title: "Refinance Quiz", desc: "See if you're ready." }
+            ];
+            
+            // Filter out the current page.
+            // On main index.html, currentPage is '', but rootPath is './'. `allTools` has href `./` and file `index.html`.
+            // On quiz page, currentPage is 'Refinance-Readiness-Quiz.html', rootPath is './'.
+            // On calculator page (e.g., closing-cost-calculator.html), currentPage is 'closing-cost-calculator.html', rootPath is `../`.
+            
+            // Filter by filename.
+            links = allTools.filter(tool => tool.file !== currentPage && (currentPage || tool.file !== 'index.html')).slice(0, 4);
+        }
+
+        if (links.length === 0) return;
+
+        // --- Generate Desktop Sidebar ---
+        const generateDesktopLinksHTML = (links) => {
+            return links.map(link => {
+                // For blog articles, the href needs to be prefixed with the blog path.
+                const linkHref = fullPath.includes('/blog/') ? `${rootPath}blog/${link.href}` : link.href;
+                return `
                 <li>
-                    <a href="${rootPath}blog/${article.href}" class="font-semibold text-primary hover:underline group">
-                        <span class="block text-sm">${article.title}</span>
-                        <span class="block text-xs text-gray-500 group-hover:text-accent">${article.desc}</span>
+                    <a href="${linkHref}" class="font-semibold text-primary hover:underline group">
+                        <span class="block text-xs">${link.title}</span>
+                        <span class="block text-[11px] text-gray-500 group-hover:text-accent">${link.desc}</span>
                     </a>
                 </li>
-            `).join('');
+            `}).join('');
         };
         
         if (desktopPlaceholder) {
             desktopPlaceholder.innerHTML = `
                 <div class="sticky top-24">
                     <div class="sidebar-widget">
-                         <h3 class="sidebar-title">Related Guides</h3>
-                         <ul class="space-y-4">${generateDesktopLinksHTML(relatedArticles)}</ul>
+                         <h3 class="sidebar-title">${sidebarTitle}</h3>
+                         <ul class="space-y-4">${generateDesktopLinksHTML(links)}</ul>
                     </div>
                 </div>
             `;
         }
 
+        // --- Generate Mobile Sidebar ---
         if (mobilePlaceholder) {
-            const generateMobileLinksHTML = (articles) => {
+            const generateMobileLinksHTML = (links) => {
+                // Define icons for calculators
                 const icons = {
+                    "index.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
+                    "down-payment-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25-2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" /></svg>`,
+                    "extra-payment-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+                    "mortgage-amortisation-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>`,
+                    "home-equity-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>`,
+                    "property-tax-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+                    "closing-cost-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" /></svg>`,
+                    "Refinance-Readiness-Quiz.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+                    // Article icons
                     "how-to-buy-your-first-home-guide.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>`,
                     "mortgage-amortization-explained.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>`,
                     "fixed-vs-variable-mortgage-guide.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>`,
@@ -268,14 +318,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 13v-8.5" /></svg>`;
 
-                return articles.map(article => {
-                    const iconSVG = icons[article.href] || defaultIcon;
+                return links.map(link => {
+                    // Use `file` for icon lookup, `href` for the link
+                    const iconKey = link.file || link.href;
+                    // For blog articles, the href needs to be prefixed with the blog path.
+                    const linkHref = fullPath.includes('/blog/') ? `${rootPath}blog/${link.href}` : link.href;
+                    const iconSVG = icons[iconKey] || defaultIcon;
                     return `
-                        <a href="${rootPath}blog/${article.href}" class="mobile-article-card group">
+                        <a href="${linkHref}" class="mobile-article-card group">
                             <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 text-primary mb-2 transition-colors group-hover:bg-primary group-hover:text-white">
                                 ${iconSVG}
                             </div>
-                            <span class="block text-xs font-bold text-gray-800 group-hover:text-primary">${article.title}</span>
+                            <span class="block text-xs font-bold text-gray-800 group-hover:text-primary">${link.title}</span>
                         </a>
                     `;
                 }).join('');
@@ -284,11 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
             mobilePlaceholder.innerHTML = `
                 <div id="mobile-related-articles" class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-100/95 backdrop-blur-sm border-t border-gray-200 p-3 shadow-top-lg transform translate-y-full transition-transform duration-500 ease-in-out z-40">
                     <div class="flex justify-between items-center mb-3 px-1">
-                         <h3 class="font-bold text-sm text-gray-800">Continue Reading...</h3>
+                         <h3 class="font-bold text-sm text-gray-800">${sidebarTitle === "Related Guides" ? "Continue Reading..." : "Explore Other Tools..."}</h3>
                          <button id="close-mobile-sidebar" class="text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
                     </div>
                     <div class="flex space-x-3 overflow-x-auto pb-2 -mx-3 px-3 scrollable-tabs">
-                        ${generateMobileLinksHTML(relatedArticles)}
+                        ${generateMobileLinksHTML(links)}
                     </div>
                 </div>
             `;
@@ -300,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const showSidebar = () => { if (!sidebarShown) { mobileSidebar.classList.remove('translate-y-full'); sidebarShown = true; } };
                 const hideSidebar = () => { mobileSidebar.classList.add('translate-y-full'); sidebarShown = false; };
                 closeButton.addEventListener('click', hideSidebar);
-                // Show the bar when user scrolls towards the bottom 75% of the page
+                // Show the bar when user scrolls towards the bottom 60% of the page
                 window.addEventListener('scroll', () => { if (!sidebarShown && window.scrollY > (document.body.scrollHeight * 0.6)) { showSidebar(); } }, { passive: true });
             }
         }
