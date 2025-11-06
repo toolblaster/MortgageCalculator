@@ -407,12 +407,26 @@ document.addEventListener('DOMContentLoaded', function() {
             input.addEventListener('input', () => {
                 const val = parseFloat(input.value);
                 const max = parseFloat(slider.max);
-                const min = parseFloat(slider.min);
-                if (val > max) input.value = max;
-                if (val < min) input.value = min;
+                // const min = parseFloat(slider.min); // No longer needed here
 
-                slider.value = input.value;
+                if (!isNaN(val)) {
+                    if (val > max) input.value = max;
+                    // REMOVED: if (val < min) input.value = min; // This was the cause of the bug
+                }
+
+                slider.value = input.value; // This will handle empty string by setting slider to 0 or min
                 update();
+            });
+
+            // ADD a 'change' event to handle empty/invalid or below-min values
+            input.addEventListener('change', () => {
+                 const val = parseFloat(input.value);
+                 const min = parseFloat(slider.min);
+                 if (isNaN(val) || val < min) {
+                    input.value = min;
+                    slider.value = min;
+                    update();
+                 }
             });
         };
         
