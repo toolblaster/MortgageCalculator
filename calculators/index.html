@@ -33,7 +33,26 @@
     <!-- Shared Stylesheet (relative path from calculators folder) -->
     <link rel="stylesheet" href="../style.css">
 
-    <!-- REMOVED: Page-specific layout styles are no longer needed -->
+    <!-- Compact Layout Styles -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; Removed this rule to allow scrolling if content overflows */
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        main.content-wrapper {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    </style>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -73,10 +92,8 @@
 </head>
 <body class="bg-gray-100">
     <!-- Main Content Area -->
-    <!-- UPDATED: Added .container-global and .calculator-layout-grid, removed .content-wrapper -->
-    <main class="container-global calculator-layout-grid my-4 lg:space-y-0">
-        <!-- UPDATED: Changed div to main tag and removed max-w-3xl/mx-auto -->
-        <main class="bg-white px-4 pt-4 pb-3 rounded-lg shadow-xl w-full">
+    <main class="content-wrapper">
+        <div class="bg-white px-4 pt-4 pb-3 rounded-lg shadow-xl w-full max-w-3xl mx-auto">
              <!-- Updated Header with Gradient -->
             <header class="text-center mb-4 pb-2 border-b bg-gradient-to-r from-sky-50 to-blue-100 p-3 rounded-lg shadow-inner">
                 <h1 class="text-lg font-bold text-primary">Financial Calculators & Tools</h1>
@@ -167,7 +184,6 @@
                 <a href="../Refinance-Readiness-Quiz.html" class="block group bg-gray-50 hover:bg-sky-50 p-3 rounded-lg border border-gray-200 hover:border-primary transition-all duration-300 flex items-start text-left">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-Data
                     </div>
                     <div>
                         <h2 class="text-sm font-bold text-primary group-hover:underline">Refinance Readiness Quiz</h2>
@@ -175,10 +191,7 @@ Data
                     </div>
                 </a>
             </div>
-        </main>
-        
-        <!-- UPDATED: Added aside as sibling to main -->
-        <aside id="desktop-sidebar-placeholder"></aside>
+        </div>
     </main>
 
     <script src="../global-elements.js" defer></script>
