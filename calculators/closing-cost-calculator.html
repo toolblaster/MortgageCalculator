@@ -112,19 +112,25 @@
         <div class="container-global calculator-layout-grid my-4 space-y-4 lg:space-y-0">
             <!-- UPDATED: Wrapped main content in <main> tag for 80% column -->
             <main class="space-y-4">
-                <div id="calculator-container" class="bg-white p-3 sm:p-4 rounded-xl shadow-2xl">
+                <!-- UPDATED: Reduced padding from p-3 sm:p-4 to p-3 -->
+                <div id="calculator-container" class="bg-white p-3 rounded-xl shadow-2xl">
                     <!-- Header -->
                     <header class="text-center mb-4 pb-4 border-b">
-                        <h1 class="text-xl md:text-2xl font-extrabold text-primary">Closing Cost Calculator</h1>
+                        <!-- UPDATED: H1 set to text-xl (20px) -->
+                        <h1 class="text-xl font-extrabold text-primary">Closing Cost Calculator</h1>
                         <p class="mt-1 text-xs text-gray-700">Estimate the fees you'll need to save for your home purchase or refinance.</p>
                     </header>
     
-                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-4">
+                    <!-- UPDATED: Reduced gap-4 to gap-3 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-3">
                         <!-- Input Column -->
-                        <div class="lg:col-span-2 space-y-3">
-                            <div class="bg-gray-50 border rounded-lg p-3">
+                        <!-- UPDATED: Reduced space-y-3 to space-y-2 -->
+                        <div class="lg:col-span-2 space-y-2">
+                            <!-- UPDATED: Reduced p-3 to p-2 -->
+                            <div class="bg-gray-50 border rounded-lg p-2">
                                 <h2 class="text-sm font-bold text-primary mb-2">Transaction Details</h2>
-                                <div class="space-y-4">
+                                <!-- UPDATED: Reduced space-y-4 to space-y-3 -->
+                                <div class="space-y-3">
                                     <!-- Home Price -->
                                     <div>
                                         <div class="flex justify-between items-center">
@@ -191,17 +197,21 @@
                         </div>
     
                         <!-- Results Column -->
-                        <div class="lg:col-span-3 space-y-3 min-h-[400px]">
-                            <div class="p-4 rounded-lg bg-primary/10 border-2 border-primary/50 shadow text-center">
+                        <!-- UPDATED: Reduced space-y-3 to space-y-2 and min-h-[400px] to min-h-0 -->
+                        <div class="lg:col-span-3 space-y-2 min-h-0">
+                            <!-- UPDATED: Reduced p-4 to p-3 -->
+                            <div class="p-3 rounded-lg bg-primary/10 border-2 border-primary/50 shadow text-center">
                                 <h2 class="text-base font-bold text-primary">Total Estimated Closing Costs</h2>
                                 <p id="totalClosingCosts" class="text-3xl font-extrabold text-primary" data-value="0">$0</p>
                                 <p id="closingCostsPercent" class="text-sm font-semibold text-primary" data-value="0">~0.0% of Loan Amount</p>
                             </div>
                             
-                            <div class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-200">
+                            <!-- UPDATED: Reduced p-3 to p-2 -->
+                            <div class="p-2 bg-gray-50 rounded-lg shadow-inner border border-gray-200">
                                  <h2 class="font-bold text-primary text-center text-base mb-2">Estimated Cost Breakdown</h2>
                                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 items-center">
-                                    <div class="relative h-40 md:h-48">
+                                    <!-- UPDATED: Reduced h-40 md:h-48 to h-40 -->
+                                    <div class="relative h-40">
                                         <canvas id="costsPieChart"></canvas>
                                     </div>
                                     <ul id="cost-breakdown-list" class="space-y-2 text-xs">
@@ -210,7 +220,8 @@
                                 </div>
                             </div>
     
-                             <div class="mt-4 text-center p-4 bg-accent/10 border border-accent/20 rounded-lg">
+                             <!-- UPDATED: Reduced mt-4 to mt-2 and p-4 to p-3 -->
+                             <div class="mt-2 text-center p-3 bg-accent/10 border border-accent/20 rounded-lg">
                                 <h3 class="font-bold text-accent">Ready to Budget for Your Monthly Payment?</h3>
                                 <p class="text-xs text-gray-700 mt-1">Closing costs are a one-time expense. Use our main calculator to plan your ongoing mortgage payments.</p>
                                  <a href="../#mortgage-tab" class="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
@@ -224,7 +235,8 @@
                 <div id="share-section-placeholder" class="mt-4"></div>
     
                  <!-- SEO Content Section -->
-                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-sm">
+                <!-- UPDATED: Reduced mt-4 to mt-2 -->
+                <div class="bg-white p-4 sm:p-5 mt-2 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-sm">
                     <h2 class="text-xl font-extrabold text-primary !mb-4">A Buyer's Guide to Understanding Closing Costs</h2>
                     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
@@ -244,7 +256,7 @@
                                 <div><strong class="font-semibold text-primary block">Select Your Location:</strong> Choose your state from the dropdown. This is crucial as some of the largest fees, like transfer taxes, are determined by state and local governments.</div>
                             </li>
                              <li class="flex items-start">
-                               <span class_ ="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold">3</span>
+                               <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold">3</span>
                                 <div><strong class="font-semibold text-primary block">Specify Transaction Type:</strong> Indicate whether you are purchasing a new home or refinancing. Refinance closing costs are often slightly lower as some fees (like home inspection) may not be required.</div>
                             </li>
                              <li class="flex items-start">
