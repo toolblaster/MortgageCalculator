@@ -124,8 +124,10 @@
 </head>
 <body class="bg-gray-100">
     <main class="content-wrapper">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-4 md:my-8">
-            <div class="relative max-w-4xl mx-auto">
+        <!-- UPDATED: Replaced max-w-7xl and padding with .container-global -->
+        <div class="container-global my-4 md:my-8">
+            <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
+            <div class="blog-layout-grid">
                 <article class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                     <header class="text-center mb-8">
                         <h1 class="text-2xl sm:text-3xl font-extrabold text-primary">The Complete Guide to Hidden Homeownership Costs (And How to Calculate Them Accurately)</h1>
@@ -312,7 +314,8 @@
                         <div id="share-section-placeholder" class="mt-6 border-t pt-6"></div>
                     </div>
                 </article>
-                <aside id="desktop-sidebar-placeholder" class="hidden lg:block absolute top-0 left-full ml-8 w-72"></aside>
+                <!-- UPDATED: Moved aside to be a sibling of article and removed all utility classes -->
+                <aside id="desktop-sidebar-placeholder"></aside>
             </div>
         </div>
         <div id="mobile-sidebar-placeholder"></div>
