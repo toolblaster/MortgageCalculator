@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
+    font-size: 0.8125rem; /* 13px, a slight decrease from 14px (text-sm) */
     background-color: #f3f4f6;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -467,4 +468,48 @@ input, select {
         padding-left: 2rem; /* Replicates lg:px-8 */
         padding-right: 2rem; /* Replicates lg:px-8 */
     }
+}
+
+/* --- NEW BLOG LAYOUT (75/25 Split) --- */
+
+/* This class will be applied to the parent div in the blog HTML files */
+.blog-layout-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first: single column */
+    gap: 1.5rem; /* 24px gap */
+    max-width: 100%; /* Will be constrained by container-global */
+}
+
+/* On large screens (1024px, matches lg: breakpoint) */
+@media (min-width: 1024px) {
+    .blog-layout-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4-column grid */
+        gap: 2rem; /* 32px gap */
+    }
+
+    /* The main article content takes 3 columns (75%) */
+    .blog-layout-grid > article {
+        grid-column: span 3 / span 3;
+    }
+
+    /* The sidebar takes 1 column (25%) */
+    /* This targets the placeholder ID. The inline classes in the HTML will be REMOVED in the next steps. */
+    #desktop-sidebar-placeholder {
+        grid-column: span 1 / span 1;
+        display: block; /* Ensure it's visible on large screens */
+        position: relative;
+        width: 100%;
+        /* Resetting any utility class values */
+        top: auto;
+        left: auto;
+        margin-left: 0;
+    }
+}
+
+/* On mobile, we still want to hide the desktop sidebar to avoid redundancy */
+@media (max-width: 1023px) {
+     #desktop-sidebar-placeholder {
+        display: none;
+     }
 }
