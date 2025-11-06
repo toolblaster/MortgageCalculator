@@ -297,7 +297,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // --- Generate Mobile Sidebar ---
-        if (mobilePlaceholder) {
+        // UPDATED: Added a check to NOT render this mobile banner if we are on a blog page.
+        if (mobilePlaceholder && !fullPath.includes('/blog/')) {
             const generateMobileLinksHTML = (links) => {
                 // Define icons for calculators
                 const icons = {
