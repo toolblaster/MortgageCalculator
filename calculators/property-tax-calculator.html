@@ -168,7 +168,7 @@
                                      <!-- Currency -->
                                      <div>
                                         <label for="currency" class="block font-medium text-xs text-gray-700">Currency:</label>
-                                        <select id="currency" class="w-full p-1.5 text-xs border border-gray-300 rounded-md h-[30px]">
+                                        <select id="currency" class="w-full p-1 text-xs border border-gray-300 rounded-md h-[28px]">
                                             <option value="USD">USD ($)</option>
                                             <option value="EUR">EUR (€)</option>
                                             <option value="GBP">GBP (£)</option>
@@ -188,7 +188,7 @@
                                     <!-- Location (State) -->
                                     <div>
                                         <label for="location" class="block font-medium text-xs text-gray-700">Location (US State Average):</label>
-                                        <select id="location" class="w-full p-1.5 text-xs border border-gray-300 rounded-md h-[30px]">
+                                        <select id="location" class="w-full p-1 text-xs border border-gray-300 rounded-md h-[28px]">
                                             <option value="">Select a State</option>
                                             <!-- Options will be populated by JS -->
                                         </select>
@@ -202,13 +202,13 @@
                                                 <span class="tooltip-text" role="tooltip">Enter your specific local tax rate here. For mill rates, convert by dividing the mill rate by 10 (e.g., 25 mills = 2.5%).</span>
                                             </span>
                                         </label>
-                                        <input type="number" id="manualRate" placeholder="e.g., 1.25" step="0.01" class="w-full p-1.5 text-xs border border-gray-300 rounded-md">
+                                        <input type="number" id="manualRate" placeholder="e.g., 1.25" step="0.01" class="w-full p-1 text-xs border border-gray-300 rounded-md">
                                     </div>
                                  </div>
                             </div>
     
                             <div class="sticky bottom-2 sm:bottom-4">
-                                <button id="saveScenarioBtn" class="w-full px-4 py-2 bg-accent text-white font-bold rounded-lg shadow-lg hover:bg-green-800 transition duration-150 text-sm">
+                                <button id="saveScenarioBtn" class="w-full px-4 py-1.5 bg-accent text-white font-bold rounded-lg shadow-lg hover:bg-green-800 transition duration-150 text-xs">
                                     Save & Share Estimate
                                 </button>
                                 <p id="saveFeedback" class="text-xs text-accent text-center h-5 mt-1"></p>
@@ -267,13 +267,13 @@
     
                  <!-- SEO Content Section -->
                 <!-- UPDATED: Reduced mt-4 to mt-2 -->
-                <div class="bg-white p-4 sm:p-5 mt-2 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-sm">
+                <div class="bg-white p-4 sm:p-5 mt-2 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
                     <!-- H2: Main SEO content heading -->
-                    <h2 class="text-xl font-extrabold text-primary !mb-4">A Homeowner's Guide to Property Taxes</h2>
+                    <h2 class="text-lg font-extrabold text-primary !mb-4">A Homeowner's Guide to Property Taxes</h2>
                     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
                         <!-- H3: Content sub-heading -->
-                        <h3 class="text-lg font-bold text-gray-800">What is Property Tax?</h3>
+                        <h3 class="text-base font-bold text-gray-800">What is Property Tax?</h3>
                         <p class="mt-2 text-xs">Property tax is a tax paid on property owned by an individual or other legal entity, such as a corporation. It is a primary source of revenue for local governments, funding essential public services that benefit the community.</p>
                          <ul class="space-y-2 mt-2 text-xs">
                             <li class="flex items-start">
@@ -291,19 +291,19 @@
                     
                      <section class="bg-gray-50/70 p-4 rounded-lg border">
                         <!-- H3: Content sub-heading -->
-                        <h3 class="text-lg font-bold text-gray-800">How to Use This Property Tax Calculator</h3>
+                        <h3 class="text-base font-bold text-gray-800">How to Use This Property Tax Calculator</h3>
                         <p class="mt-2 text-xs">This tool is designed to give you a reliable estimate, whether you know your exact local rate or not.</p>
                          <ul class="space-y-3 mt-3 text-xs">
                             <li class="flex items-start">
-                               <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">1</span>
+                               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">1</span>
                                 <div><strong class="font-semibold text-primary block">Enter Your Property's Value:</strong> Start with your home's market value. If you know its assessed value, using that will give a more accurate result.</div>
                             </li>
                              <li class="flex items-start">
-                               <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">2</span>
+                               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">2</span>
                                 <div><strong class="font-semibold text-primary block">Choose Your Rate Method:</strong> For a quick estimate, select your US state from the dropdown. For a precise calculation, enter your specific local tax rate (often called a "mill rate") into the manual field. The manual entry will always override the state selection.</div>
                             </li>
                              <li class="flex items-start">
-                               <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">3</span>
+                               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">3</span>
                                 <div><strong class="font-semibold text-primary block">Analyze Your Estimate:</strong> The calculator instantly shows your estimated annual and monthly tax payments. Use the monthly figure to help budget for your total housing costs.</div>
                             </li>
                         </ul>
@@ -311,7 +311,7 @@
     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
                         <!-- H3: Content sub-heading -->
-                        <h3 class="text-lg font-bold text-gray-800">Key Terms to Understand</h3>
+                        <h3 class="text-base font-bold text-gray-800">Key Terms to Understand</h3>
                          <ul class="space-y-3 mt-3 text-xs">
                             <li class="flex items-start">
                                  <!-- Decorative SVG icon -->
@@ -333,7 +333,7 @@
     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
                         <!-- H3: Content sub-heading -->
-                        <h3 class="text-lg font-bold text-gray-800">Average Property Tax Rates by State (2025 Update)</h3>
+                        <h3 class="text-base font-bold text-gray-800">Average Property Tax Rates by State (2025 Update)</h3>
                         <p class="mt-2 text-xs">Property tax rates can vary significantly across the United States. Below is a snapshot of the average effective tax rates for a selection of states to give you an idea of this range. For the most accurate calculation, always find your specific local rate.</p>
                         <div class="mt-4 overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200 text-xs">
@@ -361,12 +361,12 @@
                      <!-- FAQ Section -->
                     <section class="py-4">
                         <!-- H2: FAQ grouping -->
-                        <h2 class="text-xl font-bold text-primary mb-3 text-center">Frequently Asked Questions</h2>
+                        <h2 class="text-lg font-bold text-primary mb-3 text-center">Frequently Asked Questions</h2>
                         <div class="max-w-3xl mx-auto border-t border-b border-gray-200 divide-y divide-gray-200">
                            <div class="faq-item">
                                 <button class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 hover:bg-gray-50 transition" aria-expanded="false">
                                     <!-- H3: FAQ Question -->
-                                    <h3 class="text-sm">What is the difference between assessed value and market value?</h3>
+                                    <h3 class="text-xs">What is the difference between assessed value and market value?</h3>
                                     <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
                                 <div class="faq-answer"><div class="p-4 pt-0 text-gray-600 text-xs"><p>Market value is the price your home would likely sell for on the open market. Assessed value is a percentage of the market value, determined by your local tax assessor for tax purposes. Property taxes are calculated based on the assessed value.</p></div></div>
@@ -374,7 +374,7 @@
                             <div class="faq-item">
                                 <button class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 hover:bg-gray-50 transition" aria-expanded="false">
                                     <!-- H3: FAQ Question -->
-                                    <h3 class="text-sm">What is a mill rate?</h3>
+                                    <h3 class="text-xs">What is a mill rate?</h3>
                                     <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
                                 <div class="faq-answer"><div class="p-4 pt-0 text-gray-600 text-xs"><p>A mill rate is a tax rate expressed in mills, where one mill is one-tenth of a cent ($0.001). It represents the amount of tax payable per dollar of the assessed value of a property. For example, a mill rate of 10 means you pay $10 for every $1,000 of assessed value, which is equivalent to a 1% tax rate.</p></div></div>
@@ -382,7 +382,7 @@
                             <div class="faq-item">
                                 <button class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 hover:bg-gray-50 transition" aria-expanded="false">
                                     <!-- H3: FAQ Question -->
-                                    <h3 class="text-sm">Why are property taxes different between states?</h3>
+                                    <h3 class="text-xs">Why are property taxes different between states?</h3>
                                     <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
                                 <div class="faq-answer"><div class="p-4 pt-0 text-gray-600 text-xs"><p>Property taxes are a primary source of funding for local services like schools, police, fire departments, and infrastructure. States and municipalities have different funding needs and other revenue sources (like income or sales tax), which causes property tax rates to vary significantly.</p></div></div>
@@ -390,7 +390,7 @@
                             <div class="faq-item">
                                 <button class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 hover:bg-gray-50 transition" aria-expanded="false">
                                     <!-- H3: FAQ Question -->
-                                    <h3 class="text-sm">Can my property taxes go up?</h3>
+                                    <h3 class="text-xs">Can my property taxes go up?</h3>
                                     <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
                                 </button>
                                 <div class="faq-answer"><div class="p-4 pt-0 text-gray-600 text-xs"><p>Yes. Property taxes can increase if your home's assessed value goes up due to rising market values or home improvements, or if your local government increases the tax rate (mill rate) to fund public services.</p></div></div>
