@@ -128,9 +128,10 @@
 </head>
 <body class="bg-gray-100">
     <main class="content-wrapper">
-        <!-- UPDATED: Replaced max-w-7xl and padding/margin with .container-global -->
+        <!-- UPDATED: Replaced max-w-7xl and padding with .container-global -->
         <div class="container-global my-4 md:my-8">
-            <div class="relative max-w-4xl mx-auto">
+            <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
+            <div class="blog-layout-grid">
                 <article class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                     <header class="text-center mb-8">
                         <h1 class="text-2xl sm:text-3xl font-extrabold text-primary">A First-Time Home Buyer's Checklist: <strong>10 Steps to Success</strong></h1>
@@ -366,7 +367,8 @@
                     </div>
                 </article>
 
-                <aside id="desktop-sidebar-placeholder" class="hidden lg:block absolute top-0 left-full ml-8 w-72"></aside>
+                <!-- UPDATED: Moved aside to be a sibling of article and removed all utility classes -->
+                <aside id="desktop-sidebar-placeholder"></aside>
             </div>
         </div>
 
