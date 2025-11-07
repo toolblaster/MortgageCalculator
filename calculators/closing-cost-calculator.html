@@ -107,7 +107,6 @@
 </head>
 <body class="bg-gray-100 text-sm">
     <main class="content-wrapper">
-        <!-- UPDATED: Replaced Tailwind width/padding classes with .container-global -->
         <!-- UPDATED: Added .calculator-layout-grid class -->
         <div class="container-global calculator-layout-grid my-4 space-y-4 lg:space-y-0">
             <!-- UPDATED: Wrapped main content in <main> tag for 80% column -->
@@ -115,10 +114,10 @@
                 <!-- UPDATED: Reduced padding from p-3 sm:p-4 to p-3 -->
                 <div id="calculator-container" class="bg-white p-3 rounded-xl shadow-2xl">
                     <!-- Header -->
-                    <header class="text-center mb-4 pb-4 border-b">
+                    <header class="text-center mb-4 p-4 rounded-lg bg-gradient-to-r from-primary to-accent shadow-md">
                         <!-- UPDATED: H1 set to text-xl (20px) -->
-                        <h1 class="text-xl font-extrabold text-primary">Closing Cost Calculator</h1>
-                        <p class="mt-1 text-xs text-gray-700">Estimate the fees you'll need to save for your home purchase or refinance.</p>
+                        <h1 class="text-xl font-extrabold text-white">Closing Cost Calculator</h1>
+                        <p class="mt-1 text-xs text-gray-200">Estimate the fees you'll need to save for your home purchase or refinance.</p>
                     </header>
     
                     <!-- UPDATED: Reduced gap-4 to gap-3 -->
@@ -126,8 +125,8 @@
                         <!-- Input Column -->
                         <!-- UPDATED: Reduced space-y-3 to space-y-2 -->
                         <div class="lg:col-span-2 space-y-2">
-                            <!-- UPDATED: Reduced p-3 to p-2 -->
-                            <div class="bg-gray-50 border rounded-lg p-2">
+                            <!-- UPDATED: Reduced p-3 to p-2 and added border -->
+                            <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-2">
                                 <h2 class="text-sm font-bold text-primary mb-2">Transaction Details</h2>
                                 <!-- UPDATED: Reduced space-y-4 to space-y-3 -->
                                 <div class="space-y-3">
@@ -201,9 +200,9 @@
                         <div class="lg:col-span-3 space-y-2 min-h-0">
                             <!-- UPDATED: Reduced p-4 to p-3 -->
                             <div class="p-3 rounded-lg bg-primary/10 border-2 border-primary/50 shadow text-center">
-                                <h2 class="text-base font-bold text-primary">Total Estimated Closing Costs</h2>
-                                <p id="totalClosingCosts" class="text-3xl font-extrabold text-primary" data-value="0">$0</p>
-                                <p id="closingCostsPercent" class="text-sm font-semibold text-primary" data-value="0">~0.0% of Loan Amount</p>
+                                <h2 class="text-sm font-bold text-primary">Total Estimated Closing Costs</h2>
+                                <p id="totalClosingCosts" class="text-2xl font-extrabold text-primary" data-value="0">$0</p>
+                                <p id="closingCostsPercent" class="text-xs font-semibold text-primary" data-value="0">~0.0% of Loan Amount</p>
                             </div>
                             
                             <!-- UPDATED: Reduced p-3 to p-2 -->
@@ -220,11 +219,11 @@
                                 </div>
                             </div>
     
-                             <!-- UPDATED: Reduced mt-4 to mt-2 and p-4 to p-3 -->
+                             <!-- UPDATED: Reduced mt-4 to mt-2 and p-4 to p-3, and font sizes -->
                              <div class="mt-2 text-center p-3 bg-accent/10 border border-accent/20 rounded-lg">
-                                <h3 class="font-bold text-accent">Ready to Budget for Your Monthly Payment?</h3>
+                                <h3 class="font-bold text-accent text-sm">Ready to Budget for Your Monthly Payment?</h3>
                                 <p class="text-xs text-gray-700 mt-1">Closing costs are a one-time expense. Use our main calculator to plan your ongoing mortgage payments.</p>
-                                 <a href="../#mortgage-tab" class="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
+                                 <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#mortgage-tab" class="mt-2 inline-block text-xs font-semibold text-primary hover:underline">
                                     Go to the Full Mortgage Planner &rarr;
                                 </a>
                             </div>
@@ -232,7 +231,7 @@
                     </div>
                 </div>
     
-                <div id="share-section-placeholder" class="mt-4"></div>
+                <!-- REMOVED Social Share Placeholder -->
     
                  <!-- SEO Content Section -->
                 <!-- UPDATED: Reduced mt-4 to mt-2 -->
@@ -295,7 +294,7 @@
                                 <div><strong class="font-semibold">Negotiate with the Seller:</strong> In a buyer's market, it's common to ask the seller to contribute a percentage of the purchase price toward your closing costs. This is known as a "seller concession."</div>
                             </li>
                             <li class="flex items-start">
-                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-accent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m16.28 0h-1.5m-14.78 0h3.559M13.5 21v-7.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21m-4.5 0H2.36m16.28 0h-1.5m-14.78 0h3.559m0 0v-2.175a2.25 2.25 0 01.9-1.732l4.8-3.2c.45-.3.974-.3 1.424 0l4.8 3.2c.51.34.9 1.02.9 1.732v2.175" /></svg></span>
+                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-accent"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg></span>
                                 <div><strong class="font-semibold">Shop Around for Services:</strong> You don't have to use the title company or homeowner's insurance provider your lender recommends. Compare quotes from different companies to find the best rates.</div>
                             </li>
                              <li class="flex items-start">
