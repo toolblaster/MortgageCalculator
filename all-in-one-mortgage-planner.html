@@ -174,12 +174,12 @@
 
         <!-- UPDATED: Replaced w-full, max-w-7xl, and mx-auto with container-global -->
         <div id="calculator" class="calculator-container bg-white p-3 sm:p-4 rounded-xl shadow-2xl container-global my-4">
-            <div class="text-center bg-sky-50 p-2 rounded-lg mb-3 shadow-sm">
-                <h2 class="text-sm md:text-base font-extrabold text-primary">
+            <header class="text-center p-4 rounded-lg mb-3 shadow-md bg-gradient-to-r from-primary to-accent">
+                <h2 class="text-sm md:text-base font-extrabold text-white">
                     Advanced Financial & Mortgage Planner
                 </h2>
-                <p class="text-xs text-gray-800">For Homeowners in the US, UK, Canada & Australia</p>
-            </div>
+                <p class="text-xs text-gray-200">For Homeowners in the US, UK, Canada & Australia</p>
+            </header>
 
             <!-- Tab Navigation -->
             <div class="mb-3 border-b border-gray-200 no-print">
@@ -225,7 +225,7 @@
              <div id="affordability-content" class="hidden" role="tabpanel" aria-labelledby="affordability-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-lg">
                                 <h3 class="text-xs font-bold text-primary">Your Financials</h3>
                             </summary>
@@ -291,7 +291,7 @@
                 <div class="main-grid-layout mt-3">
                     <div class="input-column relative flex flex-col gap-3">
                         
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Loan Core Details</h3>
                             </summary>
@@ -354,7 +354,7 @@
                             </div>
                         </details>
 
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                <h3 class="text-xs font-bold text-dti-safe">Debt-to-Income (DTI) Inputs</h3>
                             </summary>
@@ -373,7 +373,7 @@
                             </div>
                         </details>
 
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">PITI, Payoff & Economic Inputs</h3>
                             </summary>
@@ -460,7 +460,7 @@
                             </div>
                         </details>
 
-                        <details class="bg-white rounded-lg shadow-md border">
+                        <details class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Refinance Scenario Modeling</h3>
                             </summary>
@@ -488,7 +488,7 @@
                             </div>
                         </details>
 
-                        <details class="bg-white rounded-lg shadow-md border">
+                        <details class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Interest Rate Shock Test</h3>
                             </summary>
@@ -659,7 +659,7 @@
                             <p class="text-sm py-1">New Shock P&I Payment: <span id="shockPaymentDisplay" class="text-red-600 font-bold"></span> (Increase of <span id="paymentIncrease" class="text-red-600 font-bold"></span>)</p>
                         </div>
 
-                        <div id="schedule-wrapper" class="bg-white rounded-lg shadow-md border">
+                        <div id="schedule-wrapper" class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                             <details>
                                 <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                     <h3 class="text-xs font-bold text-primary">View Amortization Schedule</h3>
@@ -679,7 +679,7 @@
             <div id="rent-vs-buy-content" class="hidden" role="tabpanel" aria-labelledby="rent-vs-buy-tab">
                  <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Rent vs. Buy Inputs</h3>
                             </summary>
@@ -759,7 +759,7 @@
             <div id="refinance-content" class="hidden" role="tabpanel" aria-labelledby="refinance-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Current Mortgage Details</h3>
                             </summary>
@@ -786,7 +786,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-accent">New Loan Offer</h3>
                             </summary>
@@ -851,7 +851,7 @@
             <div id="investment-content" class="hidden" role="tabpanel" aria-labelledby="investment-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Property & Purchase</h3>
                             </summary>
@@ -883,7 +883,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="bg-white rounded-lg shadow-md border">
+                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Income & Expenses</h3>
                             </summary>
@@ -1001,8 +1001,7 @@
             </div>
         </section>
 
-        <!-- RE-ADDED: Share placeholder for global-elements.js -->
-        <div id="share-section-placeholder" class="bg-white"></div>
+        <!-- REMOVED Share placeholder -->
         
     </main>
 
