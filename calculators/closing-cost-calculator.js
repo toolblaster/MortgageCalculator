@@ -53,6 +53,24 @@ document.addEventListener('DOMContentLoaded', function() {
         states: ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     };
 
+    // --- Helper function ---
+    function updateSliderFill(slider) {
+        if (!slider) return;
+        const min = parseFloat(slider.min) || 0;
+        const max = parseFloat(slider.max) || 100;
+        const val = parseFloat(slider.value) || 0;
+        const percentage = val > min ? ((val - min) * 100) / (max - min) : 0; // Handle val <= min
+        slider.style.background = `linear-gradient(to right, #2C98C2 ${percentage}%, #e5e7eb ${percentage}%)`;
+    }
+
+    // --- Helper function ---
+    function updateCurrencySymbols() {
+        const symbols = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$' };
+        const symbol = symbols[DOM.currency.value] || '$';
+        if (DOM.currencySymbol) DOM.currencySymbol.textContent = symbol;
+        if (DOM.dpTypeAmount) DOM.dpTypeAmount.textContent = symbol;
+    }
+
     function calculateAndRender() {
         const homePrice = parseFloat(DOM.homePrice.value) || 0;
         const dpValue = parseFloat(DOM.downPaymentInput.value) || 0;
@@ -149,19 +167,74 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // --- [NEW] Function to update all currency symbols on the page ---
-    function updateCurrencySymbols() {
-        const symbols = { 'USD': '$', 'EUR': '€', 'GBP': '£', 'CAD': 'C$', 'AUD': 'A$' };
-        const symbol = symbols[DOM.currency.value] || '$';
-        if (DOM.currencySymbol) DOM.currencySymbol.textContent = symbol;
-        if (DOM.dpTypeAmount) DOM.dpTypeAmount.textContent = symbol; // This line fixes the issue
+    // --- Sync function ---
+    function syncSliderAndInput(slider, input, isDP = false) {
+        if (!slider || !input) return;
+
+        const update = () => {
+            if (isDP) {
+                // Special handling for DP slider max value
+                const homePrice = parseFloat(DOM.homePrice.value) || 0;
+                if (dpInputType === '$') {
+                    slider.max = homePrice * 0.5;
+                } else {
+                    slider.max = 50;
+                }
+            }
+            updateSliderFill(slider);
+            calculateAndRender();
+        };
+
+        slider.addEventListener('input', (e) => {
+            input.value = e.target.value;
+            update();
+        });
+
+        input.addEventListener('input', (e) => {
+            const val = parseFloat(input.value);
+            const max = parseFloat(slider.max);
+            const min = parseFloat(slider.min);
+
+            if (!isNaN(val)) {
+                if (val > max) {
+                    slider.value = max;
+                    input.value = max; // Correct input if it exceeds max
+                } else if (val < min) {
+                    slider.value = min;
+                    // Don't correct input yet, wait for change event
+                } else {
+                    slider.value = val;
+                }
+            } else {
+                slider.value = min; // Set slider to min if input is empty/invalid
+            }
+            update(); // Update fill on every keystroke
+        });
+        
+        // Handle cases where user leaves input empty or below min
+        input.addEventListener('change', (e) => {
+             const val = parseFloat(input.value);
+             const min = parseFloat(slider.min);
+             if (isNaN(val) || val < min) {
+                input.value = min;
+                slider.value = min;
+                update();
+             }
+        });
     }
 
+    // --- [REMOVED DUPLICATE FUNCTIONS] ---
+
     function setupEventListeners() {
-        const inputs = [DOM.homePrice, DOM.homePriceSlider, DOM.downPaymentInput, DOM.downPaymentSlider, DOM.loanTerm, DOM.location];
+        // --- [NEW] Call sync functions ---
+        syncSliderAndInput(DOM.homePriceSlider, DOM.homePrice, false);
+        syncSliderAndInput(DOM.downPaymentSlider, DOM.downPaymentInput, true);
+
+        // --- [MODIFIED] Removed slider/input listeners, kept others ---
+        const inputs = [DOM.loanTerm, DOM.location];
         inputs.forEach(input => input.addEventListener('input', () => {
-            updateSliderFill(DOM.homePriceSlider);
-            updateSliderFill(DOM.downPaymentSlider);
+            // updateSliderFill(DOM.homePriceSlider); // No longer needed here
+            // updateSliderFill(DOM.downPaymentSlider); // No longer needed here
             calculateAndRender();
         }));
         
@@ -218,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 DOM.dpTypePercent.classList.add('text-gray-600');
                 
                 DOM.downPaymentSlider.min = "0";
-                DOM.downPaymentSlider.max = homePrice * 0.5;
+                DOM.downPaymentSlider.max = homePrice * 0.5; // Update max based on home price
                 DOM.downPaymentSlider.step = "500";
                 
                 const newAmount = Math.round((homePrice * (dpInputVal / 100)) / 500) * 500;
@@ -231,10 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
         DOM.dpTypePercent.addEventListener('click', () => setDpType('%'));
         DOM.dpTypeAmount.addEventListener('click', () => setDpType('$'));
 
-        DOM.homePriceSlider.addEventListener('input', (e) => DOM.homePrice.value = e.target.value);
-        DOM.homePrice.addEventListener('input', (e) => DOM.homePriceSlider.value = e.target.value);
-        DOM.downPaymentSlider.addEventListener('input', (e) => DOM.downPaymentInput.value = e.target.value);
-        DOM.downPaymentInput.addEventListener('input', (e) => DOM.downPaymentSlider.value = e.target.value);
+        // --- [REMOVED] Redundant sync listeners ---
         
         DOM.saveScenarioBtn.addEventListener('click', () => {
             const params = new URLSearchParams({
@@ -287,6 +357,16 @@ document.addEventListener('DOMContentLoaded', function() {
             transactionType = params.get('type') || 'purchase';
             dpInputType = params.get('dpt') || '%';
 
+            // --- [NEW] Handle slider max/step for DP based on loaded type ---
+            if (dpInputType === '$') {
+                DOM.dpTypeAmount.classList.add('bg-primary', 'text-white');
+                DOM.dpTypeAmount.classList.remove('text-gray-600');
+                DOM.dpTypePercent.classList.remove('bg-primary', 'text-white');
+                DOM.dpTypePercent.classList.add('text-gray-600');
+                DOM.downPaymentSlider.max = parseFloat(DOM.homePrice.value) * 0.5;
+                DOM.downPaymentSlider.step = "500";
+            }
+
             DOM.homePriceSlider.value = DOM.homePrice.value;
             DOM.downPaymentSlider.value = DOM.downPaymentInput.value;
         }
@@ -298,14 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
         calculateAndRender();
     }
 
-     function updateSliderFill(slider) {
-        if (!slider) return;
-        const min = parseFloat(slider.min) || 0;
-        const max = parseFloat(slider.max) || 100;
-        const val = parseFloat(slider.value) || 0;
-        const percentage = ((val - min) * 100) / (max - min);
-        slider.style.background = `linear-gradient(to right, #2C98C2 ${percentage}%, #e5e7eb ${percentage}%)`;
-    }
+    // --- [REMOVED] Redundant updateSliderFill function ---
 
     init();
 });
