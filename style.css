@@ -451,7 +451,8 @@ input, select {
 
 /* NEW: Added border glow effect */
 .border-glow-primary {
-    box-shadow: 0 0 8px rgba(28, 118, 143, 0.3), 0 2px 6px rgba(0,0,0,0.05);
+    /* UPDATED: Made the glow effect more distinct */
+    box-shadow: 0 0 15px rgba(28, 118, 143, 0.6), 0 2px 6px rgba(0,0,0,0.05);
 }
 
 /* SEO Content Section Styles */
