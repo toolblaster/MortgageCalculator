@@ -135,7 +135,7 @@
             background-color: #f0f9ff; /* hover:bg-sky-50 */
             transform: translateY(-2px);
             /* UPDATED: Added a glow effect using the primary color */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 15px rgba(28, 118, 143, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05), 0 0 15px rgba(28, 118, 143, 0.3);
         }
     </style>
 
@@ -201,7 +201,8 @@
                 </div>
 
                 <!-- NEW: Wrapper for Tools & Paths -->
-                <section class="mb-8 p-4 bg-primary/5 border-2 border-primary/20 rounded-xl">
+                <!-- UPDATED: Changed background to bg-gray-100, added border-4, and shadow-xl for prominence -->
+                <section class="mb-8 p-4 bg-gray-100 border-4 border-primary/30 rounded-xl shadow-xl">
                     <!-- Quick Access / CTA Row -->
                     <section class="pb-6" id="quick-tools-section">
                         <h2 class="text-lg font-extrabold text-primary mb-4 text-center">Quick Tools for Immediate Answers</h2>
@@ -233,7 +234,7 @@
                     <!-- Guided Paths Section: Updated to use 3-column grid -->
                     <section class="max-w-4xl mx-auto space-y-6 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-6" id="guided-paths-container">
                         
-                        <!-- Path 1: First-Time Buyer (REMOVED 'open') -->
+                        <!-- Path 1: First-Time Buyer -->
                         <!-- ACCESSIBILITY UPDATE: border-buy-path/30, text-buy-path, bg-buy-path, text-buy-path classes updated via config -->
                         <details class="path-details rounded-xl shadow-lg border border-buy-path/30 lg:col-span-1 bg-white">
                             <summary class="p-4 rounded-xl cursor-pointer list-none group hover:bg-gray-50 transition-colors border-l-4 border-buy-path">
@@ -249,7 +250,8 @@
                                         <p class="text-xs text-gray-700 mt-0.5">From budgeting to closing, secure your first home confidently.</p>
                                     </div>
                                 </div>
-                                <button class="mt-3 w-full py-1.5 bg-buy-path text-white font-semibold rounded-md text-xs shadow-md hover:bg-buy-path/80 transition-colors">
+                                <!-- UPDATED: Changed anchor tag back to button and added ID for JS modification -->
+                                <button id="view-steps-btn" class="mt-3 w-full py-1.5 bg-buy-path text-white font-semibold rounded-md text-xs shadow-md hover:bg-buy-path/80 transition-colors">
                                     View Steps
                                 </button>
                             </summary>
@@ -320,7 +322,8 @@
                                         <p class="text-xs text-gray-700 mt-0.5">Maximize savings, reduce interest, and tap equity efficiently.</p>
                                     </div>
                                 </div>
-                                <button class="mt-3 w-full py-1.5 bg-optimize-path text-white font-semibold rounded-md text-xs shadow-md hover:bg-optimize-path/80 transition-colors">
+                                <!-- UPDATED: Changed anchor tag back to button and added ID for JS modification -->
+                                <button id="optimize-now-btn" class="mt-3 w-full py-1.5 bg-optimize-path text-white font-semibold rounded-md text-xs shadow-md hover:bg-optimize-path/80 transition-colors">
                                     Optimize Now
                                 </button>
                             </summary>
@@ -391,7 +394,8 @@
                                         <p class="text-xs text-gray-700 mt-0.5">Analyze cash flow, Cap Rate, and maximize rental property returns.</p>
                                     </div>
                                 </div>
-                                <button class="mt-3 w-full py-1.5 bg-invest-path text-white font-semibold rounded-md text-xs shadow-md hover:bg-invest-path/80 transition-colors">
+                                <!-- UPDATED: Changed anchor tag back to button and added ID for JS modification -->
+                                <button id="analyze-roi-btn" class="mt-3 w-full py-1.5 bg-invest-path text-white font-semibold rounded-md text-xs shadow-md hover:bg-invest-path/80 transition-colors">
                                     Analyze ROI
                                 </button>
                             </summary>
@@ -436,6 +440,15 @@
                         </details>
                     </section>
                 </section>
+
+                <!-- 
+                  FUTURE AD SLOT (In-Content Rectangle)
+                  - Placed between major content sections (Calculators and Blog).
+                  - 'min-h-[250px]' is set to prevent CLS when a common 300x250 or 336x280 ad loads.
+                -->
+                <div class="my-6 flex min-h-[250px] w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-gray-400 hidden">
+                    Future Ad Placeholder (e.g., 300x250)
+                </div>
 
                 <!-- NEW SECTION: All Calculators -->
                 <section class="mt-8 p-4 bg-primary/5 border-2 border-primary/20 rounded-xl">
@@ -559,7 +572,7 @@
                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
                            </div>
                            <div>
-                               <h3 class="text-sm font-bold text-primary group-hover:underline">Mortgage Amortization Explained</h3>
+                               <h3 class="text-sm font-bold text-primary group-hover:underline">Mortgage Amortisation Explained</h3>
                                <p class="mt-1 text-xs text-gray-600">See where your payment really goes and how to build equity faster.</p>
                            </div>
                         </a>
@@ -594,7 +607,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             // JavaScript to manage the exclusive open state and visual column spanning
             const detailsElements = document.querySelectorAll('#guided-paths-container details');
-            const quickToolsSection = document.getElementById('quick-tools-section');
+            const viewStepsBtn = document.getElementById('view-steps-btn');
+            const optimizeNowBtn = document.getElementById('optimize-now-btn');
+            const analyzeRoiBtn = document.getElementById('analyze-roi-btn');
 
             // Function to handle smooth scrolling to an element
             function smoothScrollTo(element) {
@@ -604,33 +619,72 @@
                 });
             }
 
+            // Function to toggle the details element based on button click
+            function toggleDetails(buttonId) {
+                const button = document.getElementById(buttonId);
+                const details = button.closest('details');
+                
+                // If clicking the button, toggle the details state
+                details.open = !details.open;
+            }
+
+            // Attach toggle handlers to the dedicated buttons
+            if (viewStepsBtn) viewStepsBtn.addEventListener('click', () => toggleDetails('view-steps-btn'));
+            if (optimizeNowBtn) optimizeNowBtn.addEventListener('click', () => toggleDetails('optimize-now-btn'));
+            if (analyzeRoiBtn) analyzeRoiBtn.addEventListener('click', () => toggleDetails('analyze-roi-btn'));
+
+
             detailsElements.forEach(currentDetails => {
                 currentDetails.addEventListener('toggle', (event) => {
                     const isOpening = currentDetails.open;
 
+                    // --- Exclusive Open State Logic ---
                     if (isOpening) {
-                        // 1. Close all other details tags
+                        // Close all other details tags
                         detailsElements.forEach(otherDetails => {
                             if (otherDetails !== currentDetails && otherDetails.open) {
                                 otherDetails.open = false;
                             }
                         });
                         
-                        // 2. Add the dynamic column span class for desktop expansion
+                        // Add the dynamic column span class for desktop expansion
                         if (window.innerWidth >= 1024) {
                             currentDetails.classList.add('lg:col-span-3');
                         }
                         
-                        // 3. Smooth scroll the opened element into view
+                        // Smooth scroll the opened element into view
                         setTimeout(() => {
                             smoothScrollTo(currentDetails);
                         }, 50);
 
                     } else {
-                         // 3. Remove the column span class when closing
+                         // Remove the column span class when closing
                         if (window.innerWidth >= 1024) {
                             currentDetails.classList.remove('lg:col-span-3');
                         }
+                    }
+                    
+                    // --- Custom Button Text Change Logic (Path 1 only) ---
+                    if (currentDetails.querySelector('#view-steps-btn')) {
+                        const button = currentDetails.querySelector('#view-steps-btn');
+                        if (button) {
+                            button.textContent = isOpening ? 'Below are the Steps' : 'View Steps';
+                            // Restore original text on other path buttons if needed (though they aren't explicitly requested to change yet)
+                        }
+                    }
+                    // For Path 2
+                    if (currentDetails.querySelector('#optimize-now-btn')) {
+                         const button = currentDetails.querySelector('#optimize-now-btn');
+                         if (button) {
+                            button.textContent = isOpening ? 'Hide Steps' : 'Optimize Now';
+                         }
+                    }
+                    // For Path 3
+                     if (currentDetails.querySelector('#analyze-roi-btn')) {
+                         const button = currentDetails.querySelector('#analyze-roi-btn');
+                         if (button) {
+                            button.textContent = isOpening ? 'Hide Steps' : 'Analyze ROI';
+                         }
                     }
                 });
             });
@@ -649,8 +703,6 @@
                     }
                 });
             });
-            
-             // REMOVED: Initial check on load: Scroll to Quick Tools section if the base URL is used
 
              // Initial check for desktop expansion
              detailsElements.forEach(details => {
