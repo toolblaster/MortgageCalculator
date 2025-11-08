@@ -776,10 +776,12 @@ This file handles UI, event listeners, and state management.
         
         if (tabs[tabKeyFromHash]) {
             switchTab(tabKeyFromHash);
+             /* REMOVED: Auto-scroll functionality on page load/hash change
              setTimeout(() => {
                 const calculatorEl = document.getElementById('calculator');
                 if (calculatorEl) calculatorEl.scrollIntoView({ behavior: 'smooth' });
             }, 150);
+            */
         } else {
             switchTab('mortgage');
         }
