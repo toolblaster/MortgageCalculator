@@ -62,6 +62,40 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const headerHTML = `
+        <style>
+          .menu-link-gradient {
+            background: linear-gradient(to right, #1C768F 0%, #166534 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 600; /* semibold */
+            transition: background 0.3s ease;
+          }
+          .menu-link-gradient:hover {
+            background: linear-gradient(to right, #166534 0%, #1C768F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+          }
+           .mobile-menu-link-gradient {
+            background: linear-gradient(to right, #1C768F 0%, #166534 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 500; /* medium */
+            transition: background 0.3s ease;
+          }
+          .mobile-menu-link-gradient:hover {
+            background: linear-gradient(to right, #166534 0%, #1C768F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+          }
+        </style>
         <header class="bg-white/80 backdrop-blur-lg shadow-sm no-print md:static top-0 z-40 rounded-b-lg md:rounded-b-xl border-glow-primary">
             <!-- UPDATED: Replaced Tailwind width/padding classes with .container-global -->
             <nav class="container-global">
@@ -80,15 +114,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     </a>
                     <!-- Desktop Menu -->
                     <!-- UPDATED: Font size changed from text-xs to text-sm -->
+                    <!-- UPDATED: Changed hover color to text-accent -->
                     <div class="hidden md:flex items-center space-x-4">
                         <!-- UPDATED: Added Homepage link -->
-                        <a href="${homePath}" class="text-sm font-semibold text-primary hover:underline">Home</a>
+                        <a href="${homePath}" class="text-sm menu-link-gradient">Home</a>
                         <!-- UPDATED: Link to new planner.html -->
-                        <a href="${plannerPath}" class="text-sm font-semibold text-primary hover:underline">Mortgage Planner</a>
+                        <a href="${plannerPath}" class="text-sm menu-link-gradient">Mortgage Planner</a>
                         <!-- UPDATED: Removed redundant Planning Hub link -->
-                        <a href="${calcHubPath}" class="text-sm font-semibold text-primary hover:underline">Calculator's Hub</a>
-                        <a href="${blogPath}" class="text-sm font-semibold text-primary hover:underline">Blog</a>
-                        <a href="${legalPath}" class="text-sm font-semibold text-primary hover:underline">Contact & Legal</a>
+                        <a href="${calcHubPath}" class="text-sm menu-link-gradient">Calculator's Hub</a>
+                        <a href="${blogPath}" class="text-sm menu-link-gradient">Blog</a>
+                        <a href="${legalPath}" class="text-sm menu-link-gradient">Contact & Legal</a>
                     </div>
                     <!-- Mobile menu button -->
                     <div class="md:hidden flex items-center">
@@ -107,15 +142,16 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Mobile menu, show/hide based on menu state. -->
             <!-- UPDATED: Replaced 'hidden' with animation classes: invisible, opacity-0, max-h-0 and transition properties -->
             <div class="md:hidden invisible opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out" id="mobile-menu">
+                <!-- UPDATED: Changed text-gray-700 to text-primary and hover:text-primary to hover:text-accent -->
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <!-- UPDATED: Added Homepage link -->
-                    <a href="${homePath}" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Homepage</a>
+                    <a href="${homePath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Homepage</a>
                     <!-- UPDATED: Link to new planner.html -->
-                    <a href="${plannerPath}" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Mortgage Planner</a>
+                    <a href="${plannerPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Mortgage Planner</a>
                     <!-- UPDATED: Removed redundant Planning Hub link -->
-                    <a href="${calcHubPath}" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Calculator's Hub</a>
-                    <a href="${blogPath}" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Blog</a>
-                    <a href="${legalPath}" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Contact & Legal</a>
+                    <a href="${calcHubPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Calculator's Hub</a>
+                    <a href="${blogPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Blog</a>
+                    <a href="${legalPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Contact & Legal</a>
                 </div>
             </div>
         </header>
