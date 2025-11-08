@@ -157,7 +157,7 @@
         <section class="bg-sky-50 border-b border-sky-100 no-print">
             <!-- UPDATED: Replaced max-w-7xl and related classes with container-global -->
             <div class="container-global py-8 md:py-10 text-center">
-                <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-primary tracking-tight">
+                <h1 class="text-xl sm:text-2xl md:text-[26px] font-extrabold text-primary tracking-tight">
                     Go Beyond a Simple Calculation.
                     <span class="block text-gray-700 mt-1">Build Your Strategic Mortgage Plan.</span>
                 </h1>
@@ -165,7 +165,7 @@
                     Our advanced planner helps you see the future of your biggest investment. Analyze <span class="font-bold text-npv">NPV</span>, forecast <span class="font-bold text-accent">equity growth</span>, monitor your <span class="font-bold text-dti-safe">DTI</span>, and model <span class="font-bold text-primary">payoff scenarios</span> to build true wealth.
                 </p>
                 <div class="mt-4">
-                    <a href="#calculator" class="inline-block bg-accent text-white font-semibold py-2 px-5 sm:py-2.5 sm:px-6 rounded-lg shadow-lg hover:bg-green-800 transition-transform transform hover:scale-105 duration-300 text-xs">
+                    <a href="#calculator" class="inline-block bg-accent text-white font-semibold py-1.5 px-4 sm:py-2 sm:px-5 rounded-lg shadow-lg hover:bg-green-800 transition-transform transform hover:scale-105 duration-300 text-xs">
                         Start Planning Now
                     </a>
                 </div>
@@ -225,7 +225,8 @@
              <div id="affordability-content" class="hidden" role="tabpanel" aria-labelledby="affordability-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-lg">
                                 <h3 class="text-xs font-bold text-primary">Your Financials</h3>
                             </summary>
@@ -291,7 +292,8 @@
                 <div class="main-grid-layout mt-3">
                     <div class="input-column relative flex flex-col gap-3">
                         
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Loan Core Details</h3>
                             </summary>
@@ -354,7 +356,8 @@
                             </div>
                         </details>
 
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                <h3 class="text-xs font-bold text-dti-safe">Debt-to-Income (DTI) Inputs</h3>
                             </summary>
@@ -373,7 +376,8 @@
                             </div>
                         </details>
 
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 and REMOVED open attribute -->
+                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">PITI, Payoff & Economic Inputs</h3>
                             </summary>
@@ -460,7 +464,8 @@
                             </div>
                         </details>
 
-                        <details class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 and REMOVED open attribute -->
+                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Refinance Scenario Modeling</h3>
                             </summary>
@@ -488,7 +493,8 @@
                             </div>
                         </details>
 
-                        <details class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Interest Rate Shock Test</h3>
                             </summary>
@@ -526,8 +532,10 @@
                             <div class="spinner"></div>
                         </div>
 
-                        <div id="results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-200 opacity-0 min-h-[500px]" aria-live="polite" aria-atomic="true">
-                            <div class="text-center sm:flex sm:justify-between sm:items-center mb-2">
+                        <!-- UPDATE: Removed wrapper classes, added space-y-3 -->
+                        <div id="results" class="space-y-3 opacity-0 min-h-[500px]" aria-live="polite" aria-atomic="true">
+                            
+                            <div class="text-center sm:flex sm:justify-between sm:items-center"> <!-- UPDATE: Removed mb-2 -->
                                 <h2 class="text-base font-bold text-gray-800">Calculation Summary</h2>
                                 <div class="no-print flex justify-center space-x-1 mt-1 sm:mt-0">
                                     <button class="pdf-button p-1.5 rounded-md hover:bg-gray-200 transition-colors" aria-label="Download PDF Report" title="Download PDF Report">
@@ -539,7 +547,8 @@
                                 </div>
                             </div>
                             
-                            <div id="savings-summary" class="hidden bg-accent/10 p-2 rounded-lg border-2 border-accent/30 shadow-lg text-center my-2">
+                            <!-- UPDATE: Removed my-2 -->
+                            <div id="savings-summary" class="hidden bg-accent/10 p-2 rounded-lg border-2 border-accent/30 shadow-lg text-center">
                                 <h3 class="text-sm font-extrabold text-accent flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                                     Accelerated Payoff Savings
@@ -565,19 +574,19 @@
                                 </div>
                             </div>
                             
-                            <h3 class="text-xs py-1 font-bold text-gray-800">Est. Initial PITI + PMI: <span id="totalMonthlyPaymentPITI" class="text-primary"></span></h3>
-
-                            <div class="mt-2 p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/50 shadow">
+                            <!-- UPDATE: Moved h3 and p into this div -->
+                            <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/50 shadow"> <!-- UPDATE: Removed mt-2 -->
+                                <h3 class="text-xs py-1 font-bold text-gray-800">Est. Initial PITI + PMI: <span id="totalMonthlyPaymentPITI" class="text-primary"></span></h3>
                                 <h3 class="text-xs font-bold text-sky-900">Total Monthly Cost of Ownership</h3>
                                 <p id="totalOwnershipCost" class="text-lg font-extrabold text-primary"></p>
                                 <p class="text-xs text-sky-800">(PITI + Maintenance + Utilities)</p>
+                                <p class="text-xs text-red-600 text-center p-1.5 border-dashed border border-amber-500 bg-amber-50 rounded-md mt-2" id="pmiDropNote" style="display: none;">
+                                    PMI included until period <span id="pmiDropPeriod" class="font-bold"></span>, when LTV drops to 80%.
+                                </p>
                             </div>
                             
-                            <p class="text-xs text-red-600 text-center p-1.5 border-dashed border border-amber-500 bg-amber-50 rounded-md mt-2" id="pmiDropNote" style="display: none;">
-                                PMI included until period <span id="pmiDropPeriod" class="font-bold"></span>, when LTV drops to 80%.
-                            </p>
-
-                            <div id="dti-results" class="mt-2 p-2 rounded-lg bg-white shadow-md" aria-live="polite">
+                            <!-- UPDATE: Removed mt-2 -->
+                            <div id="dti-results" class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-300" aria-live="polite">
                                 <h3 id="dti-title" class="text-sm font-bold text-gray-800 mb-2 border-b pb-1">Debt-to-Income (DTI) Analysis</h3>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
                                     <div class="p-2 rounded-lg bg-gray-50 border">
@@ -593,7 +602,8 @@
                                 </div>
                             </div>
 
-                            <div id="equity-summary" class="mt-2 p-2 rounded-lg border border-accent/50 bg-white shadow-md" aria-live="polite">
+                            <!-- UPDATE: Removed mt-2 -->
+                            <div id="equity-summary" class="p-2 rounded-lg border-2 border-accent/30 bg-white shadow-md" aria-live="polite">
                                 <h3 class="text-sm font-bold text-accent mb-2 border-b pb-1">Projected Equity Growth</h3>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
                                      <div class="p-2 rounded-lg bg-gray-50 border">
@@ -607,11 +617,13 @@
                                 </div>
                             </div>
                             
-                            <div id="chartContainer" class="mt-2 bg-white rounded-lg shadow-md p-2">
+                            <!-- UPDATE: Removed mt-2 -->
+                            <div id="chartContainer" class="bg-white rounded-lg shadow-md p-2 border-2 border-gray-300">
                                 <canvas id="comparisonChart"></canvas>
                             </div>
 
-                            <div id="chart-options" class="hidden mt-2 p-2 bg-gray-100 rounded-lg border text-xs text-center no-print">
+                            <!-- UPDATE: Removed mt-2 -->
+                            <div id="chart-options" class="hidden p-2 bg-gray-100 rounded-lg border text-xs text-center no-print">
                                 <h3 class="font-bold text-gray-600 mb-2">Chart Options</h3>
                                 <div class="flex justify-center items-center flex-wrap gap-x-4 gap-y-2">
                                     <label for="togglePrincipalPaid" class="flex items-center cursor-pointer">
@@ -633,8 +645,8 @@
                                 </div>
                             </div>
 
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2 text-xs">
+                            <!-- UPDATE: Removed mt-2 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
                                 <div class="bg-gray-100 p-2 rounded-lg border border-gray-200">
                                     <h3 class="text-xs font-semibold text-gray-700 mb-1">Original Loan (Standard)</h3>
                                     <p>P&I Payment: <span id="standardPaymentDisplay"></span></p>
@@ -679,7 +691,8 @@
             <div id="rent-vs-buy-content" class="hidden" role="tabpanel" aria-labelledby="rent-vs-buy-tab">
                  <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Rent vs. Buy Inputs</h3>
                             </summary>
@@ -759,7 +772,8 @@
             <div id="refinance-content" class="hidden" role="tabpanel" aria-labelledby="refinance-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Current Mortgage Details</h3>
                             </summary>
@@ -786,7 +800,8 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-accent">New Loan Offer</h3>
                             </summary>
@@ -851,7 +866,8 @@
             <div id="investment-content" class="hidden" role="tabpanel" aria-labelledby="investment-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Property & Purchase</h3>
                             </summary>
@@ -883,7 +899,8 @@
                                 </div>
                             </div>
                         </details>
-                        <details open class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center relative before:content-['+'] open:before:content-['−'] before:absolute before:right-4 before:text-base">
                                 <h3 class="text-xs font-bold text-primary">Income & Expenses</h3>
                             </summary>
