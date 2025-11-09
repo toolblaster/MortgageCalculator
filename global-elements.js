@@ -95,6 +95,35 @@ document.addEventListener('DOMContentLoaded', function() {
             background-clip: text;
             text-fill-color: transparent;
           }
+
+          /* NEW: Desktop Sidebar Title Gradient */
+          .sidebar-title-gradient {
+            background: linear-gradient(to right, #1C768F 0%, #166534 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 700;
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            
+            /* Gradient border - 4px thick, using border-image */
+            border-bottom: 4px solid transparent;
+            border-image: linear-gradient(to right, #1C768F 0%, #166534 100%);
+            border-image-slice: 1;
+          }
+
+          /* NEW: Mobile Sidebar Title Gradient */
+          .mobile-sidebar-title-gradient {
+            background: linear-gradient(to right, #1C768F 0%, #166534 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            font-weight: 700; /* bold */
+            font-size: 0.875rem; /* text-sm */
+          }
         </style>
         <header class="bg-white/80 backdrop-blur-lg shadow-sm no-print md:static top-0 z-40 rounded-b-lg md:rounded-b-xl border-glow-primary">
             <!-- UPDATED: Replaced Tailwind width/padding classes with .container-global -->
@@ -278,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('global-share-twitter').href = `https://x.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
         document.getElementById('global-share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
         document.getElementById('global-share-linkedin').href = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}&source=${pageSource}`;
-        document.getElementById('global-share-whatsapp').href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+        document.getElementById('global-share-whatsapp').href = `httpsa://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
         document.getElementById('global-share-email').href = `mailto:?subject=${pageTitle}&body=Check out this helpful tool: ${pageUrl}`;
     }
 
@@ -316,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 { href: "first-time-home-buyer-checklist.html", file: "first-time-home-buyer-checklist.html", title: "First-Time Home Buyer's Checklist", desc: "Your essential 10-step guide." }
             ];
             // Filter out the current page
-            links = articles.filter(article => article.file !== currentPage).slice(0, 4);
+            links = articles.filter(article => article.file !== currentPage).slice(0, 5);
 
         } else {
             // --- CALCULATOR PAGE (or other page): Show Other Calculators ---
@@ -344,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Filter by filename.
             // UPDATED: Filter logic to correctly handle index.html (which is now the hub)
-            links = allTools.filter(tool => tool.file !== currentPage && (currentPage || tool.file !== 'index.html')).slice(0, 4);
+            links = allTools.filter(tool => tool.file !== currentPage && (currentPage || tool.file !== 'index.html')).slice(0, 5);
         }
 
         if (links.length === 0) return;
@@ -373,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <!-- END: Ad Slot Placeholder -->
                 <div class="sticky top-24">
                     <div class="sidebar-widget">
-                         <h3 class="sidebar-title">${sidebarTitle}</h3>
+                         <h3 class="${sidebarTitle === "Other Calculators" ? "sidebar-title-gradient" : "sidebar-title"}">${sidebarTitle}</h3>
                          <ul class="space-y-4">${generateDesktopLinksHTML(links)}</ul>
                     </div>
                 </div>
@@ -424,7 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mobilePlaceholder.innerHTML = `
                 <div id="mobile-related-articles" class="lg:hidden fixed bottom-0 left-0 right-0 bg-gray-100/95 backdrop-blur-sm border-t border-gray-200 p-3 shadow-top-lg transform translate-y-full transition-transform duration-500 ease-in-out z-40">
                     <div class="flex justify-between items-center mb-3 px-1">
-                         <h3 class="font-bold text-sm text-gray-800">${sidebarTitle === "Related Guides" ? "Continue Reading..." : "Explore Other Tools..."}</h3>
+                         <h3 class="${sidebarTitle === "Other Calculators" ? "mobile-sidebar-title-gradient" : "font-bold text-sm text-gray-800"}">${sidebarTitle === "Related Guides" ? "Continue Reading..." : "Explore Other Tools..."}</h3>
                          <button id="close-mobile-sidebar" class="text-gray-500 hover:text-gray-800 text-2xl font-bold">&times;</button>
                     </div>
                     <div class="flex space-x-3 overflow-x-auto pb-2 -mx-3 px-3 scrollable-tabs">
