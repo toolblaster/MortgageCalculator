@@ -506,7 +506,10 @@
                     <p class="text-xs text-gray-700">This calculator simulates two loans side-by-side: a "Standard Loan" with no extra payments and an "Accelerated Loan" with your specified extras. This allows you to see the direct impact on interest and your payoff timeline.</p>
                     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
-                        <h3 class="text-base font-bold text-gray-800">1. Loan Amount & Base Payment</h3>
+                        <h3 class="text-base font-bold text-gray-800 flex items-center">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">1</span>
+                            <span>Loan Amount & Base Payment</span>
+                        </h3>
                         <p class="mt-2 text-xs">First, we determine your loan amount and the base payment for all scenarios.</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
                             <li class="p-2 bg-white rounded border border-gray-200">
@@ -521,7 +524,10 @@
                     </section>
     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
-                        <h3 class="text-base font-bold text-gray-800">2. Payment Frequency Logic</h3>
+                        <h3 class="text-base font-bold text-gray-800 flex items-center">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">2</span>
+                            <span>Payment Frequency Logic</span>
+                        </h3>
                         <p class="mt-2 text-xs">The calculator adjusts the number of payments per year and the amount paid per period based on your selection.</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
                             <li class="p-2 bg-white rounded border border-gray-200">
@@ -537,7 +543,10 @@
                     </section>
                     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
-                        <h3 class="text-base font-bold text-gray-800">3. The Amortization Loop</h3>
+                        <h3 class="text-base font-bold text-gray-800 flex items-center">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">3</span>
+                            <span>The Amortization Loop</span>
+                        </h3>
                         <p class="mt-2 text-xs">For each period (month, week, etc.), the calculator runs this simulation for both the standard and accelerated loans:</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
                             <li class="p-2 bg-white rounded border border-gray-200">
@@ -551,7 +560,10 @@
                     </section>
                     
                     <section class="bg-gray-50/70 p-4 rounded-lg border">
-                        <h3 class="text-base font-bold text-gray-800">4. Savings & Opportunity Cost</h3>
+                        <h3 class="text-base font-bold text-gray-800 flex items-center">
+                            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">4</span>
+                            <span>Savings & Opportunity Cost</span>
+                        </h3>
                         <p class="mt-2 text-xs">After simulating both loans, the savings are calculated by simple subtraction:</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
                             <li class="p-2 bg-white rounded border border-gray-200">
@@ -610,7 +622,7 @@
                         <ul class="space-y-3 mt-3 text-xs">
                             <li class="flex items-start">
                                <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v.01M12 18v-2m0-2v-2m0-2V7m0 0V6" /></svg></span>
-                                <div><strong>Make Extra Monthly Payments:</strong> Consistently adding a small amount even $50 or $100 to your regular payment can shave years off your loan. Our calculator shows you the exact impact of any amount you choose.</div>
+                                <div><strong>Make Extra Monthly Payments:</strong> Consistently adding a small amount—even $50 or $100—to your regular payment can shave years off your loan. Our calculator shows you the exact impact of any amount you choose.</div>
                             </li>
                             <li class="flex items-start">
                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19V5a2 2 0 012-2h10a2 2 0 012 2v14l-5-2.5L5 19z" /></svg></span>
@@ -618,7 +630,7 @@
                             </li>
                             <li class="flex items-start">
                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></span>
-                                <div><strong>Use a Bi-Weekly Payment Plan:</strong> A true bi-weekly plan involves paying half your mortgage every two weeks. This results in 26 half-payments, or 13 full payments, per year instead of 12. This tool can function as a <strong>biweekly mortgage calculator</strong> simply take your monthly payment, divide it by 12, and enter that amount in the "Extra Monthly" field to simulate the effect.</div>
+                                <div><strong>Use a Bi-Weekly Payment Plan:</strong> A true bi-weekly plan involves paying half your mortgage every two weeks. This results in 26 half-payments, or 13 full payments, per year instead of 12. This tool can function as a <strong>biweekly mortgage calculator</strong>—simply take your monthly payment, divide it by 12, and enter that amount in the "Extra Monthly" field to simulate the effect.</div>
                             </li>
                             <li class="flex items-start">
                                  <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
