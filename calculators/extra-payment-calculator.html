@@ -61,6 +61,11 @@
         details[open] .details-chevron {
             transform: rotate(90deg);
         }
+        /* ADDED: Plus/minus icon styles */
+        details summary .minus-icon { display: none; }
+        details summary .plus-icon { display: block; }
+        details[open] summary .minus-icon { display: block; }
+        details[open] summary .plus-icon { display: none; }
     </style>
     
     <!-- JSON-LD Structured Data -->
@@ -232,12 +237,16 @@
                         <!-- Input Column -->
                         <!-- UPDATED: Reduced space-y-3 to space-y-2 -->
                         <div class="lg:col-span-2 space-y-2">
-                            <details open class="bg-gray-50 border-2 border-gray-300 rounded-lg">
+                            <details open class="bg-gray-50 border-2 border-gray-400 rounded-lg">
                                  <!-- UPDATED: Reduced p-3 to p-2 -->
                                  <summary class="p-2 font-bold text-sm text-primary cursor-pointer list-none flex justify-between items-center">
                                     <!-- H2: Implicit grouping for inputs -->
                                     Basic Loan Details
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                    <!-- UPDATED: Icon -->
+                                    <span class="plus-minus-icon text-primary">
+                                        <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-4 h-4 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
                                 </summary>
                                 <!-- UPDATED: Reduced p-3 to p-2 and space-y-4 to space-y-3 -->
                                 <div class="p-2 border-t space-y-3">
@@ -305,12 +314,16 @@
                                 </div>
                             </details>
                             
-                            <details open class="bg-gray-50 border-2 border-gray-300 rounded-lg">
+                            <details open class="bg-gray-50 border-2 border-gray-400 rounded-lg">
                                 <!-- UPDATED: Reduced p-3 to p-2 -->
                                 <summary class="p-2 font-bold text-sm text-primary cursor-pointer list-none flex justify-between items-center">
                                     <!-- H2: Implicit grouping for inputs -->
                                     Extra Payment Options
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                    <!-- UPDATED: Icon -->
+                                    <span class="plus-minus-icon text-primary">
+                                        <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-4 h-4 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
                                 </summary>
                                <!-- UPDATED: Reduced p-3 to p-2 and space-y-4 to space-y-3 -->
                                <div class="p-2 border-t space-y-3">
@@ -378,7 +391,7 @@
                                 </div>
     
                                 <!-- UPDATED: Reduced mt-3 to mt-2 and p-3 to p-2 -->
-                                <div class="mt-2 bg-white border rounded-lg p-2">
+                                <div class="mt-2 bg-white border border-gray-400 rounded-lg p-2">
                                     <!-- H3: Chart heading -->
                                     <h3 class="text-base font-bold text-primary text-center">Loan Balance Payoff: Standard vs. Accelerated</h3>
                                     <!-- UPDATED: Reduced h-56 md:h-64 to h-48 md:h-56 -->
@@ -391,7 +404,7 @@
                                 <!-- UPDATED: Reduced mt-2 to mt-1, gap-2, p-3 to p-2, space-y-2 to space-y-1 -->
                                 <div class="mt-1 grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
                                     <!-- Standard Payoff Card -->
-                                    <div class="bg-gray-100 rounded-lg border p-2 space-y-1">
+                                    <div class="bg-gray-100 rounded-lg border border-gray-400 p-2 space-y-1">
                                         <!-- H3: Card heading -->
                                         <h3 class="font-bold text-gray-800 text-center text-xs flex items-center justify-center gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
@@ -418,7 +431,7 @@
                                     </div>
     
                                     <!-- Accelerated Payoff Card -->
-                                    <div class="bg-accent/10 rounded-lg border border-accent/30 p-2 space-y-1">
+                                    <div class="bg-accent/10 rounded-lg border border-accent/50 p-2 space-y-1">
                                         <!-- H3: Card heading -->
                                         <h3 class="font-bold text-accent text-center text-xs flex items-center justify-center gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
@@ -448,7 +461,7 @@
     
                                 <!-- NEW: Opportunity Cost Section -->
                                 <!-- UPDATED: Reduced mt-4 to mt-2, p-3 to p-2 -->
-                                <div id="opportunity-cost-section" class="hidden mt-2 bg-white border rounded-lg p-2">
+                                <div id="opportunity-cost-section" class="hidden mt-2 bg-white border border-gray-400 rounded-lg p-2">
                                     <!-- H3: Chart heading -->
                                     <h3 class="text-base font-bold text-secondary text-center">Opportunity Cost: Pay Mortgage vs. Invest</h3>
                                      <p class="text-center text-xs text-gray-600 mb-2">Compares the extra equity gained vs. the potential growth of investing your extra payments.</p>
@@ -468,24 +481,35 @@
     
                  <!-- Amortization Table -->
                  <!-- UPDATED: Reduced mt-4 to mt-2 -->
-                <details id="schedule-section" class="hidden bg-white rounded-xl shadow-lg border group mt-2">
+                <details id="schedule-section" class="hidden bg-white rounded-xl shadow-lg border-2 border-gray-400 group mt-2">
                      <summary class="p-4 cursor-pointer flex justify-between items-center list-none">
                         <!-- H2: Section heading -->
                         <h2 class="text-base font-bold text-primary">View Amortization Schedule</h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary transform transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                        <span class="plus-minus-icon text-primary">
+                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                        </span>
                     </summary>
-                    <div class="border-t p-4">
-                        <div class="schedule-container overflow-x-auto max-h-96">
-                            <table class="min-w-full text-xs">
-                                <thead class="bg-gray-50 sticky top-0">
-                                    <tr>
-                                        <th class="p-2 text-left">Period</th>
-                                        <th class="p-2 text-right">Standard Balance</th>
-                                        <th class="p-2 text-right text-accent">Accelerated Balance</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="amortizationTableBody" class="divide-y"></tbody>
-                            </table>
+                    <div class="schedule-content">
+                        <div class="border-t p-4">
+                            <div class="flex flex-col sm:flex-row justify-end items-center mb-2">
+                                <div class="flex items-center gap-2 mt-2 sm:mt-0">
+                                     <button id="downloadPDF" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">📄 Download PDF</button>
+                                     <button id="downloadCSV" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">📊 Download CSV</button>
+                                </div>
+                            </div>
+                            <div class="schedule-container overflow-x-auto max-h-96">
+                                <table class="min-w-full text-xs">
+                                    <thead class="bg-gray-50 sticky top-0">
+                                        <tr>
+                                            <th class="p-2 text-left">Period</th>
+                                            <th class="p-2 text-right">Standard Balance</th>
+                                            <th class="p-2 text-right text-accent">Accelerated Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="amortizationTableBody" class="divide-y"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </details>
@@ -501,21 +525,21 @@
                 </div>
 
                 <!-- NEW: Formula Explanation Section -->
-                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
+                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs border-2 border-gray-400">
                     <h2 class="text-lg font-extrabold text-primary !mb-4">How This Calculator Works: The Formulas</h2>
                     <p class="text-xs text-gray-700">This calculator simulates two loans side-by-side: a "Standard Loan" with no extra payments and an "Accelerated Loan" with your specified extras. This allows you to see the direct impact on interest and your payoff timeline.</p>
                     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">1</span>
                             <span>Loan Amount & Base Payment</span>
                         </h3>
                         <p class="mt-2 text-xs">First, we determine your loan amount and the base payment for all scenarios.</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <code class="block font-semibold text-primary">Loan Amount = Home Price - Down Payment Amount</code>
                             </li>
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Base Monthly Payment (M)</strong>
                                 <p class="mt-1 text-gray-600">We calculate the standard P&I payment using the formula from `js/utils.js`. This is used to determine the payment per period for all frequencies.</p>
                                 <code class="block text-xs mt-1 text-center">M = P * [r(1+r)^n] / [(1+r)^n - 1]</code>
@@ -523,33 +547,33 @@
                         </ul>
                     </section>
     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">2</span>
                             <span>Payment Frequency Logic</span>
                         </h3>
                         <p class="mt-2 text-xs">The calculator adjusts the number of payments per year and the amount paid per period based on your selection.</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Monthly:</strong> 12 payments per year. `Payment = M`.
                             </li>
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Bi-Weekly:</strong> 26 payments per year. `Payment = (M * 12) / 26`. (No faster payoff, just different timing).
                             </li>
-                             <li class="p-2 bg-white rounded border border-gray-200">
+                             <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-accent block">Accelerated Bi-Weekly:</strong> 26 payments per year. `Payment = M / 2`. This results in 13 full monthly payments per year, which is what saves you money.
                             </li>
                         </ul>
                     </section>
                     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">3</span>
                             <span>The Amortization Loop</span>
                         </h3>
                         <p class="mt-2 text-xs">For each period (month, week, etc.), the calculator runs this simulation for both the standard and accelerated loans:</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <code class="block font-semibold text-primary">Periodic Rate = Annual Rate / Periods Per Year / 100</code>
                                 <code class="block font-semibold text-primary mt-1">Interest = Current Balance * Periodic Rate</code>
                                 <code class="block font-semibold text-primary mt-1">Principal = Payment Per Period - Interest</code>
@@ -559,18 +583,18 @@
                         </ul>
                     </section>
                     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">4</span>
                             <span>Savings & Opportunity Cost</span>
                         </h3>
                         <p class="mt-2 text-xs">After simulating both loans, the savings are calculated by simple subtraction:</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <code class="block font-semibold text-accent">Interest Saved = Standard Total Interest - Accelerated Total Interest</code>
                                 <code class="block font-semibold text-secondary mt-1">Periods Saved = Standard Payoff Period - Accelerated Payoff Period</code>
                             </li>
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-secondary block">Opportunity Cost (Investment Growth)</strong>
                                 <p class="mt-1 text-gray-600">Simultaneously, the calculator compounds your extra payments at your specified investment return rate to show what that money could have grown into.</p>
                                 <code class="block text-xs mt-1">Investment Value = (Previous Value + Extra Payment) * (1 + Periodic Investment Rate)</code>
@@ -580,19 +604,19 @@
                 </div>
     
                 <!-- SEO Content Section -->
-                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
+                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs border-2 border-gray-400">
                     <!-- H2: Main SEO content heading -->
                     <h2 class="text-lg font-extrabold text-primary !mb-4">A Homeowner's Guide to Accelerated Mortgage Payoff</h2>
                     <p class="text-xs">Becoming mortgage-free is a significant financial goal for many homeowners. By making extra payments toward your loan's principal, you can achieve this goal years sooner and save a substantial amount of money. This guide explains the strategies and how our <strong>mortgage extra payment calculator</strong> can help you create a plan.</p>
     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <!-- H3: Content sub-heading -->
                         <h3 class="text-base font-bold text-gray-800">The Power of Extra Principal Payments</h3>
                         <p class="mt-2 text-xs">Every mortgage payment you make is split between principal (the amount you borrowed) and interest (the cost of borrowing). In the early years of your loan, a large portion goes to interest. When you <strong>add an extra payment</strong> and direct it toward the principal, you reduce the loan balance itself. This means that in the following months, the interest is calculated on a smaller amount, creating a snowball effect of savings. Using a <strong>pay off mortgage faster calculator</strong> like the one on this page visualizes this powerful concept in real-time.</p>
                     </section>
                     
                     <!-- HOW-TO SECTION -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <!-- H3: Content sub-heading -->
                         <h3 class="text-base font-bold text-gray-800">How to Use This Calculator</h3>
                         <p class="mt-2 text-xs">This tool is designed to be interactive and insightful. Follow these steps to get the most out of it:</p>
@@ -616,7 +640,7 @@
                         </ul>
                     </section>
     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <!-- H3: Content sub-heading -->
                         <h3 class="text-base font-bold text-gray-800">Strategies to Pay Off Your Mortgage Faster</h3>
                         <ul class="space-y-3 mt-3 text-xs">
@@ -640,7 +664,7 @@
                     </section>
                     
                     <!-- Country-Specific Section - IMPROVED -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <!-- H3: Content sub-heading -->
                         <h3 class="text-base font-bold text-gray-800 text-center">Country-Specific Considerations</h3>
                         <p class="mt-2 text-xs text-center">Mortgage rules and associated costs can vary significantly by country. Here are a few key points for international users:</p>
@@ -702,7 +726,7 @@
                         </div>
                     </section>
     
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <!-- H3: Content sub-heading -->
                         <h3 class="text-base font-bold text-gray-800 text-center">Is Paying Off Your Mortgage Early Always the Best Idea?</h3>
                         <p class="mt-2 text-xs text-center">Being debt-free is a great goal, but sometimes your money can work harder elsewhere. Consider the "opportunity cost":</p>
@@ -742,7 +766,7 @@
                     <section class="py-4">
                         <!-- H3: FAQ grouping -->
                         <h3 class="text-base font-bold text-primary mb-3 text-center">Frequently Asked Questions</h3>
-                        <div class="max-w-3xl mx-auto border-t border-b border-gray-200 divide-y divide-gray-200" id="faq-accordion">
+                        <div class="max-w-3xl mx-auto border-t border-b border-gray-400 divide-y divide-gray-400" id="faq-accordion">
                            <div class="faq-item">
                                 <button class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 hover:bg-gray-50 transition" aria-expanded="false">
                                     <!-- H4: FAQ Question -->
@@ -771,7 +795,6 @@
                                 </button>
                                 <div class="faq-answer">
                                     <p class="p-4 pt-0 text-gray-600 text-xs">Mathematically, a large lump-sum payment made early in the loan will save you more interest because it drastically reduces the principal balance that interest is calculated on. However, consistent extra monthly payments are often more manageable and still lead to significant savings. The best strategy depends on your financial situation.</p>
-CSS
                                 </div>
                             </div>
                             <div class="faq-item">
