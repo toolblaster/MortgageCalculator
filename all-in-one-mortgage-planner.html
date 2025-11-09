@@ -255,7 +255,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Your Financials</h3>
@@ -295,7 +295,7 @@
                         <div class="loading-overlay hidden">
                             <div class="spinner"></div>
                         </div>
-                        <div id="affordability-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-200 opacity-0 min-h-[400px]">
+                        <div id="affordability-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-400 opacity-0 min-h-[400px]">
                             <h3 class="text-sm font-bold text-gray-800 text-center mb-2">Home Affordability Summary</h3>
                              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-center">
                                 <div class="p-2 rounded-lg bg-primary/10 border-2 border-primary/50 shadow">
@@ -324,7 +324,7 @@
                     <div class="input-column relative flex flex-col gap-3">
                         
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Loan Core Details</h3>
@@ -390,7 +390,7 @@
                         </details>
 
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                <h3 class="text-[11px] font-bold text-dti-safe">Debt-to-Income (DTI) Inputs</h3>
@@ -412,7 +412,7 @@
                         </details>
 
                         <!-- UPDATE: Changed bg-white to bg-gray-50 and REMOVED open attribute -->
-                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">PITI, Payoff & Economic Inputs</h3>
@@ -424,7 +424,7 @@
                                     <input type="number" id="appreciationRate" value="3.5" min="0" max="15" step="0.1" class="w-full p-1.5 text-[11px] border border-accent/50 rounded-md">
                                     <span class="inline-error-message text-[10px]" id="appreciationRate-error"></span>
                                 </div>
-                                <div class="space-y-1 col-span-1 sm:col-span-2 bg-npv/10 p-2 rounded-md border border-npv/30">
+                                <div class="space-y-1 col-span-1 sm:col-span-2 bg-npv/10 p-2 rounded-md border border-npv/50">
                                     <label for="discountRate" class="block font-bold text-[11px] text-npv">
                                          <span class="tooltip-container">Annual Investment/Inflation Rate (%):
                                             <span class="tooltip-icon" tabindex="0" aria-label="Discount Rate tooltip">?</span>
@@ -502,7 +502,7 @@
                         </details>
 
                         <!-- UPDATE: Changed bg-white to bg-gray-50 and REMOVED open attribute -->
-                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Refinance Scenario Modeling</h3>
@@ -533,7 +533,7 @@
                         </details>
 
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Interest Rate Shock Test</h3>
@@ -589,7 +589,7 @@
                             </div>
                             
                             <!-- UPDATE: Removed my-2 -->
-                            <div id="savings-summary" class="hidden bg-accent/10 p-2 rounded-lg border-2 border-accent/30 shadow-lg text-center">
+                            <div id="savings-summary" class="hidden bg-accent/10 p-2 rounded-lg border-2 border-accent/50 shadow-lg text-center">
                                 <h3 class="text-xs font-extrabold text-accent flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                                     Accelerated Payoff Savings
@@ -616,7 +616,7 @@
                             </div>
                             
                             <!-- UPDATE: Moved h3 and p into this div -->
-                            <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/50 shadow"> <!-- UPDATE: Removed mt-2 -->
+                            <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/70 shadow"> <!-- UPDATE: Removed mt-2 -->
                                 <h3 class="text-[11px] py-1 font-bold text-gray-800">Est. Initial PITI + PMI: <span id="totalMonthlyPaymentPITI" class="text-primary"></span></h3>
                                 <h3 class="text-[11px] font-bold text-sky-900">Total Monthly Cost of Ownership</h3>
                                 <p id="totalOwnershipCost" class="text-base font-extrabold text-primary"></p>
@@ -627,15 +627,15 @@
                             </div>
                             
                             <!-- UPDATE: Removed mt-2 -->
-                            <div id="dti-results" class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-300" aria-live="polite">
-                                <h3 id="dti-title" class="text-xs font-bold text-gray-800 mb-2 border-b pb-1">Debt-to-Income (DTI) Analysis</h3>
+                            <div id="dti-results" class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400" aria-live="polite">
+                                <h3 id="dti-title" class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Debt-to-Income (DTI) Analysis</h3>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
-                                    <div class="p-2 rounded-lg bg-gray-50 border">
+                                    <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
                                         <h3 class="text-[11px] font-medium text-gray-700">Front-End DTI (Housing)</h3>
                                         <p id="frontEndDTI" class="text-sm font-extrabold"></p>
                                         <p id="frontEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
                                     </div>
-                                    <div class="p-2 rounded-lg bg-gray-50 border">
+                                    <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
                                         <h3 class="text-[11px] font-medium text-gray-700">Back-End DTI (Total Debt)</h3>
                                         <p id="backEndDTI" class="text-sm font-extrabold"></p>
                                         <p id="backEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
@@ -644,14 +644,14 @@
                             </div>
 
                             <!-- UPDATE: Removed mt-2 -->
-                            <div id="equity-summary" class="p-2 rounded-lg border-2 border-accent/30 bg-white shadow-md" aria-live="polite">
-                                <h3 class="text-xs font-bold text-accent mb-2 border-b pb-1">Projected Equity Growth</h3>
+                            <div id="equity-summary" class="p-2 rounded-lg border-2 border-accent/50 bg-white shadow-md" aria-live="polite">
+                                <h3 class="text-xs font-bold text-accent mb-2 border-b pb-1 text-center">Projected Equity Growth</h3>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
-                                     <div class="p-2 rounded-lg bg-gray-50 border">
+                                     <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
                                         <h3 class="text-[11px] font-medium text-gray-700">Total Equity at Payoff</h3>
                                         <p id="finalEquity" class="text-sm font-extrabold text-accent" data-value="0"></p>
                                     </div>
-                                    <div class="p-2 rounded-lg bg-gray-50 border">
+                                    <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
                                         <h3 class="text-[11px] font-medium text-gray-700">Final Property Value</h3>
                                         <p id="finalPropertyValue" class="text-sm font-extrabold text-accent" data-value="0"></p>
                                     </div>
@@ -659,12 +659,12 @@
                             </div>
                             
                             <!-- UPDATE: Removed mt-2 -->
-                            <div id="chartContainer" class="bg-white rounded-lg shadow-md p-2 border-2 border-gray-300">
+                            <div id="chartContainer" class="bg-white rounded-lg shadow-md p-2 border-2 border-gray-400">
                                 <canvas id="comparisonChart"></canvas>
                             </div>
 
                             <!-- UPDATE: Removed mt-2 -->
-                            <div id="chart-options" class="hidden p-2 bg-gray-100 rounded-lg border text-[11px] text-center no-print">
+                            <div id="chart-options" class="hidden p-2 bg-gray-100 rounded-lg border border-gray-400 text-[11px] text-center no-print">
                                 <h3 class="font-bold text-gray-600 mb-2">Chart Options</h3>
                                 <div class="flex justify-center items-center flex-wrap gap-x-4 gap-y-2">
                                     <label for="togglePrincipalPaid" class="flex items-center cursor-pointer">
@@ -688,14 +688,14 @@
 
                             <!-- UPDATE: Removed mt-2, changed text-xs to text-[11px] -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px]">
-                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-200">
+                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-400">
                                     <h3 class="text-[11px] font-semibold text-gray-700 mb-1">Original Loan (Standard)</h3>
                                     <p>P&I Payment: <span id="standardPaymentDisplay"></span></p>
                                     <p>Payoff Date: <span id="originalPayoffDate"></span></p>
                                     <p class="mt-1 text-primary font-bold">Total Interest Paid: <span id="totalInterestOriginal" data-value="0"></span></p>
                                     <p class="text-npv font-bold">NPV of Interest Cost: <span id="npvOriginal" data-value="0"></span></p>
                                 </div>
-                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-200">
+                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-400">
                                     <h3 class="text-[11px] font-semibold text-gray-700 mb-1">Accelerated Scenario</h3>
                                     <p>Accelerated P&I Payment: <span id="acceleratedPaymentDisplay"></span></p>
                                     <p>New Payoff Date: <span id="newPayoffDate" class="text-accent font-bold"></span></p>
@@ -705,14 +705,14 @@
                             </div>
                         </div>
                         
-                        <div id="shock-results" class="p-3 bg-red-100 rounded-lg shadow-inner border border-red-300" style="display: none;" aria-live="assertive" aria-atomic="true">
+                        <div id="shock-results" class="p-3 bg-red-100 rounded-lg shadow-inner border border-red-400" style="display: none;" aria-live="assertive" aria-atomic="true">
                             <h3 class="text-xs font-bold text-red-700 mb-1">Interest Rate Shock Test Result</h3>
                             <p class="text-[11px]">New Rate: <span id="shockRateDisplay" class="text-red-600 font-bold"></span>%</p>
                             <p class="text-[11px]">Original P&I Payment: <span id="originalShockPaymentDisplay"></span></p>
                             <p class="text-xs py-1">New Shock P&I Payment: <span id="shockPaymentDisplay" class="text-red-600 font-bold"></span> (Increase of <span id="paymentIncrease" class="text-red-600 font-bold"></span>)</p>
                         </div>
 
-                        <div id="schedule-wrapper" class="bg-white rounded-lg shadow-md border-2 border-gray-300">
+                        <div id="schedule-wrapper" class="bg-white rounded-lg shadow-md border-2 border-gray-400">
                             <details>
                                 <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                                 <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
@@ -735,7 +735,7 @@
                  <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Rent vs. Buy Inputs</h3>
@@ -790,7 +790,7 @@
                         <div class="loading-overlay hidden">
                             <div class="spinner"></div>
                         </div>
-                        <div id="rent-vs-buy-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-200 opacity-0 min-h-[500px]">
+                        <div id="rent-vs-buy-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-400 opacity-0 min-h-[500px]">
                              <h3 class="text-sm font-bold text-gray-800 text-center mb-2">Rent vs. Buy Summary</h3>
                              <div id="rent-vs-buy-chart-container" class="mt-2 bg-white rounded-lg shadow-md p-2">
                                 <canvas id="rentVsBuyChart"></canvas>
@@ -818,7 +818,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Current Mortgage Details</h3>
@@ -848,7 +848,7 @@
                             </div>
                         </details>
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-accent">New Loan Offer</h3>
@@ -888,7 +888,7 @@
                         <div class="loading-overlay hidden">
                             <div class="spinner"></div>
                         </div>
-                        <div id="refinance-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-200 opacity-0 min-h-[500px]">
+                        <div id="refinance-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-400 opacity-0 min-h-[500px]">
                              <h3 class="text-sm font-bold text-gray-800 text-center mb-2">Refinance Analysis Summary</h3>
                              <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-center">
                                 <div class="p-2 rounded-lg bg-accent/10 border-2 border-accent/50 shadow">
@@ -916,7 +916,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Property & Purchase</h3>
@@ -951,7 +951,7 @@
                             </div>
                         </details>
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-300">
+                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Income & Expenses</h3>
@@ -1005,7 +1005,7 @@
                         <div class="loading-overlay hidden">
                             <div class="spinner"></div>
                         </div>
-                        <div id="investment-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-200 opacity-0 min-h-[450px]">
+                        <div id="investment-results" class="p-3 bg-gray-50 rounded-lg shadow-inner border border-gray-400 opacity-0 min-h-[450px]">
                             <h3 class="text-sm font-bold text-gray-800 text-center mb-2">Rental Property ROI Summary</h3>
                             <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-center">
                                 <div class="p-2 rounded-lg bg-accent/10 border-2 border-accent/50 shadow">
@@ -1038,13 +1038,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     
                     <!-- Main Mortgage Calculator Formula (Spans 2 cols) -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border md:col-span-2">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400 md:col-span-2">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">1</span>
                             <span>Mortgage Calculator Tab (Payoff, Equity & NPV)</span>
                         </h3>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Monthly Payment (PMT)</strong>
                                 <p class="mt-1 text-gray-600">The base P&I payment is calculated with the standard PMT formula:</p>
                                 <code class="block text-xs mt-1 text-center">M = P * [r(1+r)^n] / [(1+r)^n - 1]</code>
@@ -1055,14 +1055,14 @@
                                     <li><strong>n</strong> = Total Payments (Term in Years * 12)</li>
                                 </ul>
                             </li>
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Amortization Loop (Per Period)</strong>
                                 <p class="mt-1 text-gray-600">The calculator iterates for each payment period (e.g., month) to determine the new balance.</p>
                                 <code class="block text-xs mt-1">Interest = Current Balance * Periodic Rate</code>
                                 <code class="block text-xs mt-1">Principal = Payment - Interest + Extra Payments</code>
                                 <code class="block text-xs mt-1">New Balance = Current Balance - Principal</code>
                             </li>
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-npv block">Net Present Value (NPV) of Interest</strong>
                                 <p class="mt-1 text-gray-600">This shows the "true cost" of future interest payments in today's dollars.</p>
                                 <code class="block text-xs mt-1">PV of Interest = Interest / (1 + d)^p</code>
@@ -1071,7 +1071,7 @@
                                     <li><strong>p</strong> = The specific period number (1, 2, 3...)</li>
                                 </ul>
                             </li>
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-dti-safe block">DTI Ratios</strong>
                                 <code class="block text-xs mt-1">Front-End DTI = (Total PITI) / Gross Monthly Income</code>
                                 <code class="block text-xs mt-1">Back-End DTI = (Total PITI + Other Debts) / Gross Monthly Income</code>
@@ -1080,18 +1080,18 @@
                     </section>
 
                     <!-- Affordability Formula -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">2</span>
                             <span>Affordability Tab</span>
                         </h3>
                         <p class="mt-2 text-xs">This tab works by reversing the payment formula to solve for the Loan Principal (P).</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Max Affordable Payment</strong>
                                 <code class="block text-xs mt-1">Max P&I = (Gross Monthly Income * DTI %) - Other Debts - (Taxes + Insurance)</code>
                             </li>
-                             <li class="p-2 bg-white rounded border border-gray-200">
+                             <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Max Loan Amount (Present Value)</strong>
                                 <code class="block text-xs mt-1 text-center">P = M * [(1+r)^n - 1] / [r(1+r)^n]</code>
                             </li>
@@ -1099,19 +1099,19 @@
                     </section>
                     
                     <!-- Rent vs. Buy Formula -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">3</span>
                             <span>Rent vs. Buy Tab</span>
                         </h3>
                         <p class="mt-2 text-xs">This tab compares the net worth of two scenarios over time.</p>
                          <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-accent block">Buying Net Worth</strong>
                                 <code class="block text-xs mt-1">Equity = (Property Value * Appreciation) - Loan Balance</code>
                                 <code class="block text-xs mt-1">Final Net Worth = Equity - (Property Value * Selling Costs %)</code>
                             </li>
-                             <li class="p-2 bg-white rounded border border-gray-200">
+                             <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Renting Net Worth (Compounded)</strong>
                                 <code class="block text-xs mt-1">Monthly Savings = (PITI + Maint) - Monthly Rent</code>
                                 <code class="block text-xs mt-1">Investment Value = (Previous Value + Down Payment + Monthly Savings) * (1 + Monthly Investment Rate)</code>
@@ -1120,19 +1120,19 @@
                     </section>
                     
                     <!-- Refinance Formula -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">4</span>
                             <span>Refinance Tab</span>
                         </h3>
                         <p class="mt-2 text-xs">This tab simulates your *original* loan to find your current balance and then compares the total future interest of both paths.</p>
                          <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Break-Even Point</strong>
                                 <code class="block text-xs mt-1">Monthly Savings = Current Payment - New Payment</code>
                                 <code class="block text-xs mt-1">Break-Even (Months) = New Closing Costs / Monthly Savings</code>
                             </li>
-                             <li class="p-2 bg-white rounded border border-gray-200">
+                             <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-accent block">Lifetime Savings</strong>
                                 <code class="block text-xs mt-1">Savings = Total Remaining Interest (Old Loan) - (Total Interest (New Loan) + Closing Costs)</code>
                             </li>
@@ -1140,22 +1140,22 @@
                     </section>
 
                     <!-- Investment Formula -->
-                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                    <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800 flex items-center">
                             <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-xs">5</span>
                             <span>Investment / Rental Tab</span>
                         </h3>
                         <p class="mt-2 text-xs">This tab uses standard real estate investment formulas to analyze a property's performance.</p>
                          <ul class="space-y-2 mt-2 text-xs list-none pl-2">
-                            <li class="p-2 bg-white rounded border border-gray-200">
+                            <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-primary block">Net Operating Income (NOI)</strong>
                                 <code class="block text-xs mt-1">NOI = (Gross Rent * (1 - Vacancy %)) - (Taxes + Insurance + Maint. + Mgmt.)</code>
                             </li>
-                             <li class="p-2 bg-white rounded border border-gray-200">
+                             <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-accent block">Cap Rate</strong>
                                 <code class="block text-xs mt-1">Cap Rate % = (NOI / Purchase Price) * 100</code>
                             </li>
-                             <li class="p-2 bg-white rounded border border-gray-200">
+                             <li class="p-2 bg-white rounded border border-gray-400">
                                 <strong class="font-semibold text-secondary block">Cash-on-Cash (CoC) ROI</strong>
                                 <code class="block text-xs mt-1">Annual Cash Flow = NOI - (Monthly Mortgage Payment * 12)</code>
                                 <code class="block text-xs mt-1">Total Cash Invested = Down Payment + Closing Costs</code>
@@ -1174,28 +1174,28 @@
                         <p class="mt-1 text-lg sm:text-xl font-extrabold text-gray-900">Everything You Need for a Smarter Mortgage</p>
                     </div>
                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
-                        <div class="bg-white p-3 rounded-lg shadow-md border">
+                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-npv/20 text-npv mx-auto">
                                 <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             </div>
                             <h3 class="mt-2 text-xs font-bold text-gray-900">Analyze True Cost (NPV)</h3>
                             <p class="mt-1 text-[11px] text-gray-700">Understand the real cost of interest in today's dollars to make smarter investment decisions.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md border">
+                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-accent/20 text-accent mx-auto">
                                <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
                             </div>
                             <h3 class="mt-2 text-xs font-bold text-gray-900">Forecast Equity Growth</h3>
                             <p class="mt-1 text-[11px] text-gray-700">Visually track how your home equity grows over time through payments and property appreciation.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md border">
+                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-dti-safe/20 text-dti-safe mx-auto">
                                 <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
                             </div>
                             <h3 class="mt-2 text-xs font-bold text-gray-900">Monitor Financial Health</h3>
                             <p class="mt-1 text-[11px] text-gray-700">Instantly see your Debt-to-Income (DTI) ratio to understand your financial standing from a lender's perspective.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md border">
+                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-primary/20 text-primary mx-auto">
                                  <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.092-1.21.138-2.43.138-3.662z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                             </div>
