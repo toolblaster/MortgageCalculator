@@ -97,7 +97,8 @@
           "mainEntity": [
             { "@type": "Question", "name": "What are closing costs?", "acceptedAnswer": { "@type": "Answer", "text": "Closing costs are a collection of fees you pay to finalize a real estate transaction. They typically range from 2% to 5% of the loan amount and cover services from your lender, attorney, and other third parties involved in the purchase." } },
             { "@type": "Question", "name": "Who pays closing costs?", "acceptedAnswer": { "@type": "Answer", "text": "Typically, the buyer pays most of the closing costs. However, in a buyer's market, you can often negotiate for the seller to pay a portion of these costs as a concession to close the deal." } },
-            { "@type": "Question", "name": "Can closing costs be included in the loan?", "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. In a refinance, you can often roll the closing costs into the new loan principal. For a purchase, this is less common, but some loan programs may allow it. It's generally better to pay them upfront if possible to avoid paying interest on them." } },
+            { "@type": "Question", "name": "Can closing costs be included in the loan?", "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. In a refinance, you can often roll the closing costs into the new loan principal. For a purchase, this is less common, but some loan programs may allow it. It's generally better to pay them upfront if possible to avoid paying interest on them." } }
+            },
             { "@type": "Question", "name": "What's the difference between closing costs and a down payment?", "acceptedAnswer": { "@type": "Answer", "text": "A down payment is your initial equity contribution toward the purchase price of the home. Closing costs are separate fees paid for the services required to complete the transaction. Both are typically paid at the time of closing." } }
           ]
         }
@@ -237,8 +238,45 @@
                     </div>
                 </div>
     
-                <!-- REMOVED Social Share Placeholder -->
+                <!-- NEW: Formula Explanation Section -->
+                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
+                    <h2 class="text-lg font-extrabold text-primary !mb-4">How This Calculator Works: The Estimations</h2>
+                    <p class="text-xs text-gray-700">Closing costs are complex and vary by lender and location. This calculator provides a reliable <strong class="font-semibold">estimate</strong> based on industry averages to help you budget. Your final costs will be listed on your lender's Loan Estimate document.</p>
+                    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">1. Loan Amount Calculation</h3>
+                        <p class="mt-2 text-xs">First, we determine your loan amount, which is the basis for many fees.</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-primary">Loan Amount = Home Price - Down Payment Amount</code>
+                            </li>
+                        </ul>
+                    </section>
     
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">2. Estimated Fee Breakdown</h3>
+                        <p class="mt-2 text-xs">The total cost is the sum of three categories, each estimated as follows:</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-secondary block">Lender Fees (Estimate)</strong>
+                                <p class="mt-1 text-gray-600">These are fees charged by the bank to create the loan.</p>
+                                <code class="block text-xs mt-1">Lender Fees = (Loan Amount * 0.75%) + $400 (Application) + $600 (Underwriting)</code>
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-accent block">Third-Party Fees (Estimate)</strong>
+                                <p class="mt-1 text-gray-600">Fees for services from other companies (appraisal, title, etc.). We also include state-based transfer tax estimates here.</p>
+                                <code class="block text-xs mt-1">Third-Party Fees = $500 (Appraisal) + $35 (Credit) + (Loan Amount * 0.5%) (Title) + $800 (Attorney) + [State Tax]...</code>
+                            </li>
+                             <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">Prepaids & Escrow (Estimate)</strong>
+                                <p class="mt-1 text-gray-600">This is money you pay upfront for future expenses, primarily property taxes and homeowner's insurance.</p>
+                                <code class="block text-xs mt-1">Prepaids = $1200 (1yr Insurance) + (Estimated Annual Property Tax / 12 * 4 Months)</code>
+                            </li>
+                        </ul>
+                    </section>
+                    <p class="text-xs text-center text-gray-600 italic mt-4">These estimations are based on national averages and data from `calculators/closing-cost-calculator.js`. Your actual costs will vary.</p>
+                </div>
+
                  <!-- SEO Content Section -->
                 <!-- UPDATED: Reduced mt-4 to mt-2 -->
                 <div class="bg-white p-4 sm:p-5 mt-2 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
