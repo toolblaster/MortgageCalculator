@@ -499,8 +499,73 @@
                         Go to the All-in-One Mortgage Planner &rarr;
                     </a>
                 </div>
-                
-                <!-- REMOVED Share Section Placeholder -->
+
+                <!-- NEW: Formula Explanation Section -->
+                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
+                    <h2 class="text-lg font-extrabold text-primary !mb-4">How This Calculator Works: The Formulas</h2>
+                    <p class="text-xs text-gray-700">This calculator simulates two loans side-by-side: a "Standard Loan" with no extra payments and an "Accelerated Loan" with your specified extras. This allows you to see the direct impact on interest and your payoff timeline.</p>
+                    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">1. Loan Amount & Base Payment</h3>
+                        <p class="mt-2 text-xs">First, we determine your loan amount and the base payment for all scenarios.</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-primary">Loan Amount = Home Price - Down Payment Amount</code>
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">Base Monthly Payment (M)</strong>
+                                <p class="mt-1 text-gray-600">We calculate the standard P&I payment using the formula from `js/utils.js`. This is used to determine the payment per period for all frequencies.</p>
+                                <code class="block text-xs mt-1 text-center">M = P * [r(1+r)^n] / [(1+r)^n - 1]</code>
+                            </li>
+                        </ul>
+                    </section>
+    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">2. Payment Frequency Logic</h3>
+                        <p class="mt-2 text-xs">The calculator adjusts the number of payments per year and the amount paid per period based on your selection.</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">Monthly:</strong> 12 payments per year. `Payment = M`.
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">Bi-Weekly:</strong> 26 payments per year. `Payment = (M * 12) / 26`. (No faster payoff, just different timing).
+                            </li>
+                             <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-accent block">Accelerated Bi-Weekly:</strong> 26 payments per year. `Payment = M / 2`. This results in 13 full monthly payments per year, which is what saves you money.
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">3. The Amortization Loop</h3>
+                        <p class="mt-2 text-xs">For each period (month, week, etc.), the calculator runs this simulation for both the standard and accelerated loans:</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-primary">Periodic Rate = Annual Rate / Periods Per Year / 100</code>
+                                <code class="block font-semibold text-primary mt-1">Interest = Current Balance * Periodic Rate</code>
+                                <code class="block font-semibold text-primary mt-1">Principal = Payment Per Period - Interest</code>
+                                <code class="block font-semibold text-accent mt-1">Total Principal Paid = Principal + Extra Per Payment + One-Time Payment (if applicable)</code>
+                                <code class="block font-semibold text-primary mt-1">New Balance = Current Balance - Total Principal Paid</code>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">4. Savings & Opportunity Cost</h3>
+                        <p class="mt-2 text-xs">After simulating both loans, the savings are calculated by simple subtraction:</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-accent">Interest Saved = Standard Total Interest - Accelerated Total Interest</code>
+                                <code class="block font-semibold text-secondary mt-1">Periods Saved = Standard Payoff Period - Accelerated Payoff Period</code>
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-secondary block">Opportunity Cost (Investment Growth)</strong>
+                                <p class="mt-1 text-gray-600">Simultaneously, the calculator compounds your extra payments at your specified investment return rate to show what that money could have grown into.</p>
+                                <code class="block text-xs mt-1">Investment Value = (Previous Value + Extra Payment) * (1 + Periodic Investment Rate)</code>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
     
                 <!-- SEO Content Section -->
                 <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
@@ -526,11 +591,11 @@
                             </li>
                              <li class="flex items-start">
                                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">2</span>
-                                <div><strong class="font-semibold text-primary block">Add Your Extra Payments:</strong> Use the sliders or input fields to specify any extra monthly payment or a one-time lump sum you plan to make.</div>
+                                <div><strong class="font-semibold text-primary block">Add Your Extra Payments:</strong> In the 'Extra Payment Options' section, enter any extra amount you want to add to your monthly payment. You can also model the effect of a one-time lump sum payment.</div>
                             </li>
                              <li class="flex items-start">
                                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">3</span>
-                                <div><strong class="font-semibold text-primary block">Analyze Your Savings:</strong> The results update instantly, showing you the total interest saved, how many years you'll cut from your loan, and your new mortgage-free date.</div>
+                                <div><strong class="font-semibold text-primary block">Analyze Your Savings:</strong> The results update instantly, showing you the total interest saved, how much sooner you'll pay off the loan, and your new payoff date.</div>
                             </li>
                              <li class="flex items-start">
                                <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold" aria-hidden="true">4</span>
@@ -545,7 +610,7 @@
                         <ul class="space-y-3 mt-3 text-xs">
                             <li class="flex items-start">
                                <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v.01M12 18v-2m0-2v-2m0-2V7m0 0V6" /></svg></span>
-                                <div><strong>Make Extra Monthly Payments:</strong> Consistently adding a small amount—even $50 or $100—to your regular payment can shave years off your loan. Our calculator shows you the exact impact of any amount you choose.</div>
+                                <div><strong>Make Extra Monthly Payments:</strong> Consistently adding a small amount even $50 or $100 to your regular payment can shave years off your loan. Our calculator shows you the exact impact of any amount you choose.</div>
                             </li>
                             <li class="flex items-start">
                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19V5a2 2 0 012-2h10a2 2 0 012 2v14l-5-2.5L5 19z" /></svg></span>
@@ -553,7 +618,7 @@
                             </li>
                             <li class="flex items-start">
                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg></span>
-                                <div><strong>Use a Bi-Weekly Payment Plan:</strong> A true bi-weekly plan involves paying half your mortgage every two weeks. This results in 26 half-payments, or 13 full payments, per year instead of 12. This tool can function as a <strong>biweekly mortgage calculator</strong>—simply take your monthly payment, divide it by 12, and enter that amount in the "Extra Monthly" field to simulate the effect.</div>
+                                <div><strong>Use a Bi-Weekly Payment Plan:</strong> A true bi-weekly plan involves paying half your mortgage every two weeks. This results in 26 half-payments, or 13 full payments, per year instead of 12. This tool can function as a <strong>biweekly mortgage calculator</strong> simply take your monthly payment, divide it by 12, and enter that amount in the "Extra Monthly" field to simulate the effect.</div>
                             </li>
                             <li class="flex items-start">
                                  <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
@@ -694,6 +759,7 @@
                                 </button>
                                 <div class="faq-answer">
                                     <p class="p-4 pt-0 text-gray-600 text-xs">Mathematically, a large lump-sum payment made early in the loan will save you more interest because it drastically reduces the principal balance that interest is calculated on. However, consistent extra monthly payments are often more manageable and still lead to significant savings. The best strategy depends on your financial situation.</p>
+CSS
                                 </div>
                             </div>
                             <div class="faq-item">
