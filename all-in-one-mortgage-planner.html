@@ -69,13 +69,11 @@
         .range-slider::-moz-range-thumb {
           background: #2C98C2;
         }
-        /* ADDED: Style to handle the chevron icon rotation on details[open] */
-        details summary svg {
-            transition: transform 0.2s ease-in-out;
-        }
-        details[open] summary svg {
-            transform: rotate(90deg);
-        }
+        /* UPDATED: Replaced chevron rotate with plus/minus toggle */
+        details summary .minus-icon { display: none; }
+        details summary .plus-icon { display: block; }
+        details[open] summary .minus-icon { display: block; }
+        details[open] summary .plus-icon { display: none; }
     </style>
 
     <!-- JSON-LD Structured Data -->
@@ -259,7 +257,10 @@
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Your Financials</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="space-y-1">
@@ -328,7 +329,10 @@
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Loan Core Details</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="input-section grid grid-cols-1 gap-4 p-3">
                                 <div class="space-y-1">
@@ -394,7 +398,10 @@
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                <h3 class="text-[11px] font-bold text-dti-safe">Debt-to-Income (DTI) Inputs</h3>
-                               <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                               <span class="plus-minus-icon text-dti-safe">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="input-section grid grid-cols-1 sm:grid-cols-2 gap-3 p-3">
                                 <div class="space-y-1">
@@ -416,7 +423,10 @@
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">PITI, Payoff & Economic Inputs</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="input-section grid grid-cols-1 sm:grid-cols-2 gap-3 p-3">
                                 <div class="space-y-1 col-span-1 sm:col-span-2 bg-accent/10 p-2 rounded-md border border-accent/30">
@@ -506,7 +516,10 @@
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Refinance Scenario Modeling</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="input-section grid grid-cols-1 sm:grid-cols-2 gap-3 p-3">
                                 <div class="space-y-1">
@@ -537,7 +550,10 @@
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Interest Rate Shock Test</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="input-section p-3">
                                 <div class="space-y-1">
@@ -576,7 +592,8 @@
                         <!-- UPDATE: Removed wrapper classes, added space-y-3 -->
                         <div id="results" class="space-y-3 opacity-0 min-h-[500px]" aria-live="polite" aria-atomic="true">
                             
-                            <div class="text-center sm:flex sm:justify-between sm:items-center"> <!-- UPDATE: Removed mb-2 -->
+                            <!-- UPDATED: Removed sm:flex, sm:justify-between, sm:items-center. Added text-center to parent. -->
+                            <div class="text-center">
                                 <h2 class="text-sm font-bold text-gray-800">Calculation Summary</h2>
                                 <div class="no-print flex justify-center space-x-1 mt-1 sm:mt-0">
                                     <button class="pdf-button p-1.5 rounded-md hover:bg-gray-200 transition-colors" aria-label="Download PDF Report" title="Download PDF Report">
@@ -717,7 +734,10 @@
                                 <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                                 <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                     <h3 class="text-[11px] font-bold text-primary">View Amortization Schedule</h3>
-                                    <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                    <span class="plus-minus-icon text-primary">
+                                        <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
                                 </summary>
                                 <div id="schedule" class="schedule-container overflow-x-auto max-w-full p-3">
                                     <table id="amortizationTable" class="min-w-[1200px] w-full border-collapse"></table>
@@ -739,7 +759,10 @@
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Rent vs. Buy Inputs</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="space-y-1">
@@ -822,7 +845,10 @@
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Current Mortgage Details</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="space-y-1">
@@ -852,7 +878,10 @@
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-accent">New Loan Offer</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-accent">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="space-y-1">
@@ -920,7 +949,10 @@
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Property & Purchase</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="space-y-1">
@@ -955,7 +987,10 @@
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Income & Expenses</h3>
-                                <svg class="w-4 h-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7-7" /></svg>
+                                <span class="plus-minus-icon text-primary">
+                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                </span>
                             </summary>
                             <div class="p-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 <div class="space-y-1">
