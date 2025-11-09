@@ -475,6 +475,23 @@ article > header > h1 {
     line-height: 1.2; /* Added for better spacing */
 }
 
+/* UPDATED: Centralized Blog Prose Heading Styles */
+.prose h1 {
+    font-size: 26px;
+    font-weight: 800; /* extrabold */
+    color: #1C768F; /* primary */
+}
+.prose h2 {
+    font-size: 20px;
+    font-weight: 700; /* bold */
+    color: #1C768F; /* primary */
+}
+.prose h3 {
+    font-size: 16px;
+    font-weight: 600; /* semibold */
+    color: #1f2937; /* gray-800 */
+}
+
 /* SEO Content Section Styles */
 .content-fade-in {
     animation: fadeIn .7s ease-in-out;
