@@ -325,17 +325,6 @@ This file handles UI, event listeners, and state management.
             calculateButton.textContent = 'Calculating...';
         }
         
-        // [MODIFICATION] - Removed the block that was hiding result containers on every calculation to prevent flickering.
-        // The initial fade-in is handled by the `opacity-0` class in the HTML, which is removed only on the first calculation within each tab's render function.
-        /*
-        [DOM.results, DOM.affordabilityResults, DOM.rentVsBuyResults, DOM.refinanceResults, DOM.investmentResults].forEach(el => {
-            if (el) {
-                el.classList.remove('results-animate-in');
-                el.classList.add('opacity-0');
-            }
-        });
-        */
-       
         updateStateFromDOM();
         
         setTimeout(() => {
@@ -766,8 +755,6 @@ This file handles UI, event listeners, and state management.
                 el.addEventListener('input', debouncedSave);
             }
         });
-
-        loadGuide();
         
         const dataLoaded = loadStateFromURLOrLocalStorage();
 
@@ -776,12 +763,6 @@ This file handles UI, event listeners, and state management.
         
         if (tabs[tabKeyFromHash]) {
             switchTab(tabKeyFromHash);
-             /* REMOVED: Auto-scroll functionality on page load/hash change
-             setTimeout(() => {
-                const calculatorEl = document.getElementById('calculator');
-                if (calculatorEl) calculatorEl.scrollIntoView({ behavior: 'smooth' });
-            }, 150);
-            */
         } else {
             switchTab('mortgage');
         }
@@ -828,13 +809,5 @@ This file handles UI, event listeners, and state management.
         }
     }
     
-    function loadGuide() {
-        const guideContent = document.getElementById('guide-content'); if (!guideContent) return;
-        fetch('content-guide.html')
-            .then(response => response.ok ? response.text() : Promise.reject('Guide not found'))
-            .then(html => { guideContent.innerHTML = html; })
-            .catch(error => { guideContent.innerHTML = '<p class="text-red-500 text-center p-8">Sorry, the homeowner\'s guide could not be loaded.</p>'; console.error('Error fetching content guide:', error); });
-    }
-
     document.addEventListener('DOMContentLoaded', init);
 })();
