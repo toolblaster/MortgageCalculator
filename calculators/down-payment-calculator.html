@@ -452,8 +452,69 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- NEW: Formula Explanation Section -->
+                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
+                    <h2 class="text-lg font-extrabold text-primary !mb-4">How This Calculator Works: The Formulas</h2>
+                    <p class="text-xs text-gray-700">This calculator uses a combination of basic arithmetic and standard financial formulas to estimate your payments and savings. Here’s a transparent look at the logic.</p>
+                    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">1. Core Loan & Payment Formulas</h3>
+                        <p class="mt-2 text-xs">The calculator first determines your loan amount and then your monthly payment for Principal & Interest (P&I).</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-primary">Loan Amount = Home Price - (Home Price * (Down Payment % / 100))</code>
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">P&I Payment (M)</strong>
+                                <p class="mt-1 text-gray-600">Calculated using the standard PMT formula from `js/utils.js`:</p>
+                                <code class="block text-xs mt-1 text-center">M = P * [r(1+r)^n] / [(1+r)^n - 1]</code>
+                                <ul class="space-y-1 mt-1 text-gray-600 text-xs">
+                                    <li><strong>P</strong> = Loan Amount</li>
+                                    <li><strong>r</strong> = Monthly Interest Rate (Annual Rate / 12 / 100)</li>
+                                    <li><strong>n</strong> = Total Payments (Loan Term in Years * 12)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
     
-                 <!-- SEO Content Section -->
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">2. Total Monthly Payment & PMI Estimation</h3>
+                        <p class="mt-2 text-xs">Your total payment includes more than just P&I. We also estimate your PMI (if applicable).</p>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-primary">Loan-to-Value (LTV) % = (Loan Amount / Home Price) * 100</code>
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">PMI Payment (Estimated)</strong>
+                                <p class="mt-1 text-gray-600">PMI is estimated if your LTV is over 80% and the loan is "Conventional".</p>
+                                <code class="block text-xs mt-1">PMI = (Loan Amount * 0.005) / 12</code>
+                                <p class="mt-1 text-gray-600">(This uses a common estimate of 0.5% of the loan amount per year).</p>
+                            </li>
+                             <li class="p-2 bg-white rounded border border-gray-200">
+                                <code class="block font-semibold text-primary">Total Monthly Payment = P&I Payment + (Annual Taxes / 12) + (Annual Insurance / 12) + PMI Payment</code>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section class="bg-gray-50/70 p-4 rounded-lg border">
+                        <h3 class="text-base font-bold text-gray-800">3. Advanced Feature Formulas</h3>
+                        <ul class="space-y-2 mt-2 text-xs list-none pl-2">
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-secondary block">Savings Goal</strong>
+                                <code class="block text-xs mt-1">Amount to Save = (Home Price * (Target DP % / 100)) - Current Down Payment</code>
+                                <code class="block text-xs mt-1">Months to Save = Amount to Save / Monthly Savings</code>
+                            </li>
+                            <li class="p-2 bg-white rounded border border-gray-200">
+                                <strong class="font-semibold text-primary block">15-Year Loan Comparison</strong>
+                                <p class="mt-1 text-gray-600">The calculator runs the PMT formula again with `n = 180` (15 years) to find the new payment. It then calculates the total interest for both loans to find your savings.</p>
+                                <code class="block text-xs mt-1">Interest Saved = Total Interest (30-Yr) - Total Interest (15-Yr)</code>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+    
+                <!-- SEO Content Section -->
                 <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs">
                     <!-- H2: Main SEO content heading -->
                     <h2 class="text-lg font-extrabold text-primary !mb-4">A Guide to Understanding Your Home Down Payment</h2>
