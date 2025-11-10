@@ -52,6 +52,11 @@
         details summary::-webkit-details-marker { 
             display: none; 
         }
+        /* ADDED: Plus/minus icon styles */
+        details summary .minus-icon { display: none; }
+        details summary .plus-icon { display: block; }
+        details[open] summary .minus-icon { display: block; }
+        details[open] summary .plus-icon { display: none; }
     </style>
 
     <!-- JSON-LD Structured Data -->
@@ -360,12 +365,16 @@
                         <!-- UPDATED: FAQ SECTION -->
                         <section class="mt-6 content-section">
                             <h2 class="!mt-0">Frequently Asked Questions (FAQ)</h2>
-                             <div class="max-w-3xl mx-auto border-t border-b border-gray-200 divide-y divide-gray-200" id="faq-accordion">
+                             <div class="max-w-3xl mx-auto border-t border-b border-gray-400 divide-y divide-gray-400" id="faq-accordion">
                                 <!-- FAQ 1 -->
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
                                         <h3 class="text-xs">What’s included in total homeownership cost?</h3>
-                                        <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
@@ -377,7 +386,11 @@
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
                                         <h3 class="text-xs">How much should I budget beyond my mortgage?</h3>
-                                        <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
@@ -389,7 +402,11 @@
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
                                         <h3 class="text-xs">Can I reduce my closing costs or property taxes?</h3>
-                                        <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
@@ -401,7 +418,11 @@
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
                                         <h3 class="text-xs">What’s the most accurate way to estimate my full cost?</h3>
-                                        <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
@@ -413,7 +434,11 @@
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
                                         <h3 class="text-xs">What is PITI and why is it important?</h3>
-                                        <svg class="faq-chevron w-5 h-5 transform transition-transform text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
