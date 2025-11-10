@@ -525,39 +525,7 @@
                             </div>
                         </details>
 
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 and REMOVED open attribute -->
-                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
-                            <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
-                            <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
-                                <h3 class="text-[11px] font-bold text-primary">Refinance Scenario Modeling</h3>
-                                <span class="plus-minus-icon text-primary">
-                                    <svg class="w-4 h-4 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                                    <svg class="w-4 h-4 minus-icon hidden" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
-                                </span>
-                            </summary>
-                            <div class="input-section grid grid-cols-1 sm:grid-cols-2 gap-3 p-3">
-                                <div class="space-y-1">
-                                    <label for="refiPeriod" class="block font-medium text-[11px] text-gray-700">Refinance at Period:</label>
-                                    <input type="number" id="refiPeriod" value="60" min="1" max="360" step="12" class="w-full p-1.5 text-[11px] border border-gray-300 rounded-md">
-                                    <span class="inline-error-message text-[10px]" id="refiPeriod-error"></span>
-                                </div>
-                                <div class="space-y-1">
-                                    <label for="refiClosingCosts" class="block font-medium text-[11px] text-red-700">Refi Closing Costs (<span id="mc-refi-currency"></span>):</label>
-                                    <input type="number" id="refiClosingCosts" value="5000" min="0" step="100" class="w-full p-1.5 text-[11px] border border-red-300 rounded-md">
-                                    <span class="inline-error-message text-[10px]" id="refiClosingCosts-error"></span>
-                                </div>
-                                <div class="space-y-1">
-                                    <label for="refiRate" class="block font-medium text-[11px] text-gray-700">New Annual Rate (%):</label>
-                                    <input type="number" id="refiRate" value="5.0" min="0.1" max="20" step="0.1" class="w-full p-1.5 text-[11px] border border-gray-300 rounded-md">
-                                    <span class="inline-error-message text-[10px]" id="refiRate-error"></span>
-                                </div>
-                                <div class="space-y-1">
-                                    <label for="refiTerm" class="block font-medium text-[11px] text-gray-700">New Term (Years):</label>
-                                    <input type="number" id="refiTerm" value="15" min="1" max="30" step="1" class="w-full p-1.5 text-[11px] border border-gray-300 rounded-md">
-                                    <span class="inline-error-message text-[10px]" id="refiTerm-error"></span>
-                                </div>
-                            </div>
-                        </details>
+                        <!-- DELETED: Refinance Scenario Modeling section was here -->
 
                         <!-- UPDATE: Changed bg-white to bg-gray-50 -->
                         <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
@@ -646,8 +614,52 @@
                                 </div>
                             </div>
                             
+                            <!-- NEW: Visual Dashboard Grid (PITI & DTI Charts) -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <!-- PITI Chart Column -->
+                                <div class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400">
+                                    <h3 class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Monthly Payment Breakdown (PITI)</h3>
+                                    <div class="relative h-40 w-40 mx-auto mb-2">
+                                        <canvas id="pitiChart"></canvas>
+                                    </div>
+                                    <!-- Existing PITI text results moved here -->
+                                    <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/70 shadow">
+                                        <h3 class="text-[11px] py-1 font-bold text-gray-800">Est. Initial PITI + PMI: <span id="totalMonthlyPaymentPITI" class="text-primary"></span></h3>
+                                        <h3 class="text-[11px] font-bold text-sky-900">Total Monthly Cost of Ownership</h3>
+                                        <p id="totalOwnershipCost" class="text-base font-extrabold text-primary"></p>
+                                        <p class="text-[11px] text-sky-800">(PITI + Maintenance + Utilities)</p>
+                                        <p class="text-[11px] text-red-600 text-center p-1.5 border-dashed border border-amber-500 bg-amber-50 rounded-md mt-2" id="pmiDropNote" style="display: none;">
+                                            PMI included until period <span id="pmiDropPeriod" class="font-bold"></span>, when LTV drops to 80%.
+                                        </p>
+                                    </div>
+                                </div>
+                        
+                                <!-- DTI Chart Column -->
+                                <div class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400" aria-live="polite">
+                                    <h3 id="dti-title" class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Debt-to-Income (DTI) Analysis</h3>
+                                    <div class="relative h-40 w-40 mx-auto mb-2">
+                                        <canvas id="dtiChart"></canvas>
+                                    </div>
+                                    <!-- Existing DTI text results moved here -->
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
+                                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
+                                            <h3 class="text-[11px] font-medium text-gray-700">Front-End DTI (Housing)</h3>
+                                            <p id="frontEndDTI" class="text-sm font-extrabold"></p>
+                                            <p id="frontEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
+                                        </div>
+                                        <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
+                                            <h3 class="text-[11px] font-medium text-gray-700">Back-End DTI (Total Debt)</h3>
+                                            <p id="backEndDTI" class="text-sm font-extrabold"></p>
+                                            <p id="backEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: Visual Dashboard Grid -->
+
+
                             <!-- UPDATE: Moved h3 and p into this div -->
-                            <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/70 shadow"> <!-- UPDATE: Removed mt-2 -->
+                            <!-- <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/70 shadow"> 
                                 <h3 class="text-[11px] py-1 font-bold text-gray-800">Est. Initial PITI + PMI: <span id="totalMonthlyPaymentPITI" class="text-primary"></span></h3>
                                 <h3 class="text-[11px] font-bold text-sky-900">Total Monthly Cost of Ownership</h3>
                                 <p id="totalOwnershipCost" class="text-base font-extrabold text-primary"></p>
@@ -655,10 +667,10 @@
                                 <p class="text-[11px] text-red-600 text-center p-1.5 border-dashed border border-amber-500 bg-amber-50 rounded-md mt-2" id="pmiDropNote" style="display: none;">
                                     PMI included until period <span id="pmiDropPeriod" class="font-bold"></span>, when LTV drops to 80%.
                                 </p>
-                            </div>
+                            </div> -->
                             
                             <!-- UPDATE: Removed mt-2 -->
-                            <div id="dti-results" class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400" aria-live="polite">
+                            <!-- <div id="dti-results" class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400" aria-live="polite">
                                 <h3 id="dti-title" class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Debt-to-Income (DTI) Analysis</h3>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
                                     <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
@@ -672,7 +684,7 @@
                                         <p id="backEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <!-- UPDATE: Removed mt-2 -->
                             <div id="equity-summary" class="p-2 rounded-lg border-2 border-accent/50 bg-white shadow-md" aria-live="polite">
