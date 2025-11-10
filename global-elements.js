@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // rootPath is already calculated correctly (e.g., '../' for calc pages, './' for quiz page)
                 
                 // UPDATED: Point to new planner.html file
-                { href: `${rootPath}all-in-one-mortgage-planner.html`, file: 'all-in-one-mortgage-planner.html', title: "All-in-One Planner", desc: "The main mortgage planner." },
+                { href: `${rootPath}all-in-one-mortgage-planner.html`, file: 'all-in-one-mortgage-planner.html', title: "All-in-One Planner", desc: "Main mortgage planner." },
                 { href: `${rootPath}calculators/down-payment-calculator.html`, file: 'down-payment-calculator.html', title: "Down Payment Calculator", desc: "Plan your upfront costs." },
                 { href: `${rootPath}calculators/extra-payment-calculator.html`, file: 'extra-payment-calculator.html', title: "Extra Payment Calculator", desc: "Pay off your loan faster." },
                 { href: `${rootPath}calculators/mortgage-amortisation-calculator.html`, file: 'mortgage-amortisation-calculator.html', title: "Amortisation Calculator", desc: "View your loan schedule." },
