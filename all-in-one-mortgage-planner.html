@@ -209,35 +209,49 @@
             <!-- END: Ad Slot Placeholder -->
 
             <!-- Tab Navigation -->
-            <div class="mb-3 border-b border-gray-200 no-print">
+            <!-- UPDATED: Added overflow-hidden to the outer div to contain the inner scrollable UL and introduced a gradient overlay for mobile cue -->
+            <div class="mb-3 border-b border-gray-200 no-print relative overflow-hidden">
+                <!-- NEW: Overlay to visually indicate horizontal scrolling on mobile -->
+                <div class="absolute right-0 top-0 bottom-0 w-8 md:hidden pointer-events-none" style="background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%); z-index: 10;"></div>
+                
                 <ul class="flex -mb-px text-[11px] font-medium text-center flex-nowrap overflow-x-auto scrollable-tabs" id="main-tabs" role="tablist">
                     <li class="mr-2 flex-shrink-0" role="presentation">
-                        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="mortgage-tab" type="button" role="tab" aria-controls="mortgage-calculator-content" aria-selected="true">
-                            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        <!-- UPDATED: Removed border-b-2 class, now handled in CSS -->
+                        <button class="inline-block p-3 rounded-t-lg" id="mortgage-tab" type="button" role="tab" aria-controls="mortgage-calculator-content" aria-selected="true">
+                            <!-- UPDATED ICON: Mortgage Calculator (Core P&I) -->
+                            <svg class="w-4 h-4 inline-block mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             Mortgage Calculator
                         </button>
                     </li>
                     <li class="mr-2 flex-shrink-0" role="presentation">
-                        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="affordability-tab" type="button" role="tab" aria-controls="affordability-content" aria-selected="false">
-                            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg>
+                        <!-- UPDATED: Removed border-b-2 class, now handled in CSS -->
+                        <button class="inline-block p-3 rounded-t-lg" id="affordability-tab" type="button" role="tab" aria-controls="affordability-content" aria-selected="false">
+                            <!-- UPDATED ICON: Affordability (House + Growth Line) -->
+                            <svg class="w-4 h-4 inline-block mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h4.5m-4.5 0V3.545M2.25 10.75l5.005-5.005a1.125 1.125 0 011.59 0l5.006 5.005m-11.25 0h11.25" /></svg>
                             Affordability
                         </button>
                     </li>
                     <li class="mr-2 flex-shrink-0" role="presentation">
-                        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="rent-vs-buy-tab" type="button" role="tab" aria-controls="rent-vs-buy-content" aria-selected="false">
-                            <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm3 2a1 1 0 011-1h2a1 1 0 110 2H8a1 1 0 01-1-1zm-1 5a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path></svg>
+                        <!-- UPDATED: Removed border-b-2 class, now handled in CSS -->
+                        <button class="inline-block p-3 rounded-t-lg" id="rent-vs-buy-tab" type="button" role="tab" aria-controls="rent-vs-buy-content" aria-selected="false">
+                            <!-- UPDATED ICON: Rent vs. Buy (People/Choice Icon) -->
+                            <svg class="w-4 h-4 inline-block mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                             Rent vs. Buy
                         </button>
                     </li>
                     <li class="mr-2 flex-shrink-0" role="presentation">
-                        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="refinance-tab" type="button" role="tab" aria-controls="refinance-content" aria-selected="false">
-                           <svg class="w-4 h-4 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 5a1 1 0 100 2h5.586l-1.293 1.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L13.586 5H8zM12 15a1 1 0 100-2H6.414l1.293-1.293a1 1 0 10-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L6.414 15H12z"></path></svg>
+                        <!-- UPDATED: Removed border-b-2 class, now handled in CSS -->
+                        <button class="inline-block p-3 rounded-t-lg" id="refinance-tab" type="button" role="tab" aria-controls="refinance-content" aria-selected="false">
+                           <!-- UPDATED ICON: Refinance (Loop/Cycle) -->
+                           <svg class="w-4 h-4 inline-block mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             Refinance
                         </button>
                     </li>
                     <li class="mr-2 flex-shrink-0" role="presentation">
-                        <button class="inline-block p-3 border-b-2 rounded-t-lg" id="investment-tab" type="button" role="tab" aria-controls="investment-content" aria-selected="false">
-                           <svg class="w-4 h-4 inline-block mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
+                        <!-- UPDATED: Removed border-b-2 class, now handled in CSS -->
+                        <button class="inline-block p-3 rounded-t-lg" id="investment-tab" type="button" role="tab" aria-controls="investment-content" aria-selected="false">
+                           <!-- UPDATED ICON: Investment / Rental (ROI Check) -->
+                           <svg class="w-4 h-4 inline-block mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             Investment / Rental
                         </button>
                     </li>
