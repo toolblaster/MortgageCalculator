@@ -198,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="container-global py-4">
                 
                 <!-- NEW: Social Share Bar (Moved Inside Footer) -->
-                <!-- UPDATED: Reduced pb-6 mb-6 to pb-4 mb-4 for compactness -->
                 <section class="border-b border-gray-700 pb-4 mb-4">
                     <!-- UPDATED: Reduced gap-4 to gap-3 for mobile -->
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
@@ -230,6 +229,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </section>
                 <!-- End Social Share Bar -->
+
+                <!-- NEW: Added Logo to Footer -->
+                <div class="flex justify-center mb-4">
+                    <a href="${homePath}" class="flex items-center space-x-2 text-primary hover:opacity-90 transition-opacity">
+                        <svg class="h-7 w-7" aria-hidden="true">
+                            <use href="${logoIconPath}"></use>
+                        </svg>
+                        <span class="font-bold text-base text-gray-200">
+                            <span class="border-b-4 border-accent">Strategic</span>
+                            <span class="text-gray-400 font-semibold">Mortgage Planner</span>
+                        </span>
+                    </a>
+                </div>
+                <!-- END: Added Logo to Footer -->
 
                 <div class="text-center text-xs space-y-1">
                     <p>&copy; <span id="copyright-year"></span> Strategic Mortgage Planner. All Rights Reserved.</p>
