@@ -194,8 +194,10 @@
         </section>
 
         <!-- UPDATED: Replaced w-full, max-w-7xl, and mx-auto with container-global -->
+        <!-- UPDATED: shadow-2xl added -->
         <div id="calculator" class="calculator-container bg-white p-3 sm:p-4 rounded-xl shadow-2xl container-global my-4">
-            <header class="text-center p-4 rounded-lg mb-3 shadow-md bg-gradient-to-r from-primary to-accent">
+            <!-- UPDATED: shadow-md -> shadow-lg -->
+            <header class="text-center p-4 rounded-lg mb-3 shadow-lg bg-gradient-to-r from-primary to-accent">
                 <h2 class="text-sm font-extrabold text-white">
                     Advanced Financial & Mortgage Planner
                 </h2>
@@ -260,8 +262,8 @@
              <div id="affordability-content" class="hidden" role="tabpanel" aria-labelledby="affordability-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Your Financials</h3>
@@ -290,10 +292,12 @@
                         </details>
                         <div class="sticky bottom-0 bg-white/80 backdrop-blur-sm py-2 border-t border-gray-200 no-print">
                             <div class="flex flex-col sm:flex-row gap-2">
-                                <button class="calculate-button w-full px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-sky-700 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added gradient, shadow, and transition -->
+                                <button class="calculate-button w-full px-4 py-2 bg-gradient-to-r from-primary to-sky-700 hover:from-sky-700 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg text-[11px]">
                                     Calculate Affordability
                                 </button>
-                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-sm hover:bg-gray-300 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added shadow and transition -->
+                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-[11px]">
                                     Reset to Defaults
                                 </button>
                             </div>
@@ -332,8 +336,8 @@
                 <div class="main-grid-layout mt-3">
                     <div class="input-column relative flex flex-col gap-3">
                         
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Loan Core Details</h3>
@@ -401,8 +405,8 @@
                             </div>
                         </details>
 
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                <h3 class="text-[11px] font-bold text-dti-safe">Debt-to-Income (DTI) Inputs</h3>
@@ -426,8 +430,8 @@
                             </div>
                         </details>
 
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 and REMOVED open attribute -->
-                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg, REMOVED open attribute -->
+                        <details class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">PITI, Payoff & Economic Inputs</h3>
@@ -521,8 +525,8 @@
 
                         <!-- DELETED: Refinance Scenario Modeling section was here -->
 
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                             <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                             <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Interest Rate Shock Test</h3>
@@ -536,7 +540,8 @@
                                     <label for="shockRateIncrease" class="block font-medium text-[11px] text-gray-700">Model Future Rate Increase by (%):</label>
                                     <div class="flex gap-2 mt-1">
                                         <input type="number" id="shockRateIncrease" value="1.0" min="0.1" max="5" step="0.1" class="flex-grow p-1.5 text-[11px] border border-gray-300 rounded-md">
-                                        <button id="shockTestButton" class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-lg shadow-sm transition duration-150 py-2 px-3 text-[11px]">
+                                        <!-- UPDATED: Added gradient, shadow, and transition -->
+                                        <button id="shockTestButton" class="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-700 hover:to-red-500 shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg py-2 px-3 text-[11px]">
                                             Run Shock Test
                                         </button>
                                     </div>
@@ -547,14 +552,17 @@
 
                         <div class="sticky bottom-0 bg-white/80 backdrop-blur-sm py-2 border-t border-gray-200 no-print">
                             <div class="flex flex-col sm:flex-row gap-2">
-                                <button class="calculate-button w-full px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-sky-700 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added gradient, shadow, and transition -->
+                                <button class="calculate-button w-full px-4 py-2 bg-gradient-to-r from-primary to-sky-700 hover:from-sky-700 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg text-[11px]">
                                     Calculate Scenario
                                 </button>
-                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-sm hover:bg-gray-300 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added shadow and transition -->
+                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-[11px]">
                                     Reset to Defaults
                                 </button>
                             </div>
-                            <button id="saveButton" class="w-full mt-2 px-4 py-2 bg-accent text-white font-semibold rounded-lg shadow-md hover:bg-green-800 transition duration-150 text-[11px] no-print">
+                            <!-- UPDATED: Added gradient, shadow, and transition -->
+                            <button id="saveButton" class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-accent to-green-700 hover:from-green-700 hover:to-accent shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg text-[11px] no-print">
                                 Save & Share Scenario
                             </button>
                         </div>
@@ -566,7 +574,8 @@
                         </div>
 
                         <!-- UPDATE: Removed wrapper classes, added space-y-3 -->
-                        <div id="results" class="space-y-3 opacity-0 min-h-[500px]" aria-live="polite" aria-atomic="true">
+                        <!-- UPDATED: shadow-lg -> shadow-xl -->
+                        <div id="results" class="space-y-3 opacity-0 min-h-[500px] shadow-xl rounded-lg p-3" aria-live="polite" aria-atomic="true">
                             
                             <!-- UPDATED: Removed sm:flex, sm:justify-between, sm:items-center. Added text-center to parent. -->
                             <div class="text-center">
@@ -582,7 +591,8 @@
                             </div>
                             
                             <!-- UPDATE: Removed my-2 -->
-                            <div id="savings-summary" class="hidden bg-accent/10 p-2 rounded-lg border-2 border-accent/50 shadow-lg text-center">
+                            <!-- UPDATED: shadow-lg -> shadow-xl, added border-gradient-accent -->
+                            <div id="savings-summary" class="hidden bg-accent/10 p-2 rounded-lg border-2 border-gradient-accent shadow-xl text-center">
                                 <h3 class="text-xs font-extrabold text-accent flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                                     Accelerated Payoff Savings
@@ -611,7 +621,8 @@
                             <!-- NEW: Visual Dashboard Grid (PITI & DTI Charts) -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <!-- PITI Chart Column -->
-                                <div class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400">
+                                <!-- UPDATED: shadow-md -> shadow-lg -->
+                                <div class="p-2 rounded-lg bg-white shadow-lg border-2 border-gray-400">
                                     <h3 class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Monthly Payment Breakdown (PITI)</h3>
                                     <div class="relative h-40 w-40 mx-auto mb-2">
                                         <canvas id="pitiChart"></canvas>
@@ -629,7 +640,8 @@
                                 </div>
                         
                                 <!-- DTI Chart Column -->
-                                <div class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400" aria-live="polite">
+                                <!-- UPDATED: shadow-md -> shadow-lg -->
+                                <div class="p-2 rounded-lg bg-white shadow-lg border-2 border-gray-400" aria-live="polite">
                                     <h3 id="dti-title" class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Debt-to-Income (DTI) Analysis</h3>
                                     <div class="relative h-40 w-40 mx-auto mb-2">
                                         <canvas id="dtiChart"></canvas>
@@ -651,37 +663,8 @@
                             </div>
                             <!-- END: Visual Dashboard Grid -->
 
-
-                            <!-- UPDATE: Moved h3 and p into this div -->
-                            <!-- <div class="p-2 text-center bg-primary/10 rounded-lg border-2 border-primary/70 shadow"> 
-                                <h3 class="text-[11px] py-1 font-bold text-gray-800">Est. Initial PITI + PMI: <span id="totalMonthlyPaymentPITI" class="text-primary"></span></h3>
-                                <h3 class="text-[11px] font-bold text-sky-900">Total Monthly Cost of Ownership</h3>
-                                <p id="totalOwnershipCost" class="text-base font-extrabold text-primary"></p>
-                                <p class="text-[11px] text-sky-800">(PITI + Maintenance + Utilities)</p>
-                                <p class="text-[11px] text-red-600 text-center p-1.5 border-dashed border border-amber-500 bg-amber-50 rounded-md mt-2" id="pmiDropNote" style="display: none;">
-                                    PMI included until period <span id="pmiDropPeriod" class="font-bold"></span>, when LTV drops to 80%.
-                                </p>
-                            </div> -->
-                            
-                            <!-- UPDATE: Removed mt-2 -->
-                            <!-- <div id="dti-results" class="p-2 rounded-lg bg-white shadow-md border-2 border-gray-400" aria-live="polite">
-                                <h3 id="dti-title" class="text-xs font-bold text-gray-800 mb-2 border-b pb-1 text-center">Debt-to-Income (DTI) Analysis</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
-                                    <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
-                                        <h3 class="text-[11px] font-medium text-gray-700">Front-End DTI (Housing)</h3>
-                                        <p id="frontEndDTI" class="text-sm font-extrabold"></p>
-                                        <p id="frontEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
-                                    </div>
-                                    <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
-                                        <h3 class="text-[11px] font-medium text-gray-700">Back-End DTI (Total Debt)</h3>
-                                        <p id="backEndDTI" class="text-sm font-extrabold"></p>
-                                        <p id="backEndDTIStatus" class="text-[11px] font-semibold mt-1"></p>
-                                    </div>
-                                </div>
-                            </div> -->
-
-                            <!-- UPDATE: Removed mt-2 -->
-                            <div id="equity-summary" class="p-2 rounded-lg border-2 border-accent/50 bg-white shadow-md" aria-live="polite">
+                            <!-- UPDATE: Removed mt-2, shadow-md -> shadow-lg -->
+                            <div id="equity-summary" class="p-2 rounded-lg border-2 border-accent/50 bg-white shadow-lg" aria-live="polite">
                                 <h3 class="text-xs font-bold text-accent mb-2 border-b pb-1 text-center">Projected Equity Growth</h3>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
                                      <div class="p-2 rounded-lg bg-gray-50 border border-gray-400">
@@ -695,13 +678,13 @@
                                 </div>
                             </div>
                             
-                            <!-- UPDATE: Removed mt-2 -->
-                            <div id="chartContainer" class="bg-white rounded-lg shadow-md p-2 border-2 border-gray-400">
+                            <!-- UPDATE: Removed mt-2, shadow-md -> shadow-lg -->
+                            <div id="chartContainer" class="bg-white rounded-lg shadow-lg p-2 border-2 border-gray-400">
                                 <canvas id="comparisonChart"></canvas>
                             </div>
 
-                            <!-- UPDATE: Removed mt-2 -->
-                            <div id="chart-options" class="hidden p-2 bg-gray-100 rounded-lg border border-gray-400 text-[11px] text-center no-print">
+                            <!-- UPDATE: Removed mt-2, border -> shadow-md border -->
+                            <div id="chart-options" class="hidden p-2 bg-gray-100 rounded-lg shadow-md border border-gray-400 text-[11px] text-center no-print">
                                 <h3 class="font-bold text-gray-600 mb-2">Chart Options</h3>
                                 <div class="flex justify-center items-center flex-wrap gap-x-4 gap-y-2">
                                     <label for="togglePrincipalPaid" class="flex items-center cursor-pointer">
@@ -723,16 +706,16 @@
                                 </div>
                             </div>
 
-                            <!-- UPDATE: Removed mt-2, changed text-xs to text-[11px] -->
+                            <!-- UPDATE: Removed mt-2, changed text-xs to text-[11px], shadow-sm -> shadow-md -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px]">
-                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-400">
+                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-400 shadow-md">
                                     <h3 class="text-[11px] font-semibold text-gray-700 mb-1">Original Loan (Standard)</h3>
                                     <p>P&I Payment: <span id="standardPaymentDisplay"></span></p>
                                     <p>Payoff Date: <span id="originalPayoffDate"></span></p>
                                     <p class="mt-1 text-primary font-bold">Total Interest Paid: <span id="totalInterestOriginal" data-value="0"></span></p>
                                     <p class="text-npv font-bold">NPV of Interest Cost: <span id="npvOriginal" data-value="0"></span></p>
                                 </div>
-                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-400">
+                                <div class="bg-gray-100 p-2 rounded-lg border border-gray-400 shadow-md">
                                     <h3 class="text-[11px] font-semibold text-gray-700 mb-1">Accelerated Scenario</h3>
                                     <p>Accelerated P&I Payment: <span id="acceleratedPaymentDisplay"></span></p>
                                     <p>New Payoff Date: <span id="newPayoffDate" class="text-accent font-bold"></span></p>
@@ -749,7 +732,8 @@
                             <p class="text-xs py-1">New Shock P&I Payment: <span id="shockPaymentDisplay" class="text-red-600 font-bold"></span> (Increase of <span id="paymentIncrease" class="text-red-600 font-bold"></span>)</p>
                         </div>
 
-                        <div id="schedule-wrapper" class="bg-white rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATED: shadow-lg -> shadow-xl -->
+                        <div id="schedule-wrapper" class="bg-white rounded-lg shadow-xl border-2 border-gray-400">
                             <details>
                                 <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                                 <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
@@ -774,8 +758,8 @@
             <div id="rent-vs-buy-content" class="hidden" role="tabpanel" aria-labelledby="rent-vs-buy-tab">
                  <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Rent vs. Buy Inputs</h3>
@@ -819,10 +803,12 @@
                         </details>
                         <div class="sticky bottom-0 bg-white/80 backdrop-blur-sm py-2 border-t border-gray-200 no-print">
                             <div class="flex flex-col sm:flex-row gap-2">
-                                <button class="calculate-button w-full px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-sky-700 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added gradient, shadow, and transition -->
+                                <button class="calculate-button w-full px-4 py-2 bg-gradient-to-r from-primary to-sky-700 hover:from-sky-700 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg text-[11px]">
                                     Calculate Comparison
                                 </button>
-                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-sm hover:bg-gray-300 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added shadow and transition -->
+                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-[11px]">
                                     Reset to Defaults
                                 </button>
                             </div>
@@ -860,8 +846,8 @@
             <div id="refinance-content" class="hidden" role="tabpanel" aria-labelledby="refinance-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Current Mortgage Details</h3>
@@ -893,8 +879,8 @@
                                 </div>
                             </div>
                         </details>
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-accent">New Loan Offer</h3>
@@ -923,10 +909,12 @@
                         </details>
                         <div class="sticky bottom-0 bg-white/80 backdrop-blur-sm py-2 border-t border-gray-200 no-print">
                             <div class="flex flex-col sm:flex-row gap-2">
-                                <button class="calculate-button w-full px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-sky-700 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added gradient, shadow, and transition -->
+                                <button class="calculate-button w-full px-4 py-2 bg-gradient-to-r from-primary to-sky-700 hover:from-sky-700 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg text-[11px]">
                                     Analyze Refinance
                                 </button>
-                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-sm hover:bg-gray-300 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added shadow and transition -->
+                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-[11px]">
                                     Reset to Defaults
                                 </button>
                             </div>
@@ -964,8 +952,8 @@
             <div id="investment-content" class="hidden" role="tabpanel" aria-labelledby="investment-tab">
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-3 mt-3">
                     <div class="md:col-span-2 relative flex flex-col gap-3">
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Property & Purchase</h3>
@@ -1002,8 +990,8 @@
                                 </div>
                             </div>
                         </details>
-                        <!-- UPDATE: Changed bg-white to bg-gray-50 -->
-                        <details open class="bg-gray-50 rounded-lg shadow-md border-2 border-gray-400">
+                        <!-- UPDATE: Changed bg-white to bg-gray-50, shadow-md -> shadow-lg -->
+                        <details open class="bg-gray-50 rounded-lg shadow-lg border-2 border-gray-400">
                              <!-- UPDATED: Replaced ::before with list-none and added SVG icon -->
                              <summary class="p-3 border-b border-gray-200 cursor-pointer flex justify-between items-center list-none">
                                 <h3 class="text-[11px] font-bold text-primary">Income & Expenses</h3>
@@ -1047,10 +1035,12 @@
                         </details>
                         <div class="sticky bottom-0 bg-white/80 backdrop-blur-sm py-2 border-t border-gray-200 no-print">
                             <div class="flex flex-col sm:flex-row gap-2">
-                                <button class="calculate-button w-full px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-sky-700 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added gradient, shadow, and transition -->
+                                <button class="calculate-button w-full px-4 py-2 bg-gradient-to-r from-primary to-sky-700 hover:from-sky-700 hover:to-primary shadow-lg hover:shadow-xl transition-all duration-300 text-white font-semibold rounded-lg text-[11px]">
                                     Analyze Investment
                                 </button>
-                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-sm hover:bg-gray-300 transition duration-150 text-[11px]">
+                                <!-- UPDATED: Added shadow and transition -->
+                                <button class="reset-button w-full px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-[11px]">
                                     Reset to Defaults
                                 </button>
                             </div>
@@ -1085,6 +1075,7 @@
             </div>
 
             <!-- NEW: Formula Explanation Section -->
+            <!-- UPDATED: shadow-2xl added -->
             <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl container-global my-4 text-gray-800 space-y-4 text-xs no-print">
                 <h2 class="text-lg font-extrabold text-primary !mb-4 text-center">How This Planner Works: The Formulas</h2>
                 <p class="text-xs text-gray-700 text-center max-w-3xl mx-auto">This planner is a suite of powerful tools. Here’s a transparent breakdown of the core financial formulas used in each tab, all of which are powered by `js/app-planner-core.js`.</p>
@@ -1229,28 +1220,32 @@
                         <p class="mt-1 text-lg sm:text-xl font-extrabold text-gray-900">Everything You Need for a Smarter Mortgage</p>
                     </div>
                     <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
-                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
+                        <!-- UPDATED: shadow-md -> shadow-lg -->
+                        <div class="bg-white p-3 rounded-lg shadow-lg border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-npv/20 text-npv mx-auto">
                                 <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             </div>
                             <h3 class="mt-2 text-xs font-bold text-gray-900">Analyze True Cost (NPV)</h3>
                             <p class="mt-1 text-[11px] text-gray-700">Understand the real cost of interest in today's dollars to make smarter investment decisions.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
+                        <!-- UPDATED: shadow-md -> shadow-lg -->
+                        <div class="bg-white p-3 rounded-lg shadow-lg border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-accent/20 text-accent mx-auto">
                                <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
                             </div>
                             <h3 class="mt-2 text-xs font-bold text-gray-900">Forecast Equity Growth</h3>
                             <p class="mt-1 text-[11px] text-gray-700">Visually track how your home equity grows over time through payments and property appreciation.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
+                        <!-- UPDATED: shadow-md -> shadow-lg -->
+                        <div class="bg-white p-3 rounded-lg shadow-lg border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-dti-safe/20 text-dti-safe mx-auto">
                                 <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
                             </div>
                             <h3 class="mt-2 text-xs font-bold text-gray-900">Monitor Financial Health</h3>
                             <p class="mt-1 text-[11px] text-gray-700">Instantly see your Debt-to-Income (DTI) ratio to understand your financial standing from a lender's perspective.</p>
                         </div>
-                        <div class="bg-white p-3 rounded-lg shadow-md border border-gray-400">
+                        <!-- UPDATED: shadow-md -> shadow-lg -->
+                        <div class="bg-white p-3 rounded-lg shadow-lg border border-gray-400">
                             <div class="flex items-center justify-center h-8 w-8 rounded-full bg-primary/20 text-primary mx-auto">
                                  <svg class="w-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.092-1.21.138-2.43.138-3.662z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                             </div>
