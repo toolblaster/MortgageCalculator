@@ -981,13 +981,7 @@ This file handles UI, event listeners, and state management.
         document.body.style.transition = 'opacity 0.5s';
         document.body.style.opacity = '1';
 
-        
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) backToTopButton.classList.remove('hidden');
-            else backToTopButton.classList.add('hidden');
-        });
-        backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        // REMOVED: Back to Top button logic
     }
     
     function populateYearDropdown() {
