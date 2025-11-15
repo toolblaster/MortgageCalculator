@@ -173,11 +173,13 @@
          <div class="container-global my-4 md:my-8">
             <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
             <div class="blog-layout-grid">
+                <!-- ADDED: shadow-2xl -->
                 <article class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
-                    <header class="text-center mb-8">
-                        <h1 class="font-extrabold text-primary">Fixed vs. Variable Mortgage: Which Is Best for You?</h1>
-                        <p class="mt-2 text-sm sm:text-base text-gray-800">It's the ultimate showdown. We'll break down the pros and cons of stability vs. savings to help you find your perfect match.</p>
-                         <div class="mt-4 text-xs text-gray-700">
+                    <!-- ADDED: bg-gradient-to-r and shadow-lg, updated text colors -->
+                    <header class="text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-primary to-accent shadow-lg">
+                        <h1 class="font-extrabold text-white">Fixed vs. Variable Mortgage: Which Is Best for You?</h1>
+                        <p class="mt-2 text-sm sm:text-base text-gray-200">It's the ultimate showdown. We'll break down the pros and cons of stability vs. savings to help you find your perfect match.</p>
+                         <div class="mt-4 text-xs text-gray-100">
                             <span>Published By <strong>Vikas Rana</strong></span>
                         </div>
                     </header>
@@ -191,11 +193,12 @@
                     
                     <div class="my-8 h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
                     
-                    <div class="prose prose-xs max-w-none mx-auto">
+                    <div class="prose prose-sm max-w-none mx-auto text-gray-800">
                         <p>Hey there, future or current homeowner! Let's talk about one of the biggest decisions you'll make: choosing the right mortgage. It's the classic head-to-head: the steady, predictable Fixed-Rate vs. the flexible, but uncertain Variable-Rate. With <strong>interest rate trends</strong> keeping everyone on their toes, picking the right one is more crucial than ever. So, let's figure this out together.</p>
 
                         <!-- Key Takeaways Section -->
-                        <div class="my-6 p-4 bg-sky-50 border-l-4 border-primary rounded-r-lg shadow-sm">
+                        <!-- ADDED: bg-gradient-to-r and shadow-lg -->
+                        <div class="my-6 p-4 bg-gradient-to-r from-sky-50 to-green-50 border-l-4 border-primary rounded-r-lg shadow-lg">
                             <h2 class="text-lg font-bold text-primary flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -290,41 +293,38 @@
                         <div class="space-y-4 md:hidden text-xs">
                             <!-- Fixed Rate Card -->
                             <div class="rounded-lg border-2 border-primary/20 overflow-hidden">
-                                <h3 class="p-3 font-extrabold text-primary bg-primary/10">Fixed-Rate Mortgage</h3>
-                                <div class="p-3">
+                                <h3 class="p-3 font-extrabold text-primary bg-primary/10 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" /></svg>
+                                    Fixed-Rate Mortgage
+                                </h3>
+                                <div class="p-3 space-y-2">
                                     <p class="font-semibold text-gray-700">Pros 👍</p>
                                     <ul class="space-y-2 list-inside mt-1 mb-3">
                                         <li>✅ <strong>Predictable Payments:</strong> Your payment is locked in for the life of the loan.</li>
                                         <li>✅ <strong>Easy Budgeting:</strong> No surprises, making financial planning simple.</li>
-                                        <li>✅ <strong>Simplicity & Security:</strong> No complex terms and you're protected from rate hikes.</li>
                                     </ul>
                                     <p class="font-semibold text-gray-700">Cons 👎</p>
                                     <ul class="space-y-2 list-inside mt-1 mb-3">
                                         <li>❌ <strong>Higher Starting Rate:</strong> You pay a premium for security.</li>
-                                        <li>❌ <strong>Missed Opportunity:</strong> You won't benefit if market rates drop.</li>
                                     </ul>
-                                    <p class="font-semibold text-gray-700">Best For... 🎯</p>
-                                    <p class="mt-1">Long-term owners, those on a fixed income, or anyone who prizes stability.</p>
                                 </div>
                             </div>
                             <!-- Variable Rate Card -->
                             <div class="rounded-lg border-2 border-accent/20 overflow-hidden">
-                                <h3 class="p-3 font-extrabold text-accent bg-accent/10">Variable-Rate Mortgage (ARM)</h3>
-                                <div class="p-3">
+                                <h3 class="p-3 font-extrabold text-accent bg-accent/10 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                                    Variable-Rate Mortgage (ARM)
+                                </h3>
+                                <div class="p-3 space-y-2">
                                     <p class="font-semibold text-gray-700">Pros 👍</p>
                                     <ul class="space-y-2 list-inside mt-1 mb-3">
                                         <li>✅ <strong>Lower Initial Rate:</strong> Starts with a lower "teaser" payment.</li>
-                                        <li>✅ <strong>Initial Affordability:</strong> Can help you qualify for a larger loan.</li>
                                         <li>✅ <strong>Potential Savings:</strong> Your payment could drop if market rates fall.</li>
                                     </ul>
                                     <p class="font-semibold text-gray-700">Cons 👎</p>
                                     <ul class="space-y-2 list-inside mt-1 mb-3">
                                         <li>❌ <strong>Risk of "Payment Shock":</strong> Your payment can increase significantly.</li>
-                                        <li>❌ <strong>Budgeting Uncertainty:</strong> Harder to plan your long-term finances.</li>
-                                        <li>❌ <strong>Complexity:</strong> Involves confusing terms (caps, indexes).</li>
                                     </ul>
-                                    <p class="font-semibold text-gray-700">Best For... 🎯</p>
-                                    <p class="mt-1">Short-term owners (selling before adjustment), those with high-risk tolerance, or those with rising incomes.</p>
                                 </div>
                             </div>
                         </div>
@@ -347,7 +347,8 @@
                 </section>
                 <!-- END NEW SUBSECTION -->
 
-                <section class="mt-6 content-section">
+                <!-- ADDED: shadow-xl -->
+                <section class="mt-6 content-section shadow-xl">
                     <h2>Visualizing the Difference: A Tale of Two Payments</h2>
                             <p>It’s one thing to read about it, but it’s another to *see* it. The chart below shows a hypothetical journey for two homeowners over five years. Notice how the fixed payment is a flat, predictable line, while the ARM payment... well, it has a bit more drama.</p>
                             
@@ -391,6 +392,16 @@
                         <section class="mt-6 content-section">
                             <h2>Beyond the Basics: How Do Variable Rates *Actually* Work?</h2>
                             <p>The complexity of ARMs can be intimidating, but it boils down to a few key parts that determine your rate after the initial fixed period ends.</p>
+                             
+                            <!-- ADDED: New Chart Section for ARM -->
+                            <div class="my-4 p-4 bg-white rounded-lg border shadow-xl">
+                                <h3 class="text-base font-bold text-primary text-center">Variable Rate Formula: Index + Margin = Your Rate</h3>
+                                <div class="relative h-40 max-w-xs mx-auto mt-2">
+                                    <canvas id="indexMarginChart"></canvas>
+                                </div>
+                            </div>
+                            <!-- END: New Chart Section -->
+
                             <ul class="space-y-4 mt-4">
                                 <li class="flex items-start">
                                    <span class="flex-shrink-0 w-6 h-6 mr-3 text-primary"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></span>
@@ -493,20 +504,21 @@
                                 </details>
                             </div>
                         </section>
-                        <!-- END UPDATED FAQ SECTION -->
-
+                        
                         <section class="mt-8">
-                            <div class="bg-primary/10 p-4 rounded-lg text-center shadow-inner border border-primary/20">
-                                <h2 class="text-lg font-bold text-primary">Stop Guessing. Start Calculating.</h2>
-                                <p class="mt-2 text-xs text-gray-700">The best way to decide is to see the real numbers for your situation. Our planner lets you model different scenarios instantly.</p>
-                                <p class="mt-2 text-gray-800">
-                                     <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#mortgage-tab" class="font-bold text-accent hover:underline text-sm"><strong>Try both options instantly in our Mortgage Calculator to see which saves you more.</strong></a>
-                                </p>
+                            <!-- ADDED: not-prose, gradient background, shadow-lg, and !text-white -->
+                            <div class="not-prose bg-gradient-to-r from-primary/80 to-accent/80 p-4 rounded-lg text-center shadow-lg">
+                                <h2 class="text-lg font-bold !text-white">Stop Guessing. Start Calculating.</h2>
+                                <p class="mt-2 text-xs !text-gray-100">The best way to decide is to see the real numbers for your situation. Our planner lets you model different scenarios instantly.</p>
+                                <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#refinance-tab" class="mt-3 inline-block bg-white text-accent font-bold py-1.5 px-3 text-xs rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                                    Compare Scenarios with the Refinance Calculator
+                                </a>
                             </div>
                         </section>
-                        
+
                     </div>
                 </article>
+
                 <!-- UPDATED: Moved aside to be a sibling of article and removed all utility classes -->
                 <aside id="desktop-sidebar-placeholder"></aside>
             </div>
@@ -518,9 +530,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- Chart Rendering ---
-            const ctx = document.getElementById('rateComparisonChart');
-            if (ctx) {
-                new Chart(ctx, {
+            const scenario1Ctx = document.getElementById('rateComparisonChart');
+            if (scenario1Ctx) {
+                new Chart(scenario1Ctx, {
                     type: 'line',
                     data: {
                         labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5'],
@@ -556,6 +568,74 @@
                     },
                 });
             }
+            
+            // --- ADDED: New Chart for Index vs Margin ---
+            const indexMarginCtx = document.getElementById('indexMarginChart');
+            if (indexMarginCtx) {
+                new Chart(indexMarginCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Your Rate'],
+                        datasets: [
+                            {
+                                label: 'Market Index (e.g., SOFR)',
+                                data: [4.5], // Example Index
+                                backgroundColor: '#1C768F', // primary
+                                stack: 'a'
+                            },
+                            {
+                                label: 'Lender\'s Margin',
+                                data: [2.0], // Example Margin
+                                backgroundColor: '#166534', // accent
+                                stack: 'a'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { font: { size: 10 }, padding: 10 }
+                            },
+                            title: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.x !== null) {
+                                            label += context.parsed.x.toFixed(1) + '%';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                stacked: true,
+                                ticks: {
+                                    callback: (value) => value + '%'
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Interest Rate'
+                                }
+                            },
+                            y: {
+                                stacked: true,
+                                display: false
+                            }
+                        }
+                    }
+                });
+            }
+
             
             // NEW: Accordion closing logic
             const accordionItems = document.querySelectorAll('#faq-accordion .faq-item');
