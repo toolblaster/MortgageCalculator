@@ -96,22 +96,25 @@ document.addEventListener('DOMContentLoaded', function() {
             text-fill-color: transparent;
           }
 
-          /* NEW: Desktop Sidebar Title Gradient */
+          /* UPDATED: Desktop Sidebar Title Gradient */
           .sidebar-title-gradient {
             background: linear-gradient(to right, #1C768F 0%, #166534 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+            color: white; /* Make text white */
             font-size: 0.875rem; /* text-sm */
             font-weight: 700;
-            padding-bottom: 0.5rem;
+            padding: 0.25rem 0.75rem; /* UPDATED: Reduced vertical padding */
             margin-bottom: 0.75rem;
+            border-radius: 0.25rem; /* Add rounded corners */
+            text-align: center; /* Center the text */
             
-            /* Gradient border - 4px thick, using border-image */
-            border-bottom: 4px solid transparent;
-            border-image: linear-gradient(to right, #1C768F 0%, #166534 100%);
-            border-image-slice: 1;
+            /* Remove text clipping and border-image */
+            /* -webkit-background-clip: text; */
+            /* -webkit-text-fill-color: transparent; */
+            /* background-clip: text; */
+            /* text-fill-color: transparent; */
+            /* border-bottom: 4px solid transparent; */
+            /* border-image: linear-gradient(to right, #1C768F 0%, #166534 100%); */
+            /* border-image-slice: 1; */
           }
 
           /* NEW: Mobile Sidebar Title Gradient */
@@ -123,6 +126,11 @@ document.addEventListener('DOMContentLoaded', function() {
             text-fill-color: transparent;
             font-weight: 700; /* bold */
             font-size: 0.875rem; /* text-sm */
+          }
+
+          /* NEW: Smooth shadow for sidebar widget */
+          .sidebar-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
           }
         </style>
         <!-- UPDATED: Changed background from bg-white/80 to a light blue/green gradient -->
@@ -246,6 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <div class="text-center text-xs space-y-1">
                     <p>&copy; <span id="copyright-year"></span> Strategic Mortgage Planner. All Rights Reserved.</p>
+                    <!-- NEW: Thin line added -->
+                    <hr class="border-t border-gray-700 w-1/4 mx-auto my-3">
                     <!-- UPDATED: Removed "by Vikas Rana" and added heart icon -->
                     <p>A proud part of the <a href="https.toolblaster.com" target="_blank" rel="noopener noreferrer" class="text-white hover:underline font-semibold">toolblaster.com</a> Network <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 inline-block text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg></p>
                      <p><strong>Disclaimer:</strong> This tool is for informational purposes only. Consult a financial professional before making decisions.</p>
@@ -446,8 +456,10 @@ document.addEventListener('DOMContentLoaded', function() {
             desktopPlaceholder.innerHTML = `
                 <!-- REMOVED: Ad Slot Placeholder -->
                 <div class="sticky top-24">
-                    <div class="sidebar-widget">
-                         <h3 class="${sidebarTitle === "Other Calculators" ? "sidebar-title-gradient" : "sidebar-title"}">${sidebarTitle}</h3>
+                    <!-- UPDATED: Added sidebar-shadow class -->
+                    <div class="sidebar-widget sidebar-shadow">
+                         <!-- UPDATED: Applied gradient class to all sidebar titles -->
+                         <h3 class="sidebar-title-gradient">${sidebarTitle}</h3>
                          <ul class="space-y-4">${generateDesktopLinksHTML(links)}</ul>
                     </div>
                 </div>
