@@ -176,12 +176,14 @@
             <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
             <div class="blog-layout-grid">
                 <!-- Main Article Content -->
+                <!-- ADDED: shadow-2xl -->
                 <article class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                     <!-- Article Header -->
-                    <header class="text-center mb-8">
-                        <h1 class="font-extrabold text-primary">How Much Should You Put Down on a House? (A Simple Guide)</h1>
-                        <p class="mt-2 text-sm sm:text-base text-gray-800">The "20% down" rule is famous, but is it always the right move? Let's explore your options.</p>
-                        <div class="mt-4 text-xs text-gray-800">
+                    <!-- ADDED: bg-gradient-to-r, shadow-lg, and updated text colors -->
+                    <header class="text-center mb-8 p-4 rounded-lg bg-gradient-to-r from-primary to-accent shadow-lg">
+                        <h1 class="font-extrabold text-white">How Much Should You Put Down on a House? (A Simple Guide)</h1>
+                        <p class="mt-2 text-sm sm:text-base text-gray-200">The "20% down" rule is famous, but is it always the right move? Let's explore your options.</p>
+                        <div class="mt-4 text-xs text-gray-100">
                             <span>Published By <strong>Vikas Rana</strong></span>
                         </div>
                     </header>
@@ -199,7 +201,8 @@
                         <p>You're ready to buy a home, and you keep hearing one number: 20%. The <strong class="font-bold">20% down payment</strong> is the "golden rule" of home buying, but let's be honest: for many <strong class="font-bold">first-time home buyers</strong>, saving that much cash can feel like an impossible hurdle. The good news? It's not your only option. This guide will break down the pros and cons of putting down 20% versus a smaller amount, like 3-5%, and help you decide what's right for you.</p>
 
                         <!-- NEW: Key Takeaways Section -->
-                        <div class="my-6 p-4 bg-sky-50 border-l-4 border-primary rounded-r-lg shadow-sm">
+                        <!-- ADDED: bg-gradient-to-r and shadow-lg -->
+                        <div class="my-6 p-4 bg-gradient-to-r from-sky-50 to-green-50 border-l-4 border-primary rounded-r-lg shadow-lg">
                             <h2 class="text-lg font-bold text-primary flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -259,6 +262,15 @@
                                     <div><strong>The Tradeoff:</strong> The catch is that you WILL pay PMI. For conventional loans, this fee can be removed once you reach 20% equity. For FHA loans, the mortgage insurance (MIP) can last for the *life* of the loan, often requiring a refinance to remove.</div>
                                 </li>
                             </ul>
+                            
+                            <!-- ADDED: New Chart Section for Loan Types -->
+                            <div class="my-6 p-4 bg-white rounded-lg border border-gray-200 shadow-xl">
+                                <h3 class="text-base font-bold text-primary text-center">Common Low Down Payment Options</h3>
+                                <div class="relative h-40 max-w-full mx-auto mt-2">
+                                    <canvas id="loanTypesChart"></canvas>
+                                </div>
+                            </div>
+                            <!-- END: New Chart Section -->
                         </section>
                         
                         <!-- Chart Section -->
@@ -274,7 +286,7 @@
 
                         <!-- Interactive Section -->
                         <section class="mt-6">
-                            <div class="bg-primary/10 p-4 rounded-lg text-center shadow-inner border border-primary/20">
+                            <div class="not-prose bg-primary/10 p-4 rounded-lg text-center shadow-inner border border-primary/20">
                                 <h2 class="text-lg font-bold">See How Your Down Payment Affects Your Monthly Bill</h2>
                                 <p class="mt-2 text-xs text-gray-900">Want to run your own numbers? Our <strong class="font-bold">down payment calculator</strong> shows you exactly how different down payment amounts will change your total monthly payment, including PMI and taxes.</p>
                                 <a href="https://mortgageplanner.toolblaster.com/calculators/down-payment-calculator.html" class="mt-3 inline-block bg-accent hover:bg-green-700 text-white font-bold py-2 px-4 text-sm rounded-lg shadow-lg transition-transform transform hover:scale-105">
@@ -301,6 +313,16 @@
                                     <div><strong>Look for Assistance:</strong> Before you settle, research <strong class="font-bold">down payment assistance (DPA)</strong> programs. Many states and cities offer grants and no-interest loans to help first-time buyers.</div>
                                 </li>
                             </ul>
+                            
+                            <!-- ADDED: New Chart Section for Opportunity Cost -->
+                            <div class="my-6 p-4 bg-white rounded-lg border border-gray-200 shadow-xl">
+                                <h3 class="text-base font-bold text-primary text-center">Opportunity Cost: Pay Down vs. Invest</h3>
+                                <p class="text-xs text-gray-600 text-center mb-3">Compares saving $60k in interest vs. investing $60k @ 7%</p>
+                                <div class="relative h-48 max-w-full mx-auto">
+                                    <canvas id="opportunityCostChart"></canvas>
+                                </div>
+                            </div>
+                            <!-- END: New Chart Section -->
                         </section>
 
                         <!-- FAQ SECTION -->
@@ -393,7 +415,14 @@
                         <!-- Final CTA -->
                         <div class="mt-6 border-t pt-6 text-center">
                             <p class="text-sm">The "right" down payment is the one that gets you into a home without making you "house poor."</p>
-                             <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#mortgage-tab" class="font-bold text-accent hover:underline text-sm"><strong>Model your total monthly payment with our free Mortgage Calculator.</strong></a>
+                             <!-- ADDED: not-prose class and !text-white -->
+                             <div class="not-prose my-4 p-4 bg-gradient-to-r from-primary/80 to-accent/80 rounded-lg text-center shadow-lg">
+                                <h2 class="text-lg font-bold !text-white">Ready to Model Your Payment?</h2>
+                                <p class="mt-2 text-xs !text-gray-100">See how your down payment affects your real monthly cost, including PMI, taxes, and insurance.</p>
+                                <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#mortgage-tab" class="mt-3 inline-block bg-white text-accent font-bold py-1.5 px-3 text-xs rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                                    Use the Full Mortgage Calculator
+                                </a>
+                            </div>
                         </div>
                         
                     </div>
@@ -416,7 +445,7 @@
                 new Chart(downPaymentCtx, {
                     type: 'bar',
                     data: {
-                        labels: ['3% Down ($10,500)', '20% Down ($70,00D)'],
+                        labels: ['3% Down ($10,500)', '20% Down ($70,000)'],
                         datasets: [
                             {
                                 label: 'Principal & Interest',
@@ -445,6 +474,106 @@
                                 stacked: true,
                                 beginAtZero: true,
                                 ticks: { callback: (value) => '$' + value.toLocaleString() }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- ADDED: New Opportunity Cost Chart ---
+            const opportunityCostCtx = document.getElementById('opportunityCostChart');
+            if (opportunityCostCtx) {
+                // Example data for $60k difference over 10 years
+                const investmentData = [60000, 64200, 68694, 73502, 78647, 84152, 90043, 96346, 103090, 110206, 117820];
+                const interestSavedData = [60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000]; // Simplified as a "guaranteed" return
+                
+                new Chart(opportunityCostCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Year 0', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10'],
+                        datasets: [
+                            {
+                                label: 'Investment Growth @ 7%',
+                                data: investmentData,
+                                borderColor: '#166534', // accent
+                                backgroundColor: 'rgba(22, 101, 52, 0.1)',
+                                fill: 'origin',
+                                tension: 0.1
+                            },
+                            {
+                                label: 'Interest Saved (Guaranteed Return)',
+                                data: interestSavedData,
+                                borderColor: '#1C768F', // primary
+                                borderDash: [5, 5],
+                                fill: false,
+                                tension: 0.1
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: { display: false },
+                            legend: { position: 'bottom', labels: { font: { size: 10 }, padding: 10 } },
+                            tooltip: { 
+                                mode: 'index', 
+                                intersect: false,
+                                callbacks: {
+                                    label: (c) => `${c.dataset.label}: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(c.raw)}`
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                ticks: { callback: (value) => '$' + (value/1000) + 'k' }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- ADDED: New Loan Types Chart ---
+            const loanTypesCtx = document.getElementById('loanTypesChart');
+            if (loanTypesCtx) {
+                new Chart(loanTypesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['VA Loan', 'USDA Loan', 'Conventional (FHB)', 'FHA Loan'],
+                        datasets: [{
+                            label: 'Minimum Down Payment %',
+                            data: [0, 0, 3, 3.5],
+                            backgroundColor: [
+                                '#166534', // accent
+                                '#166534', // accent
+                                '#1C768F', // primary
+                                '#1C768F'  // primary
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: { display: true, text: 'Minimum Down Payment by Loan Type', font: { size: 12 } },
+                            tooltip: {
+                                callbacks: {
+                                    label: (c) => `${c.raw}%`
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Down Payment %', font: { size: 10 } },
+                                ticks: { callback: (value) => value + '%' }
+                            },
+                            y: {
+                                ticks: { font: { size: 10 } }
                             }
                         }
                     }
