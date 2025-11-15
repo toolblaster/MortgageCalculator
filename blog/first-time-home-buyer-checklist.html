@@ -211,13 +211,15 @@
             <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
             <div class="blog-layout-grid">
                 <!-- Main Article Content -->
+                <!-- ADDED: shadow-2xl -->
                 <article class="bg-white p-4 sm:p-6 md:p-8 rounded-xl shadow-2xl">
                     
                     <!-- Article Header -->
-                    <header class="text-center mb-6">
-                        <h1 class="font-extrabold text-primary">A First-Time Home Buyer's Checklist: <strong>10 Steps to Success</strong></h1>
-                        <p class="mt-2 text-sm sm:text-base text-gray-800">Your essential roadmap from dreaming of a new home to holding the keys.</p>
-                         <div class="mt-4 text-xs text-gray-700">
+                    <!-- ADDED: bg-gradient-to-r and shadow-lg, updated text colors -->
+                    <header class="text-center mb-6 p-4 rounded-lg bg-gradient-to-r from-primary to-accent shadow-lg">
+                        <h1 class="font-extrabold text-white">A First-Time Home Buyer's Checklist: <strong>10 Steps to Success</strong></h1>
+                        <p class="mt-2 text-sm sm:text-base text-gray-200">Your essential roadmap from dreaming of a new home to holding the keys.</p>
+                         <div class="mt-4 text-xs text-gray-100">
                             <span>Published By <strong>Vikas Rana</strong></span>
                         </div>
                     </header>
@@ -236,7 +238,8 @@
                         <p>Don't worry. This simple, 10-step <strong class="font-bold">first-time home buyer checklist</strong> will walk you through everything you need to know, from figuring out your budget to finally getting those keys in your hand. Let's make this journey a smooth one.</p>
                         
                         <!-- UPDATED: Key Takeaways -->
-                        <div class="my-6 p-4 bg-sky-50 border-l-4 border-primary rounded-r-lg shadow-sm">
+                        <!-- ADDED: bg-gradient-to-r and shadow-lg -->
+                        <div class="my-6 p-4 bg-gradient-to-r from-sky-50 to-green-50 border-l-4 border-primary rounded-r-lg shadow-lg">
                             <h2 class="text-lg font-bold text-primary flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -262,6 +265,17 @@
                                 <li><strong>Minimum Score:</strong> You can often get a conventional loan with <strong>620</strong> or an FHA loan with <strong>580</strong>, but you'll pay a higher interest rate.</li>
                             </ul>
                         </section>
+                        
+                        <!-- ADDED: New Chart Section for Credit Score -->
+                        <section class="my-6 p-4 bg-white rounded-lg border border-gray-200 shadow-xl">
+                            <h3 class="text-base font-bold text-primary text-center">What Makes Up Your Credit Score?</h3>
+                            <p class="text-xs text-gray-600 text-center mb-3">Understanding these factors is key to improving your score.</p>
+                            <div class="relative h-48 max-w-xs mx-auto">
+                                <canvas id="creditScoreChart"></canvas>
+                            </div>
+                        </section>
+                        <!-- END: New Chart Section -->
+
 
                         <!-- Step 2: Get Pre-Approved -->
                         <section class="mt-6 content-section">
@@ -292,6 +306,16 @@
                             </ul>
                         </section>
                         
+                        <!-- ADDED: New Down Payment Chart Section -->
+                        <section class="my-6 p-4 bg-white rounded-lg border border-gray-200 shadow-xl">
+                            <h3 class="text-base font-bold text-primary text-center">3% Down vs. 20% Down Payment</h3>
+                            <p class="text-xs text-gray-600 text-center mb-3">Example: $350,000 Home @ 6.5% Interest</p>
+                            <div class="relative h-48 max-w-sm mx-auto">
+                                <canvas id="downPaymentChart"></canvas>
+                            </div>
+                        </section>
+                        <!-- END: New Chart Section -->
+
                         <!-- NEW Ad Placeholder 2: In-Article -->
                         <div class="my-8 flex min-h-[250px] w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 text-gray-400 hidden" aria-hidden="true">
                             Future Ad Placeholder (In-Article)
@@ -357,7 +381,7 @@
                             <h2><span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mr-3 font-bold text-base">10</span> Close the Deal!</h2>
                             <p>This is the day you've been waiting for. You'll go to a title company or attorney's office and sign a mountain of paperwork. At this meeting, you will:</p>
                              <ul class="space-y-3 mt-3">
-                                <li class="flex items-start"><span class="flex-shrink-0 w-6 h-6 mr-3 text-accent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z" /></svg></span><div>Sign the final loan and title documents.</div></li>
+                                <li class="flex items-start"><span class="flex-shrink-0 w-6 h-6 mr-3 text-accent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg></span><div>Sign the final loan and title documents.</div></li>
                                 <li class="flex items-start"><span class="flex-shrink-0 w-6 h-6 mr-3 text-accent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /></svg></span><div>Pay your remaining down payment and <strong class="font-bold">closing costs</strong>.</div></li>
                                 <li class="flex items-start"><span class="flex-shrink-0 w-6 h-6 mr-3 text-accent"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg></span><div>Get the keys to your new home. Congratulations!</div></li>
                              </ul>
@@ -370,7 +394,7 @@
                                 <!-- FAQ 1 -->
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
-                                        <h3 class="text-xs">What's a good credit score to buy a house?</h3>
+                                        <h3 class="text-xs">What's the first step to buying a house?</h3>
                                         <!-- UPDATED: Icon -->
                                         <span class="plus-minus-icon text-primary">
                                             <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
@@ -379,11 +403,43 @@
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
-                                            <p>While you can sometimes get a loan with a score as low as 580 (especially FHA loans), a score of 620 or higher is generally recommended for conventional loans. Aiming for a score above 740 will typically get you the best possible interest rates, saving you a lot of money.</p>
+                                            <p>The very first step is a financial check-up. Before you even look at listings, check your credit score and calculate your Debt-to-Income (DTI) ratio. This tells you what you can realistically afford and what you need to fix before talking to a lender.</p>
                                         </div>
                                     </div>
                                 </details>
                                 <!-- FAQ 2 -->
+                                <details class="faq-item group">
+                                    <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
+                                        <h3 class="text-xs">What's the difference between pre-qualification and pre-approval?</h3>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <div class="p-4 pt-0 text-gray-600 text-xs">
+                                            <p>Pre-qualification is a quick estimate from a lender based on numbers you provide. Pre-approval is a formal, conditional commitment for a loan. You submit your pay stubs, bank statements, and tax returns, and the lender verifies everything. Sellers take pre-approval much more seriously.</p>
+                                        </div>
+                                    </div>
+                                </details>
+                                <!-- FAQ 3 -->
+                                <details class="faq-item group">
+                                    <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
+                                        <h3 class="text-xs">What are closing costs?</h3>
+                                        <!-- UPDATED: Icon -->
+                                        <span class="plus-minus-icon text-primary">
+                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                        </span>
+                                    </summary>
+                                    <div class="faq-answer">
+                                        <div class="p-4 pt-0 text-gray-600 text-xs">
+                                            <p>Closing costs are a collection of fees (typically 2-5% of the loan amount) that you pay to finalize the loan. They include lender fees, appraisal fees, title insurance, and pre-paid property taxes. They are a separate cash expense from your down payment.</p>
+                                        </div>
+                                    </div>
+                                </details>
+                                <!-- FAQ 4 -->
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
                                         <h3 class="text-xs">How much do I really need for a down payment?</h3>
@@ -399,10 +455,10 @@
                                         </div>
                                     </div>
                                 </details>
-                                <!-- FAQ 3 -->
+                                <!-- FAQ 5 -->
                                 <details class="faq-item group">
                                     <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
-                                        <h3 class="text-xs">What's the difference between an inspection and an appraisal?</h3>
+                                        <h3 class="text-xs">What is the difference between an inspection and an appraisal?</h3>
                                         <!-- UPDATED: Icon -->
                                         <span class="plus-minus-icon text-primary">
                                             <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
@@ -415,31 +471,16 @@
                                         </div>
                                     </div>
                                 </details>
-                                <!-- FAQ 4 -->
-                                <details class="faq-item group">
-                                    <summary class="faq-question w-full flex justify-between items-center text-left text-gray-800 font-semibold p-4 cursor-pointer hover:bg-gray-50 transition list-none">
-                                        <h3 class="text-xs">Should I get a 15-year or 30-year mortgage?</h3>
-                                        <!-- UPDATED: Icon -->
-                                        <span class="plus-minus-icon text-primary">
-                                            <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
-                                            <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
-                                        </span>
-                                    </summary>
-                                    <div class="faq-answer">
-                                        <div class="p-4 pt-0 text-gray-600 text-xs">
-                                            <p>A 15-year mortgage has higher monthly payments but saves you a massive amount of interest over the life of the loan. A 30-year mortgage has lower, more manageable payments, freeing up cash for other investments or expenses. It depends on your monthly budget and long-term financial goals.</p>
-                                        </div>
-                                    </div>
-                                </details>
                             </div>
                         </section>
 
                         <!-- Final CTA -->
                         <section class="mt-8">
-                            <div class="bg-primary/10 p-4 rounded-lg text-center shadow-inner border border-primary/20">
-                                <h2 class="text-lg font-bold text-primary">Ready to Take the First Step?</h2>
-                                <p class="mt-2 text-xs text-gray-700">The journey starts with a solid plan. Use our tools to find out exactly what you can afford.</p>
-                                 <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#affordability-tab" class="mt-3 inline-block bg-accent hover:bg-green-700 text-white font-bold py-1.5 px-3 text-xs rounded-lg shadow-lg transition-transform transform hover:scale-105">
+                            <!-- ADDED: not-prose, gradient background, shadow-lg, and !text-white -->
+                            <div class="not-prose bg-gradient-to-r from-primary/80 to-accent/80 p-4 rounded-lg text-center shadow-lg">
+                                <h2 class="text-lg font-bold !text-white">Ready to Take the First Step?</h2>
+                                <p class="mt-2 text-xs !text-gray-100">The journey starts with a solid plan. Use our tools to find out exactly what you can afford.</p>
+                                 <a href="https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html#affordability-tab" class="mt-3 inline-block bg-white text-accent font-bold py-1.5 px-3 text-xs rounded-lg shadow-lg transition-transform transform hover:scale-105">
                                     Start with our Affordability Calculator
                                 </a>
                             </div>
@@ -457,6 +498,7 @@
         <div id="mobile-sidebar-placeholder"></div>
     </main>
     <script src="../global-elements.js" defer></script>
+    <!-- UNCOMMENTED SCRIPT BLOCK and removed downPaymentChart logic -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- Chart Rendering ---
@@ -466,33 +508,95 @@
                     type: 'doughnut',
                     data: {
                         labels: ['Payment History (35%)', 'Amounts Owed (30%)', 'Credit History (15%)', 'Credit Mix (10%)', 'New Credit (10%)'],
-                        datasets: [{ data: [35, 30, 15, 10, 10], backgroundColor: ['#1C768F', '#25a2c3', '#70cce2', '#a6ddeb', '#d1eaf1'], borderWidth: 2, borderColor: '#fff' }]
+                        datasets: [{ 
+                            data: [35, 30, 15, 10, 10], 
+                            backgroundColor: ['#1C768F', '#1e8749', '#1d4ed8', '#b45309', '#6b7280'], 
+                            borderColor: '#fff',
+                            borderWidth: 2 
+                        }]
                     },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' }, title: { display: true, text: 'What Makes Up Your Credit Score?' } } },
+                    options: { 
+                        responsive: true, 
+                        maintainAspectRatio: false, 
+                        plugins: { 
+                            legend: { 
+                                position: 'bottom',
+                                labels: {
+                                    padding: 10,
+                                    font: { size: 10 }
+                                }
+                            }, 
+                            title: { display: false } 
+                        } 
+                    },
                 });
             }
 
+            // ADDED: New Down Payment Chart
             const downPaymentCtx = document.getElementById('downPaymentChart');
             if (downPaymentCtx) {
                 new Chart(downPaymentCtx, {
                     type: 'bar',
                     data: {
-                        labels: ['5% Down Payment', '20% Down Payment'],
+                        labels: ['3% Down Payment', '20% Down Payment'],
                         datasets: [
-                            { label: 'Principal & Interest', data: [1801, 1517], backgroundColor: 'rgba(28, 118, 143, 0.8)' }, 
-                            { label: 'PMI', data: [119, 0], backgroundColor: 'rgba(239, 68, 68, 0.8)' }
+                            {
+                                label: 'Principal & Interest',
+                                data: [2134, 1770], // P&I on $339.5k vs $280k
+                                backgroundColor: '#1C768F', // primary
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'PMI (Est.)',
+                                data: [198, 0], // Estimated PMI vs. Zero
+                                backgroundColor: '#ef4444', // red-500 for cost
+                                borderWidth: 1
+                            }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top' }, title: { display: true, text: 'Monthly Payment on a $300k Home' }, tooltip: { callbacks: { label: (c) => `${c.dataset.label}: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(c.parsed.y)}` } } },
-                        scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: (v) => '$' + v } } }
+                        plugins: {
+                            legend: { 
+                                position: 'bottom',
+                                labels: {
+                                    padding: 10,
+                                    font: { size: 10 }
+                                }
+                            },
+                            title: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.parsed.y !== null) {
+                                            label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(context.parsed.y);
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: { stacked: true },
+                            y: {
+                                stacked: true,
+                                beginAtZero: true,
+                                ticks: { 
+                                    callback: (value) => '$' + value.toLocaleString(),
+                                    font: { size: 10 }
+                                }
+                            }
+                        }
                     }
                 });
             }
             
-            // NEW: Accordion closing logic
+            // --- Accordion closing logic ---
             const accordionItems = document.querySelectorAll('#faq-accordion .faq-item');
             accordionItems.forEach((item) => {
                 const summary = item.querySelector('summary');
