@@ -136,7 +136,7 @@
                 "acceptedAnswer": { "Answer": { "text": "The most effective way is to make extra payments directly to the principal. This can be done by adding a little extra to your monthly payment, making a one-time lump-sum payment (like from a bonus), or switching to a bi-weekly payment schedule." } }
             }, {
                 "@type": "Question",
-                "name": "Whatâ€™s the difference between amortized and interest-only loans?",
+                "name": "What’s the difference between amortized and interest-only loans?",
                 "acceptedAnswer": { "Answer": { "text": "An amortized loan (like the one this calculator models) includes both principal and interest in each payment, ensuring the loan is fully paid off by the end of the term. An interest-only loan requires you to pay only the interest for a set period, which results in lower initial payments but doesn't reduce your loan balance." } }
             }, {
                 "@type": "Question",
@@ -367,7 +367,7 @@
                             </span>
                         </div>
                     </summary>
-                    <div class="schedule-content">
+                    <div class="schedule-content max-w-full"> <!-- ADDED max-w-full HERE -->
                         <div class="border-t p-4">
                             <div class="flex flex-col sm:flex-row justify-end items-center mb-2">
                                 <div class="flex items-center gap-2 mt-2 sm:mt-0">
@@ -375,7 +375,12 @@
                                      <button id="downloadCSV" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">📊 Download CSV</button>
                                 </div>
                             </div>
-                            <div class="schedule-container overflow-x-auto max-h-96">
+                            <!-- 
+                              FIX: Added w-full AND max-w-full to the schedule-container 
+                              to ensure it's constrained by its parent on mobile.
+                              This forces the overflow-x: auto to activate correctly.
+                            -->
+                            <div class="schedule-container w-full max-w-full overflow-x-auto max-h-96">
                                 <!-- 
                                   FIX: Added min-w-[700px] to force the table to be wide enough 
                                   to trigger the parent's overflow-x-auto on mobile, 
@@ -629,6 +634,7 @@
                                 <div class="faq-answer">
                                     <div class="p-4 pt-0 text-gray-600 text-xs">
                                         <p>At the beginning of your loan, a larger portion of your payment goes toward interest because your loan balance is at its highest. As you pay down the balance, the interest portion shrinks, and more of your payment goes toward the principal. Our "Amortisation in Action" chart visualizes this shift perfectly.</p>
+Choose a path that aligns with your financial goals:
                                     </div>
                                 </div>
                             </div>
