@@ -210,8 +210,8 @@
                                         <label for="currency" class="block font-medium text-xs text-gray-700">Currency:</label>
                                         <select id="currency" class="w-full p-1 text-xs border border-gray-300 rounded-md h-[28px]">
                                             <option value="USD">USD ($)</option>
-                                            <option value="EUR">EUR (â‚¬)</option>
-                                            <option value="GBP">GBP (Â£)</option>
+                                            <option value="EUR">EUR (€)</option>
+                                            <option value="GBP">GBP (£)</option>
                                             <option value="CAD">CAD (C$)</option>
                                             <option value="AUD">AUD (A$)</option>
                                         </select>
@@ -322,7 +322,8 @@
                                         </label>
                                     </div>
                                     <!-- UPDATED: Reduced h-48 sm:h-56 to h-44 sm:h-56 -->
-                                    <div class="relative h-44 sm:h-56">
+                                    <!-- FIX: Added overflow-hidden to contain the chart and its tooltips on mobile -->
+                                    <div class="relative h-44 sm:h-56 overflow-hidden">
                                         <canvas id="amortizationChart"></canvas>
                                     </div>
                                 </div>
@@ -332,7 +333,8 @@
                                 <div id="opportunity-cost-section" class="hidden mt-2 bg-white border-2 border-gray-400 rounded-lg p-2">
                                     <h3 class="text-xs font-bold text-secondary text-center">Opportunity Cost: Pay Mortgage vs. Invest</h3>
                                     <!-- UPDATED: Reduced h-48 sm:h-56 to h-44 sm:h-56 -->
-                                    <div class="relative h-44 sm:h-56 mt-2">
+                                    <!-- FIX: Added overflow-hidden to contain the chart and its tooltips on mobile -->
+                                    <div class="relative h-44 sm:h-56 mt-2 overflow-hidden">
                                         <canvas id="opportunityCostChart"></canvas>
                                     </div>
                                     <!-- UPDATED: Reduced mt-4 to mt-2 and p-3 to p-2 -->
@@ -369,12 +371,18 @@
                         <div class="border-t p-4">
                             <div class="flex flex-col sm:flex-row justify-end items-center mb-2">
                                 <div class="flex items-center gap-2 mt-2 sm:mt-0">
-                                     <button id="downloadPDF" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">ðŸ“„ Download PDF</button>
-                                     <button id="downloadCSV" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">ðŸ“Š Download CSV</button>
+                                     <button id="downloadPDF" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">📄 Download PDF</button>
+                                     <button id="downloadCSV" class="text-xs font-semibold text-primary hover:underline p-2 rounded-md hover:bg-gray-100">📊 Download CSV</button>
                                 </div>
                             </div>
                             <div class="schedule-container overflow-x-auto max-h-96">
-                                <table class="min-w-full text-xs">
+                                <!-- 
+                                  FIX: Added min-w-[700px] to force the table to be wide enough 
+                                  to trigger the parent's overflow-x-auto on mobile, 
+                                  preventing a page-level horizontal scroll.
+                                  Added md:min-w-full to allow it to expand normally on desktop.
+                                -->
+                                <table class="min-w-[700px] md:min-w-full text-xs">
                                     <thead class="bg-gray-50 sticky top-0">
                                         <tr>
                                             <th class="p-2 text-left">Month</th>
@@ -393,7 +401,8 @@
                 </details>
     
                 <!-- NEW: Formula Explanation Section -->
-                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs border-2 border-gray-400">
+                <!-- FIX: Removed max-w-none to prevent page overflow on mobile -->
+                <div class="bg-white p-4 sm:p-5 mt-4 rounded-xl shadow-2xl text-gray-800 space-y-4 text-xs border-2 border-gray-400">
                     <h2 class="text-lg font-extrabold text-primary !mb-4">How This Calculator Works: The Formulas</h2>
                     <p class="text-xs text-gray-700">This calculator builds a full month-by-month schedule for your loan to accurately project its payoff. It runs two simulations: one for your standard loan and one with your extra payments.</p>
                     
@@ -404,7 +413,8 @@
                         </h3>
                         <p class="mt-2 text-xs">First, we calculate your base Principal & Interest (P&I) payment using the standard PMT formula. This formula is provided by `js/utils.js` and is the foundation for the schedule.</p>
                         <div class="p-2 mt-2 bg-white rounded border border-gray-400">
-                            <code class="block font-semibold text-primary text-center">M = P * [r(1+r)^n] / [(1+r)^n - 1]</code>
+                            <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                            <code class="block font-semibold text-primary text-center" style="word-break: break-all;">M = P * [r(1+r)^n] / [(1+r)^n - 1]</code>
                             <ul class="space-y-1 mt-2 text-gray-600 text-xs">
                                 <li><strong>M</strong> = Your monthly P&I payment</li>
                                 <li><strong>P</strong> = Your Loan Principal (e.g., $300,000)</li>
@@ -422,16 +432,20 @@
                         <p class="mt-2 text-xs">The calculator then loops through each month until the loan is paid off, performing the following calculations:</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
                             <li class="p-2 bg-white rounded border border-gray-400">
-                                <code class="block font-semibold text-primary">Interest This Month = Current Balance * Monthly Rate (r)</code>
+                                <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                                <code class="block font-semibold text-primary" style="word-break: break-all;">Interest This Month = Current Balance * Monthly Rate (r)</code>
                             </li>
                             <li class="p-2 bg-white rounded border border-gray-400">
-                                <code class="block font-semibold text-primary">Principal This Month = Monthly Payment (M) - Interest This Month</code>
+                                <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                                <code class="block font-semibold text-primary" style="word-break: break-all;">Principal This Month = Monthly Payment (M) - Interest This Month</code>
                             </li>
                              <li class="p-2 bg-white rounded border border-gray-400">
-                                <code class="block font-semibold text-accent">Total Principal Paid = Principal This Month + Extra Monthly + One-Time Payment (if applicable)</code>
+                                <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                                <code class="block font-semibold text-accent" style="word-break: break-all;">Total Principal Paid = Principal This Month + Extra Monthly + One-Time Payment (if applicable)</code>
                             </li>
                              <li class="p-2 bg-white rounded border border-gray-400">
-                                <code class="block font-semibold text-primary">New Balance = Current Balance - Total Principal Paid</code>
+                                <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                                <code class="block font-semibold text-primary" style="word-break: break-all;">New Balance = Current Balance - Total Principal Paid</code>
                             </li>
                         </ul>
                     </section>
@@ -444,10 +458,12 @@
                         <p class="mt-2 text-xs">When you add extra payments, the "Opportunity Cost" chart simulates what would happen if you invested that extra money instead. It calculates the future value of your extra payments using a compound interest formula.</p>
                         <ul class="space-y-2 mt-2 text-xs list-none pl-2">
                             <li class="p-2 bg-white rounded border border-gray-400">
-                                <code class="block font-semibold text-secondary">Periodic Investment Rate = Annual Investment Return / 12 / 100</code>
+                                <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                                <code class="block font-semibold text-secondary" style="word-break: break-all;">Periodic Investment Rate = Annual Investment Return / 12 / 100</code>
                             </li>
                             <li class="p-2 bg-white rounded border border-gray-400">
-                                <code class="block font-semibold text-secondary">New Investment Value = (Previous Value + All Extra Payments This Month) * (1 + Periodic Investment Rate)</code>
+                                <!-- FIX: Added word-break: break-all to prevent overflow on mobile -->
+                                <code class="block font-semibold text-secondary" style="word-break: break-all;">New Investment Value = (Previous Value + All Extra Payments This Month) * (1 + Periodic Investment Rate)</code>
                             </li>
                         </ul>
                     </section>
@@ -455,7 +471,8 @@
     
                 <!-- SEO Content Section -->
                 <!-- UPDATED: Reduced p-4 sm:p-5 to p-4 and mt-4 to mt-2 -->
-                <div class="bg-white p-4 mt-2 rounded-xl shadow-2xl max-w-none text-gray-800 space-y-4 text-xs border-2 border-gray-400">
+                <!-- FIX: Removed max-w-none to prevent page overflow on mobile -->
+                <div class="bg-white p-4 mt-2 rounded-xl shadow-2xl text-gray-800 space-y-4 text-xs border-2 border-gray-400">
                     <h2 class="text-lg font-extrabold text-primary !mb-4">A Homeowner's Guide to Mortgage Amortisation</h2>
                     
                     <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
@@ -484,19 +501,19 @@
                         <p class="mt-2 text-xs">Understanding your <strong>loan amortization schedule</strong> is key to financial planning. When you use this calculator, it generates an <strong>amortization table mortgage</strong> lenders use, which shows a clear breakdown. Each row in the table represents one payment period (usually a month) and contains several important columns:</p>
                         <ul class="space-y-2 mt-2 text-xs">
                             <li class="flex items-start">
-                                <span class="font-bold text-primary mr-2">Â»</span>
+                                <span class="font-bold text-primary mr-2">»</span>
                                 <div><strong>Payment:</strong> This is your fixed monthly principal and interest payment. It remains constant throughout the loan (unless you have an ARM).</div>
                             </li>
                             <li class="flex items-start">
-                                <span class="font-bold text-primary mr-2">Â»</span>
+                                <span class="font-bold text-primary mr-2">»</span>
                                 <div><strong>Principal:</strong> The amount of your payment that reduces your loan balance. This number starts small and grows larger over time.</div>
                             </li>
                             <li class="flex items-start">
-                                <span class="font-bold text-primary mr-2">Â»</span>
+                                <span class="font-bold text-primary mr-2">»</span>
                                 <div><strong>Interest:</strong> The portion of your payment that goes to the lender. This number is largest at the beginning and shrinks with every payment.</div>
                             </li>
                              <li class="flex items-start">
-                                <span class="font-bold text-primary mr-2">Â»</span>
+                                <span class="font-bold text-primary mr-2">»</span>
                                 <div><strong>Ending Balance:</strong> Your remaining loan balance after the payment is applied. Watching this number go down is one of the most satisfying parts of homeownership! The <strong>mortgage amortization chart</strong> above visualizes this decline.</div>
                             </li>
                         </ul>
@@ -510,7 +527,8 @@
                             <button class="term-tab w-full rounded-md py-2 px-4 text-xs font-semibold text-gray-700" data-term="20">20 Year</button>
                             <button class="term-tab w-full rounded-md py-2 px-4 text-xs font-semibold text-gray-700 active" data-term="30">30 Year</button>
                         </div>
-                        <div class="relative h-56">
+                        <!-- FIX: Added overflow-hidden to contain the chart and its tooltips on mobile -->
+                        <div class="relative h-56 overflow-hidden">
                             <canvas id="termComparisonChart"></canvas>
                         </div>
                         <div id="term-comparison-summary" class="mt-4 text-xs text-center bg-primary/10 p-3 rounded-lg">
@@ -521,7 +539,8 @@
                     <section class="bg-gray-50/70 p-4 rounded-lg border border-gray-400">
                         <h3 class="text-base font-bold text-gray-800">Amortisation in Action: An Example Scenario</h3>
                         <p class="mt-2 text-xs">Let's look at a common <strong>amortization example</strong>: a $300,000 loan at 6.5% interest on a <strong>30-year schedule</strong>. The chart below visualizes how the principal and interest portions of your payment change over time.</p>
-                        <div class="relative h-56 mt-4">
+                        <!-- FIX: Added overflow-hidden to contain the chart and its tooltips on mobile -->
+                        <div class="relative h-56 mt-4 overflow-hidden">
                             <canvas id="exampleAmortizationChart"></canvas>
                         </div>
                         <p class="text-xs text-center mt-2 italic">Notice how the blue "Interest Paid" area dominates in the early years, while the green "Principal Paid" area grows significantly toward the end of the loan.</p>
@@ -533,7 +552,7 @@
                          <ul class="space-y-2 mt-2 text-xs">
                             <li class="flex items-start">
                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v.01M12 18v-2m0-2v-2m0-2V7m0 0V6" /></svg></span>
-                                <div><strong>Make Extra Monthly Payments:</strong> Consistently adding a small amountâ€”even $50 or $100â€”to your regular payment can shave years off your loan.</div>
+                                <div><strong>Make Extra Monthly Payments:</strong> Consistently adding a small amount—even $50 or $100—to your regular payment can shave years off your loan.</div>
                             </li>
                             <li class="flex items-start">
                                 <span class="flex-shrink-0 w-5 h-5 mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19V5a2 2 0 012-2h10a2 2 0 012 2v14l-5-2.5L5 19z" /></svg></span>
