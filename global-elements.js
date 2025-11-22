@@ -43,8 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Fallback .ico
             { rel: 'icon', type: 'image/x-icon', href: `${basePath}favicon/favicon.ico` }
-            
-            // Note: The data:image/svg+xml is already in the HTML <head> of each page, so we don't add it again.
         ];
 
         const head = document.head;
@@ -106,15 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
             margin-bottom: 0.75rem;
             border-radius: 0.25rem; /* Add rounded corners */
             text-align: center; /* Center the text */
-            
-            /* Remove text clipping and border-image */
-            /* -webkit-background-clip: text; */
-            /* -webkit-text-fill-color: transparent; */
-            /* background-clip: text; */
-            /* text-fill-color: transparent; */
-            /* border-bottom: 4px solid transparent; */
-            /* border-image: linear-gradient(to right, #1C768F 0%, #166534 100%); */
-            /* border-image-slice: 1; */
           }
 
           /* NEW: Mobile Sidebar Title Gradient */
@@ -194,11 +183,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- NEW: Full-screen overlay for when mobile menu is open -->
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-25 z-30 hidden md:hidden backdrop-blur-sm"></div>
     `;
-    
-    // --- NEW: Global Share Bar HTML ---
-    // This will be inserted right before the footer on every page.
-    // --- MODIFIED: Removed this variable, as its content will be moved into footerHTML ---
-    // const globalShareBarHTML = `...`;
 
     const footerHTML = `
         <footer class="bg-gray-800 text-gray-400 text-sm no-print rounded-t-lg md:rounded-t-xl border-glow-primary">
@@ -284,8 +268,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.body.insertAdjacentHTML('afterbegin', svgIcon);
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
-    // --- UPDATED: Remove the separate share bar insertion ---
-    // document.body.insertAdjacentHTML('beforeend', globalShareBarHTML);
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 
     // *** CALL THE NEW FAVICON FUNCTION ***
@@ -308,14 +290,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const isOpen = mobileMenu.classList.contains('invisible');
 
             // Toggle Body Scroll
-            // We only want to lock scroll on mobile. md:overflow-auto ensures desktop is never locked.
             document.body.classList.toggle('overflow-hidden', isOpen);
             document.body.classList.toggle('md:overflow-auto', isOpen);
 
             if (isOpen) {
                 // Open menu
                 mobileMenu.classList.remove('invisible', 'opacity-0', 'max-h-0');
-                mobileMenu.classList.add('visible', 'opacity-100', 'max-h-screen'); // Use max-h-screen as a proxy for auto-height
+                mobileMenu.classList.add('visible', 'opacity-100', 'max-h-screen'); 
                 mobileMenuOverlay.classList.remove('hidden');
                 hamburger.classList.add('hidden');
                 close.classList.remove('hidden');
@@ -334,37 +315,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- NEW: Centralized Social Sharing ---
-    // This function runs on every page load to set the correct URLs for the new global share bar.
     function setupGlobalShareLinks() {
-        // Get the current page's URL and title
-        // Use window.location.href to get the full, absolute URL
         const pageUrl = encodeURIComponent(window.location.href);
         const pageTitle = encodeURIComponent(document.title);
-        const pageSource = "Strategic Mortgage Planner"; // Optional, for LinkedIn
+        const pageSource = "Strategic Mortgage Planner";
 
-        // Find the links by their new IDs
         const xLink = document.getElementById('global-share-x');
         const fbLink = document.getElementById('global-share-fb');
         const liLink = document.getElementById('global-share-li');
         const waLink = document.getElementById('global-share-wa');
         const emLink = document.getElementById('global-share-em');
 
-        // Dynamically set the href attribute for each link
-        if (xLink) {
-            xLink.href = `https://x.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
-        }
-        if (fbLink) {
-            fbLink.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
-        }
-        if (liLink) {
-            liLink.href = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}&source=${pageSource}`;
-        }
-        if (waLink) {
-            waLink.href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
-        }
-        if (emLink) {
-            emLink.href = `mailto:?subject=${pageTitle}&body=Check out this helpful tool: ${pageUrl}`;
-        }
+        if (xLink) xLink.href = `https://x.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+        if (fbLink) fbLink.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+        if (liLink) liLink.href = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}&source=${pageSource}`;
+        if (waLink) waLink.href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
+        if (emLink) emLink.href = `mailto:?subject=${pageTitle}&body=Check out this helpful tool: ${pageUrl}`;
     }
 
     // --- UPDATED: Centralized Related Articles & Calculators ---
@@ -376,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // --- Check 1: Exit on index pages ---
         if (fullPath.endsWith('/calculators/index.html') || fullPath.endsWith('/calculators/') ||
             fullPath.endsWith('/blog/index.html') || fullPath.endsWith('/blog/')) {
-            return; // Do not add sidebars to these index pages
+            return; 
         }
 
         // --- Check 2: Exit if no placeholders exist ---
@@ -400,18 +366,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 { href: "how-much-house-can-i-afford.html", file: "how-much-house-can-i-afford.html", title: "How Much House Can I Afford?", desc: "A deep dive into budgeting." },
                 { href: "first-time-home-buyer-checklist.html", file: "first-time-home-buyer-checklist.html", title: "First-Time Home Buyer's Checklist", desc: "Your essential 10-step guide." }
             ];
-            // Filter out the current page
             links = articles.filter(article => article.file !== currentPage).slice(0, 5);
 
         } else {
-            // --- CALCULATOR PAGE (or other page): Show Other Calculators ---
+            // --- CALCULATOR PAGE: Show Other Calculators ---
             sidebarTitle = "Other Calculators";
             const allTools = [
-                // Note: The hrefs are relative to the *current page's* directory.
-                // global-elements.js is loaded from `../` on calculator pages.
-                // rootPath is already calculated correctly (e.g., '../' for calc pages, './' for quiz page)
-                
-                // UPDATED: Point to new planner.html file
                 { href: `${rootPath}all-in-one-mortgage-planner.html`, file: 'all-in-one-mortgage-planner.html', title: "All-in-One Planner", desc: "Main mortgage planner." },
                 { href: `${rootPath}calculators/down-payment-calculator.html`, file: 'down-payment-calculator.html', title: "Down Payment Calculator", desc: "Plan your upfront costs." },
                 { href: `${rootPath}calculators/extra-payment-calculator.html`, file: 'extra-payment-calculator.html', title: "Extra Payment Calculator", desc: "Pay off your loan faster." },
@@ -421,27 +381,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 { href: `${rootPath}calculators/closing-cost-calculator.html`, file: 'closing-cost-calculator.html', title: "Closing Cost Calculator", desc: "Estimate fees to close." },
                 { href: `${rootPath}Refinance-Readiness-Quiz.html`, file: 'Refinance-Readiness-Quiz.html', title: "Refinance Quiz", desc: "See if you're ready." }
             ];
-            
-            // Filter out the current page.
-            // On main index.html, currentPage is '', but rootPath is './'. `allTools` has href `./` and file `index.html`.
-            // On quiz page, currentPage is 'Refinance-Readiness-Quiz.html', rootPath is './'.
-            // On calculator page (e.g., closing-cost-calculator.html), currentPage is 'closing-cost-calculator.html', rootPath is `../`.
-            
-            // Filter by filename.
-            // UPDATED: Filter logic to correctly handle index.html (which is now the hub)
             links = allTools.filter(tool => tool.file !== currentPage && (currentPage || tool.file !== 'index.html')).slice(0, 5);
         }
 
         if (links.length === 0) return;
 
-        // --- Generate Desktop Sidebar ---
+        // --- Generate Desktop Sidebar Links ---
         const generateDesktopLinksHTML = (links) => {
-            return links.map((link, index) => { // <-- Added index
-                // For blog articles, the href needs to be prefixed with the blog path.
+            return links.map((link, index) => {
                 const linkHref = fullPath.includes('/blog/') ? `${rootPath}blog/${link.href}` : link.href;
                 return `
                 <li class="flex items-start space-x-2">
-                    <!-- UPDATED: Made icon smaller (w-3.5 h-3.5), font smaller (text-[9px]), and margin top (mt-1) -->
                     <span class="flex-shrink-0 w-3.5 h-3.5 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-[9px] mt-1" aria-hidden="true">
                         ${index + 1}
                     </span>
@@ -452,28 +402,121 @@ document.addEventListener('DOMContentLoaded', function() {
                 </li>
             `}).join('');
         };
+
+        // --- NEW: Related Calculator Widget (Desktop Only, Blog Pages Only) ---
+        let relatedToolHTML = '';
+        if (fullPath.includes('/blog/')) {
+            
+            // Default Calculator (Fallback)
+            const defaultRelatedCalc = {
+                href: `${rootPath}all-in-one-mortgage-planner.html`,
+                title: 'All-in-One Mortgage Planner',
+                desc: 'Analyze payoff, equity, DTI, NPV, and refinance options.',
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
+            };
+
+            // Mapping of Blog Pages to their specific related Calculator
+            // Keys match the filename of the blog post
+            const blogToCalcMap = {
+                'how-much-house-can-i-afford.html': {
+                    href: `${rootPath}all-in-one-mortgage-planner.html#affordability-tab`,
+                    title: 'Affordability Calculator',
+                    desc: 'Find your max home price.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>`
+                },
+                'how-much-should-you-put-down-on-a-house.html': {
+                    href: `${rootPath}calculators/down-payment-calculator.html`,
+                    title: 'Down Payment Calculator',
+                    desc: 'Plan your upfront costs.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M12 6v.01M12 18v-2m0-2v-2m0-2V7m0 0V6" /></svg>`
+                },
+                'first-time-home-buyer-checklist.html': {
+                    href: `${rootPath}calculators/down-payment-calculator.html`,
+                    title: 'Down Payment Calculator',
+                    desc: 'Estimate your initial investment.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>`
+                },
+                'hidden-costs-of-buying-a-home.html': {
+                    href: `${rootPath}calculators/closing-cost-calculator.html`,
+                    title: 'Closing Cost Calculator',
+                    desc: 'Avoid surprise fees.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`
+                },
+                'hidden-homeownership-costs-guide.html': {
+                    href: `${rootPath}calculators/property-tax-calculator.html`,
+                    title: 'Property Tax Calculator',
+                    desc: 'Estimate annual taxes.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>`
+                },
+                'fixed-vs-variable-mortgage-guide.html': {
+                    href: `${rootPath}all-in-one-mortgage-planner.html#refinance-tab`,
+                    title: 'Mortgage Planner',
+                    desc: 'Compare loan scenarios.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`
+                },
+                'mortgage-amortization-explained.html': {
+                    href: `${rootPath}calculators/mortgage-amortisation-calculator.html`,
+                    title: 'Amortisation Calculator',
+                    desc: 'See your payment schedule.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M3 14h18m-9-4v8" /></svg>`
+                },
+                'how-to-pay-off-your-mortgage-early.html': {
+                    href: `${rootPath}calculators/extra-payment-calculator.html`,
+                    title: 'Extra Payment Calculator',
+                    desc: 'See interest savings.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`
+                },
+                'home-equity-vs-refinance.html': {
+                    href: `${rootPath}calculators/home-equity-calculator.html`,
+                    title: 'Home Equity Calculator',
+                    desc: 'Compare HELOC vs. Refi.',
+                    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>`
+                }
+            };
+
+            // UPDATED: Use mapping or fallback to default
+            const relatedCalc = blogToCalcMap[currentPage] || defaultRelatedCalc;
+
+            relatedToolHTML = `
+                <div class="sidebar-widget sidebar-shadow">
+                    <h3 class="sidebar-title-gradient">Try This Tool</h3>
+                    <a href="${relatedCalc.href}" class="block group bg-white border border-gray-200 rounded-lg p-3 hover:border-primary transition-all shadow-sm hover:shadow-md">
+                         <div class="flex items-center gap-3">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                                ${relatedCalc.icon}
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-800 group-hover:text-primary">${relatedCalc.title}</h4>
+                                <p class="text-[10px] text-gray-500 leading-tight mt-0.5">${relatedCalc.desc}</p>
+                            </div>
+                         </div>
+                         <div class="mt-2 text-right border-t border-gray-100 pt-2">
+                            <span class="text-[10px] font-bold text-primary group-hover:underline flex items-center justify-end">
+                                Open Calculator <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                            </span>
+                         </div>
+                    </a>
+                </div>
+            `;
+        }
         
         if (desktopPlaceholder) {
             desktopPlaceholder.innerHTML = `
-                <!-- REMOVED: Ad Slot Placeholder -->
-                <div class="sticky top-24">
-                    <!-- UPDATED: Added sidebar-shadow class -->
+                <div class="sticky top-24 space-y-6">
                     <div class="sidebar-widget sidebar-shadow">
-                         <!-- UPDATED: Applied gradient class to all sidebar titles -->
                          <h3 class="sidebar-title-gradient">${sidebarTitle}</h3>
                          <ul class="space-y-4">${generateDesktopLinksHTML(links)}</ul>
                     </div>
+                    ${relatedToolHTML}
                 </div>
             `;
         }
 
         // --- Generate Mobile Sidebar ---
-        // UPDATED: Added a check to NOT render this mobile banner if we are on a blog page.
         if (mobilePlaceholder && !fullPath.includes('/blog/')) {
             const generateMobileLinksHTML = (links) => {
                 // Define icons for calculators
                 const icons = {
-                    // UPDATED: Added planner.html icon
                     "all-in-one-mortgage-planner.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
                     "down-payment-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25-2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" /></svg>`,
                     "extra-payment-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
@@ -482,19 +525,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     "property-tax-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
                     "closing-cost-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621.504-1.125-1.125-1.125H3.375z" /></svg>`,
                     "Refinance-Readiness-Quiz.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-                    // Article icons
-                    "how-to-buy-your-first-home-guide.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>`,
-                    "mortgage-amortization-explained.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>`,
-                    "fixed-vs-variable-mortgage-guide.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" /></svg>`,
-                    "how-much-house-can-i-afford.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
-                    "first-time-home-buyer-checklist.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>`
                 };
                 const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 13v-8.5" /></svg>`;
 
                 return links.map(link => {
-                    // Use `file` for icon lookup, `href` for the link
                     const iconKey = link.file || link.href;
-                    // For blog articles, the href needs to be prefixed with the blog path.
                     const linkHref = fullPath.includes('/blog/') ? `${rootPath}blog/${link.href}` : link.href;
                     const iconSVG = icons[iconKey] || defaultIcon;
                     return `
@@ -527,36 +562,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 const showSidebar = () => { if (!sidebarShown) { mobileSidebar.classList.remove('translate-y-full'); sidebarShown = true; } };
                 const hideSidebar = () => { mobileSidebar.classList.add('translate-y-full'); sidebarShown = false; };
                 closeButton.addEventListener('click', hideSidebar);
-                // Show the bar when user scrolls towards the bottom 60% of the page
                 window.addEventListener('scroll', () => { if (!sidebarShown && window.scrollY > (document.body.scrollHeight * 0.6)) { showSidebar(); } }, { passive: true });
             }
         }
     }
 
     // --- NEW: Back to Top Button ---
-    /**
-     * Creates and manages a "Back to Top" button.
-     * The button appears on scroll and smoothly scrolls to the top on click.
-     */
     function setupBackToTopButton() {
-        // Create the button element
         const backToTopButton = document.createElement('button');
-        backToTopButton.classList.add('back-to-top'); // Uses style from style.css
+        backToTopButton.classList.add('back-to-top'); 
         backToTopButton.setAttribute('title', 'Back to top');
         backToTopButton.setAttribute('aria-label', 'Back to top');
         
-        // Add SVG icon
         backToTopButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
             </svg>
         `;
 
-        // Set initial state (hidden). The CSS transition will handle the fade-in.
         backToTopButton.style.visibility = 'hidden';
         backToTopButton.style.opacity = '0';
         
-        // Add click event listener to scroll to top
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -564,9 +590,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Add scroll event listener to show/hide button
         window.addEventListener('scroll', () => {
-            // Show button after scrolling 200px
             if (window.pageYOffset > 200) {
                 backToTopButton.style.visibility = 'visible';
                 backToTopButton.style.opacity = '1';
@@ -574,17 +598,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 backToTopButton.style.visibility = 'hidden';
                 backToTopButton.style.opacity = '0';
             }
-        }, { passive: true }); // Use passive listener for better scroll performance
+        }, { passive: true });
 
-        // Add the button to the body
         document.body.appendChild(backToTopButton);
     }
     
-    // --- Run on page load ---
-    // --- REMOVED old setupSocialSharing() call ---
     setupRelatedArticles();
-    // --- ADDED call to new global share link function ---
     setupGlobalShareLinks();
-    // --- ADDED call for Back to Top button ---
     setupBackToTopButton();
 });
