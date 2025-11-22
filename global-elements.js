@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
             text-fill-color: transparent;
             font-weight: 600; /* semibold */
             transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem; /* gap-1.5 */
           }
           .menu-link-gradient:hover {
             background: linear-gradient(to right, #166534 0%, #1C768F 100%);
@@ -77,15 +80,26 @@ document.addEventListener('DOMContentLoaded', function() {
             background-clip: text;
             text-fill-color: transparent;
           }
-           /* Slide-out Menu Links */
+          /* Ensure SVG icons inherit the gradient text color behavior on hover */
+          .menu-link-gradient svg {
+             color: #1C768F; /* Default color */
+             transition: color 0.3s ease;
+          }
+          .menu-link-gradient:hover svg {
+             color: #166534; /* Hover color */
+          }
+
+           /* Slide-out Menu Links - Compact Version */
            .slide-out-link {
-            display: block;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
-            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem; /* 10px */
+            padding: 0.625rem 1rem; /* Reduced padding for cleaner look */
+            border-radius: 0.375rem;
+            font-size: 0.875rem; /* text-sm */
             font-weight: 500;
             color: #374151; /* gray-700 */
-            border-left: 4px solid transparent;
+            border-left: 3px solid transparent;
             transition: all 0.2s ease-in-out;
            }
            .slide-out-link:hover {
@@ -143,20 +157,37 @@ document.addEventListener('DOMContentLoaded', function() {
                     <!-- UPDATED: Font size changed from text-xs to text-sm -->
                     <!-- UPDATED: Changed hover color to text-accent -->
                     <div class="hidden md:flex items-center space-x-4">
-                        <!-- UPDATED: Added Homepage link -->
-                        <a href="${homePath}" class="text-sm menu-link-gradient">Home</a>
-                        <a href="${plannerPath}" class="text-sm menu-link-gradient">Mortgage Planner</a>
+                        <!-- UPDATED: Added Homepage link with Icon -->
+                        <a href="${homePath}" class="text-sm menu-link-gradient">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                            Home
+                        </a>
+                        <a href="${plannerPath}" class="text-sm menu-link-gradient">
+                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                            Mortgage Planner
+                        </a>
                         <!-- UPDATED: Removed redundant Planning Hub link -->
-                        <a href="${calcHubPath}" class="text-sm menu-link-gradient">Calculator's Hub</a>
-                        <a href="${blogPath}" class="text-sm menu-link-gradient">Blog</a>
-                        <a href="${legalPath}" class="text-sm menu-link-gradient">Contact & Legal</a>
+                        <a href="${calcHubPath}" class="text-sm menu-link-gradient">
+                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+                            Calculator's Hub
+                        </a>
+                        <a href="${blogPath}" class="text-sm menu-link-gradient">
+                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
+                            Blog
+                        </a>
+                        <a href="${legalPath}" class="text-sm menu-link-gradient">
+                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                            Contact & Legal
+                        </a>
                     </div>
                     
                     <!-- Mobile menu button (Hamburger Only) -->
                     <div class="md:hidden flex items-center">
-                        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Open main menu">
-                            <svg id="hamburger-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        <!-- UPDATED: Compact, engaging Menu button design -->
+                        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center px-2.5 py-1 border border-primary/30 rounded-full text-primary hover:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary transition-all duration-200 group" aria-label="Open main menu">
+                            <span class="mr-1.5 font-bold text-[10px] uppercase tracking-widest group-hover:text-primary-dark">Menu</span>
+                            <svg id="hamburger-icon" class="block h-4 w-4 group-hover:scale-110 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7" />
                             </svg>
                         </button>
                     </div>
@@ -168,31 +199,49 @@ document.addEventListener('DOMContentLoaded', function() {
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"></div>
 
         <!-- NEW: Mobile Slide-Out Menu Container -->
-        <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-72 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col h-full">
+        <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col h-full">
             <!-- Menu Header -->
-            <div class="flex items-center justify-between p-4 border-b border-gray-100 bg-gradient-to-r from-sky-50 to-green-50">
-                <span class="font-bold text-lg text-primary flex items-center gap-2">
-                    <svg class="h-6 w-6" aria-hidden="true"><use href="${logoIconPath}"></use></svg>
-                    Menu
-                </span>
-                <button id="mobile-menu-close" type="button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Close menu">
-                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <div class="flex items-center justify-between p-3 border-b border-gray-100 bg-gradient-to-r from-sky-50 to-green-50">
+                <!-- UPDATED: Replaced text with the same Menu Button Design for consistency -->
+                <div class="inline-flex items-center justify-center px-2.5 py-1 border border-primary/30 rounded-full text-primary bg-white/50">
+                    <span class="mr-1.5 font-bold text-[10px] uppercase tracking-widest">Menu</span>
+                    <svg class="block h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </div>
+                <button id="mobile-menu-close" type="button" class="p-1.5 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Close menu">
+                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
             
             <!-- Menu Links -->
-            <div class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
-                <a href="${homePath}" class="slide-out-link">Home</a>
-                <a href="${plannerPath}" class="slide-out-link">Mortgage Planner</a>
-                <a href="${calcHubPath}" class="slide-out-link">Calculator's Hub</a>
-                <a href="${blogPath}" class="slide-out-link">Blog</a>
-                <a href="${legalPath}" class="slide-out-link">Contact & Legal</a>
+            <div class="flex-1 overflow-y-auto py-3 px-2 space-y-0.5">
+                <a href="${homePath}" class="slide-out-link">
+                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    Home
+                </a>
+                <a href="${plannerPath}" class="slide-out-link">
+                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                    Mortgage Planner
+                </a>
+                <a href="${calcHubPath}" class="slide-out-link">
+                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+                    Calculator's Hub
+                </a>
+                <a href="${blogPath}" class="slide-out-link">
+                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
+                    Blog
+                </a>
+                <a href="${legalPath}" class="slide-out-link">
+                    <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    Contact & Legal
+                </a>
             </div>
 
             <!-- Menu Footer -->
-            <div class="p-4 border-t border-gray-100 bg-gray-50 text-center text-xs text-gray-500">
+            <div class="p-3 border-t border-gray-100 bg-gray-50 text-center text-[10px] text-gray-500">
                 &copy; ${new Date().getFullYear()} Strategic Mortgage Planner
             </div>
         </div>
@@ -227,10 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <!-- UPDATED: Reduced padding to p-2 and icon size to w-3.5 h-3.5 -->
                             <a id="global-share-wa" href="#" target="_blank" rel="noopener noreferrer" title="Share on WhatsApp" class="p-2 bg-[#25D366] text-white rounded-full hover:bg-[#1ebe59] transition-colors shadow-md">
                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 01-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.31-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
-                            </a>
-                            <!-- UPDATED: Reduced padding to p-2 and icon size to w-3.5 h-3.5 -->
-                            <a id="global-share-em" href="#" title="Share via Email" class="p-2 bg-gray-600 text-white rounded-full hover:bg-gray-700 transition-colors shadow-md">
-                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
                             </a>
                         </div>
                     </div>
@@ -425,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 href: `${rootPath}all-in-one-mortgage-planner.html`,
                 title: 'All-in-One Mortgage Planner',
                 desc: 'Analyze payoff, equity, DTI, NPV, and refinance options.',
-                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
             };
 
             // Mapping of Blog Pages to their specific related Calculator
