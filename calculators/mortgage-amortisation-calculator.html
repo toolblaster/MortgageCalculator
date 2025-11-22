@@ -153,7 +153,8 @@
         <!-- UPDATED: Added .calculator-layout-grid class -->
         <div class="container-global calculator-layout-grid my-4 space-y-4 lg:space-y-0">
             <!-- UPDATED: Wrapped main content in <main> tag for 80% column -->
-            <main class="space-y-4">
+            <!-- FIX: Added min-w-0 to prevent grid item blowout on mobile when table expands -->
+            <main class="space-y-4 min-w-0">
                 <!-- UPDATED: Reduced padding from p-3 sm:p-4 to p-3 -->
                 <div id="calculator-container" class="bg-white p-3 rounded-xl shadow-2xl">
                     <header class="text-center mb-4 p-4 rounded-lg bg-gradient-to-r from-primary to-accent shadow-md">
