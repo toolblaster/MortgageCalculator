@@ -77,22 +77,22 @@ document.addEventListener('DOMContentLoaded', function() {
             background-clip: text;
             text-fill-color: transparent;
           }
-           .mobile-menu-link-gradient {
-            background: linear-gradient(to right, #1C768F 0%, #166534 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            font-weight: 500; /* medium */
-            transition: background 0.3s ease;
-          }
-          .mobile-menu-link-gradient:hover {
-            background: linear-gradient(to right, #166534 0%, #1C768F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-          }
+           /* Slide-out Menu Links */
+           .slide-out-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #374151; /* gray-700 */
+            border-left: 4px solid transparent;
+            transition: all 0.2s ease-in-out;
+           }
+           .slide-out-link:hover {
+            background-color: #f0f9ff; /* sky-50 */
+            color: #1C768F; /* primary */
+            border-left-color: #1C768F;
+           }
 
           /* UPDATED: Desktop Sidebar Title Gradient */
           .sidebar-title-gradient {
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         </style>
         <!-- UPDATED: Changed background from bg-white/80 to a light blue/green gradient -->
-        <header class="bg-gradient-to-r from-sky-50 to-green-50 backdrop-blur-lg shadow-sm no-print md:static top-0 z-40 rounded-b-lg md:rounded-b-xl border-glow-primary">
+        <header class="bg-gradient-to-r from-sky-50 to-green-50 backdrop-blur-lg shadow-sm no-print md:static top-0 z-40 rounded-b-lg md:rounded-b-xl border-glow-primary relative">
             <!-- UPDATED: Replaced Tailwind width/padding classes with .container-global -->
             <nav class="container-global">
                 <div class="flex items-center justify-between h-14">
@@ -151,37 +151,51 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="${blogPath}" class="text-sm menu-link-gradient">Blog</a>
                         <a href="${legalPath}" class="text-sm menu-link-gradient">Contact & Legal</a>
                     </div>
-                    <!-- Mobile menu button -->
+                    
+                    <!-- Mobile menu button (Hamburger Only) -->
                     <div class="md:hidden flex items-center">
-                        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
-                            <span class="sr-only">Open main menu</span>
+                        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Open main menu">
                             <svg id="hamburger-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                            <svg id="close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
                 </div>
             </nav>
-            <!-- Mobile menu, show/hide based on menu state. -->
-            <!-- UPDATED: Replaced 'hidden' with animation classes: invisible, opacity-0, max-h-0 and transition properties -->
-            <div class="md:hidden invisible opacity-0 max-h-0 overflow-hidden transition-all duration-300 ease-in-out" id="mobile-menu">
-                <!-- UPDATED: Changed text-gray-700 to text-primary and hover:text-primary to hover:text-accent -->
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <!-- UPDATED: Added Homepage link -->
-                    <a href="${homePath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Home</a>
-                    <a href="${plannerPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Mortgage Planner</a>
-                    <!-- UPDATED: Removed redundant Planning Hub link -->
-                    <a href="${calcHubPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Calculator's Hub</a>
-                    <a href="${blogPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Blog</a>
-                    <a href="${legalPath}" class="block px-3 py-2 rounded-md text-sm mobile-menu-link-gradient hover:bg-gray-50">Contact & Legal</a>
-                </div>
-            </div>
         </header>
-        <!-- NEW: Full-screen overlay for when mobile menu is open -->
-        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-25 z-30 hidden md:hidden backdrop-blur-sm"></div>
+        
+        <!-- NEW: Mobile Slide-Out Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"></div>
+
+        <!-- NEW: Mobile Slide-Out Menu Container -->
+        <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-72 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col h-full">
+            <!-- Menu Header -->
+            <div class="flex items-center justify-between p-4 border-b border-gray-100 bg-gradient-to-r from-sky-50 to-green-50">
+                <span class="font-bold text-lg text-primary flex items-center gap-2">
+                    <svg class="h-6 w-6" aria-hidden="true"><use href="${logoIconPath}"></use></svg>
+                    Menu
+                </span>
+                <button id="mobile-menu-close" type="button" class="p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-label="Close menu">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Menu Links -->
+            <div class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <a href="${homePath}" class="slide-out-link">Home</a>
+                <a href="${plannerPath}" class="slide-out-link">Mortgage Planner</a>
+                <a href="${calcHubPath}" class="slide-out-link">Calculator's Hub</a>
+                <a href="${blogPath}" class="slide-out-link">Blog</a>
+                <a href="${legalPath}" class="slide-out-link">Contact & Legal</a>
+            </div>
+
+            <!-- Menu Footer -->
+            <div class="p-4 border-t border-gray-100 bg-gray-50 text-center text-xs text-gray-500">
+                &copy; ${new Date().getFullYear()} Strategic Mortgage Planner
+            </div>
+        </div>
     `;
 
     const footerHTML = `
@@ -278,40 +292,39 @@ document.addEventListener('DOMContentLoaded', function() {
         copyrightYearEl.textContent = new Date().getFullYear();
     }
     
-    // Add Mobile Menu Toggle Logic
+    // --- NEW: Updated Mobile Slide-Out Logic ---
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay'); // Get the new overlay
-    const hamburger = document.getElementById('hamburger-icon');
-    const close = document.getElementById('close-icon');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const closeButton = document.getElementById('mobile-menu-close');
 
-    if (menuButton) {
-        const toggleMenu = () => {
-            const isOpen = mobileMenu.classList.contains('invisible');
-
-            // Toggle Body Scroll
-            document.body.classList.toggle('overflow-hidden', isOpen);
-            document.body.classList.toggle('md:overflow-auto', isOpen);
-
-            if (isOpen) {
-                // Open menu
-                mobileMenu.classList.remove('invisible', 'opacity-0', 'max-h-0');
-                mobileMenu.classList.add('visible', 'opacity-100', 'max-h-screen'); 
-                mobileMenuOverlay.classList.remove('hidden');
-                hamburger.classList.add('hidden');
-                close.classList.remove('hidden');
-            } else {
-                // Close menu
-                mobileMenu.classList.add('invisible', 'opacity-0', 'max-h-0');
-                mobileMenu.classList.remove('visible', 'opacity-100', 'max-h-screen');
-                mobileMenuOverlay.classList.add('hidden');
-                hamburger.classList.remove('hidden');
-                close.classList.add('hidden');
-            }
+    if (menuButton && mobileMenu && mobileMenuOverlay) {
+        const openMenu = () => {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            requestAnimationFrame(() => {
+                mobileMenuOverlay.classList.remove('opacity-0');
+                mobileMenuOverlay.classList.add('opacity-100');
+            });
+            document.body.classList.add('overflow-hidden'); // Prevent body scroll
         };
 
-        menuButton.addEventListener('click', toggleMenu);
-        mobileMenuOverlay.addEventListener('click', toggleMenu); // Close on overlay click
+        const closeMenu = () => {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenuOverlay.classList.remove('opacity-100');
+            mobileMenuOverlay.classList.add('opacity-0');
+            
+            // Wait for transition to finish before hiding (300ms matches duration-300)
+            setTimeout(() => {
+                mobileMenuOverlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }, 300);
+        };
+
+        menuButton.addEventListener('click', openMenu);
+        if (closeButton) closeButton.addEventListener('click', closeMenu);
+        mobileMenuOverlay.addEventListener('click', closeMenu);
     }
 
     // --- NEW: Centralized Social Sharing ---
@@ -412,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 href: `${rootPath}all-in-one-mortgage-planner.html`,
                 title: 'All-in-One Mortgage Planner',
                 desc: 'Analyze payoff, equity, DTI, NPV, and refinance options.',
-                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
+                icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
             };
 
             // Mapping of Blog Pages to their specific related Calculator
