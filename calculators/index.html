@@ -39,7 +39,7 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            /* overflow: hidden; Removed this rule to allow scrolling if content overflows */
+            overflow-y: auto; /* Allow scrolling */
         }
         body {
             display: flex;
@@ -48,9 +48,16 @@
         main.content-wrapper {
             flex-grow: 1;
             display: flex;
-            justify-content: center; /* Horizontally center */
+            flex-direction: column; /* Allow breadcrumb to stack vertically */
+            align-items: center; /* Horizontally center children */
             padding-top: 1rem;
             padding-bottom: 1rem;
+        }
+        .container-calc-index {
+             width: 100%;
+             max-width: 1024px; /* Matches max-w-5xl */
+             padding-left: 1rem;
+             padding-right: 1rem;
         }
     </style>
 
@@ -60,16 +67,70 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "WebApplication",
+          "@type": "CollectionPage",
           "name": "Financial Calculators Hub",
           "description": "A collection of free financial calculators to help with mortgage planning, home equity analysis, amortization schedules, and refinance decisions.",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Any (Web Application)",
           "url": "https://mortgageplanner.toolblaster.com/calculators/",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+          "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "url": "https://mortgageplanner.toolblaster.com/all-in-one-mortgage-planner.html",
+                "name": "All-in-One Mortgage Planner",
+                "description": "Analyze payoff, equity, DTI, NPV, and refinance options."
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "url": "https://mortgageplanner.toolblaster.com/calculators/down-payment-calculator.html",
+                "name": "Down Payment Calculator",
+                "description": "Calculate your down payment, loan amount, and monthly P&I."
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "url": "https://mortgageplanner.toolblaster.com/calculators/extra-payment-calculator.html",
+                "name": "Extra Payment Calculator",
+                "description": "See how extra payments can save you thousands and shorten your loan term."
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "url": "https://mortgageplanner.toolblaster.com/calculators/property-tax-calculator.html",
+                "name": "Property Tax Calculator",
+                "description": "Estimate your annual and monthly property taxes by state or manual rate."
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "url": "https://mortgageplanner.toolblaster.com/calculators/closing-cost-calculator.html",
+                "name": "Closing Cost Calculator",
+                "description": "Estimate your total lender, third-party, and government fees before you buy."
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "url": "https://mortgageplanner.toolblaster.com/calculators/home-equity-calculator.html",
+                "name": "Home Equity Calculator",
+                "description": "Compare HELOC vs. cash-out refinance and see available equity."
+              },
+              {
+                "@type": "ListItem",
+                "position": 7,
+                "url": "https://mortgageplanner.toolblaster.com/calculators/mortgage-amortisation-calculator.html",
+                "name": "Mortgage Amortisation Calculator",
+                "description": "Visualize payment breakdown and the impact of extra payments."
+              },
+              {
+                "@type": "ListItem",
+                "position": 8,
+                "url": "https://mortgageplanner.toolblaster.com/Refinance-Readiness-Quiz.html",
+                "name": "Refinance Readiness Quiz",
+                "description": "Find out if you are financially ready to refinance."
+              }
+            ]
           }
         },
         {
@@ -93,8 +154,21 @@
 <body class="bg-gray-100">
     <!-- Main Content Area -->
     <main class="content-wrapper">
-        <!-- UPDATED: This index page now redirects to the new planning-hub to guide users. The old list is preserved below the redirect to avoid breaking internal links, but the main action is the hub. -->
-        <div class="bg-white px-4 pt-4 pb-3 rounded-lg shadow-xl w-full max-w-5xl mx-auto">
+        
+        <!-- NEW: Breadcrumb (Visible, Left Aligned) -->
+        <nav aria-label="Breadcrumb" class="container-calc-index mt-2 mb-1 text-xs text-gray-500">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="https://mortgageplanner.toolblaster.com/" class="hover:text-primary">Home</a>
+                    <svg class="w-3 h-3 mx-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                </li>
+                <li>
+                    <span class="text-gray-800 font-semibold" aria-current="page">Calculators</span>
+                </li>
+            </ol>
+        </nav>
+
+        <div class="bg-white px-4 pt-4 pb-3 rounded-lg shadow-xl w-full max-w-5xl mx-auto my-2">
              <!-- Updated Header with Gradient -->
             <header class="text-center mb-4 p-4 rounded-lg bg-gradient-to-r from-primary to-accent shadow-md">
                 <h1 class="text-xl font-extrabold text-white">Financial Calculators & Tools</h1>
@@ -112,14 +186,11 @@
                 Future Ad Placeholder (e.g., 728x90)
             </div>
             <!-- END: Ad Slot Placeholder -->
-            
-            <!-- UPDATED: Removed the redundant Planning Hub banner -->
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
 
                 <!-- Calculator Card: All-in-One Planner -->
-                <!-- UPDATED: Link points to ../all-in-one-mortgage-planner.html -->
-                <a href="../all-in-one-mortgage-planner.html" class="hub-card flex items-start text-left">
+                <a href="../all-in-one-mortgage-planner.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                     </div>
@@ -130,7 +201,7 @@
                 </a>
 
                 <!-- Calculator Card: Down Payment Calculator -->
-                <a href="down-payment-calculator.html" class="hub-card flex items-start text-left">
+                <a href="down-payment-calculator.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25-2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" /></svg>
                     </div>
@@ -141,7 +212,7 @@
                 </a>
 
                 <!-- Calculator Card: Extra Payment Calculator -->
-                <a href="extra-payment-calculator.html" class="hub-card flex items-start text-left">
+                <a href="extra-payment-calculator.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
@@ -152,7 +223,7 @@
                 </a>
 
                 <!-- Calculator Card: Property Tax Calculator -->
-                <a href="property-tax-calculator.html" class="hub-card flex items-start text-left">
+                <a href="property-tax-calculator.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                     </div>
@@ -162,23 +233,23 @@
                     </div>
                 </a>
 
-                 <!-- NEW Calculator Card: Closing Cost Calculator -->
-                <a href="closing-cost-calculator.html" class="hub-card flex items-start text-left">
+                 <!-- Calculator Card: Closing Cost Calculator -->
+                <a href="closing-cost-calculator.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621.504-1.125-1.125-1.125H3.375z" /></svg>
                     </div>
                     <div>
                         <h2 class="text-sm font-bold text-primary group-hover:underline">Closing Cost Calculator</h2>
-                        <p class="mt-1 text-xs text-gray-600">Estimate your total lender, third-party, and government fees before you buy or refinance.</p>
+                        <p class="mt-1 text-xs text-gray-600">Estimate your total lender, third-party, and government fees before you buy.</p>
                     </div>
                 </a>
 
 
                 <!-- Calculator Card: Home Equity Calculator -->
-                <a href="home-equity-calculator.html" class="hub-card flex items-start text-left">
+                <a href="home-equity-calculator.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>
-Z                    </div>
+                    </div>
                     <div>
                         <h2 class="text-sm font-bold text-primary group-hover:underline">Home Equity Calculator</h2>
                         <p class="mt-1 text-xs text-gray-600">Compare HELOC vs. cash-out refinance and see available equity.</p>
@@ -186,13 +257,24 @@ Z                    </div>
                 </a>
 
                 <!-- Calculator Card: Mortgage Amortisation Calculator -->
-                <a href="mortgage-amortisation-calculator.html" class="hub-card flex items-start text-left">
+                <a href="mortgage-amortisation-calculator.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
                      <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
                         <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
                     </div>
                     <div>
                         <h2 class="text-sm font-bold text-primary group-hover:underline">Mortgage Amortisation Calculator</h2>
                         <p class="mt-1 text-xs text-gray-600">Visualize payment breakdown and the impact of extra payments.</p>
+                    </div>
+                </a>
+
+                 <!-- Calculator Card: Refinance Readiness Quiz -->
+                <a href="../Refinance-Readiness-Quiz.html" class="hub-card block group bg-white hover:bg-sky-50 p-3 rounded-lg border border-gray-300 hover:border-primary transition-all duration-300 flex items-start text-left shadow-md hover:shadow-lg">
+                     <div class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-full bg-primary/20 text-primary mr-3 mt-1">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-sm font-bold text-primary group-hover:underline">Refinance Readiness Quiz</h2>
+                        <p class="mt-1 text-xs text-gray-600">Find out if you are financially ready to refinance in 2 minutes.</p>
                     </div>
                 </a>
 
