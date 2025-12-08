@@ -112,23 +112,23 @@
             "mainEntity": [{
                 "@type": "Question",
                 "name": "What does mortgage amortization mean?",
-                "acceptedAnswer": { "Answer": { "text": "Mortgage amortization is the process of paying off your home loan over time with regular, fixed payments. Each payment is split between principal (the amount you borrowed) and interest (the cost of borrowing). An amortization schedule shows you exactly how this split works for every payment." } }
+                "acceptedAnswer": { "@type": "Answer", "text": "Mortgage amortization is the process of paying off your home loan over time with regular, fixed payments. Each payment is split between principal (the amount you borrowed) and interest (the cost of borrowing). An amortization schedule shows you exactly how this split works for every payment." } 
             }, {
                 "@type": "Question",
                 "name": "How much of my payment goes to interest vs principal?",
-                "acceptedAnswer": { "Answer": { "text": "At the beginning of your loan, a larger portion of your payment goes toward interest because your loan balance is at its highest. As you pay down the balance, the interest portion shrinks, and more of your payment goes toward the principal. Our 'Amortisation in Action' chart visualizes this shift perfectly." } }
+                "acceptedAnswer": { "@type": "Answer", "text": "At the beginning of your loan, a larger portion of your payment goes toward interest because your loan balance is at its highest. As you pay down the balance, the interest portion shrinks, and more of your payment goes toward the principal. Our 'Amortisation in Action' chart visualizes this shift perfectly." } 
             }, {
                 "@type": "Question",
                 "name": "How can I pay off my mortgage faster?",
-                "acceptedAnswer": { "Answer": { "text": "The most effective way is to make extra payments directly to the principal. This can be done by adding a little extra to your monthly payment, making a one-time lump-sum payment (like from a bonus), or switching to a bi-weekly payment schedule." } }
+                "acceptedAnswer": { "@type": "Answer", "text": "The most effective way is to make extra payments directly to the principal. This can be done by adding a little extra to your monthly payment, making a one-time lump-sum payment (like from a bonus), or switching to a bi-weekly payment schedule." } 
             }, {
                 "@type": "Question",
                 "name": "What’s the difference between amortized and interest-only loans?",
-                "acceptedAnswer": { "Answer": { "text": "An amortized loan (like the one this calculator models) includes both principal and interest in each payment, ensuring the loan is fully paid off by the end of the term. An interest-only loan requires you to pay only the interest for a set period, which results in lower initial payments but doesn't reduce your loan balance." } }
+                "acceptedAnswer": { "@type": "Answer", "text": "An amortized loan (like the one this calculator models) includes both principal and interest in each payment, ensuring the loan is fully paid off by the end of the term. An interest-only loan requires you to pay only the interest for a set period, which results in lower initial payments but doesn't reduce your loan balance." } 
             }, {
                 "@type": "Question",
                 "name": "Can I change amortization terms mid-loan?",
-                "acceptedAnswer": { "Answer": { "text": "Yes, the most common way to change your amortization term is by refinancing your mortgage. For example, you could refinance a 30-year loan into a 15-year loan to pay it off faster, which will create a new amortization schedule." } }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes, the most common way to change your amortization term is by refinancing your mortgage. For example, you could refinance a 30-year loan into a 15-year loan to pay it off faster, which will create a new amortization schedule." } 
             }]
         }
       ]
@@ -621,59 +621,89 @@
                         <h2 class="text-lg font-bold text-primary mb-4 text-center">Frequently Asked Questions</h2>
                         <div class="max-w-3xl mx-auto space-y-4">
                             <!-- FAQ 1 -->
-                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary">
-                                <div class="flex items-start">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">1</span>
-                                    <div>
+                            <details class="group bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary faq-item">
+                                <summary class="flex justify-between items-center font-semibold text-left text-gray-800 cursor-pointer list-none">
+                                    <div class="flex items-start">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">1</span>
                                         <h3 class="text-sm font-bold text-gray-900 mb-2">What does mortgage amortization mean?</h3>
-                                        <p class="text-xs text-gray-700 leading-relaxed">Mortgage amortization is the process of paying off your home loan over time with regular, fixed payments. Each payment is split between principal (the amount you borrowed) and interest (the cost of borrowing). An amortization schedule shows you exactly how this split works for every payment.</p>
                                     </div>
+                                    <span class="plus-minus-icon text-primary ml-2 flex-shrink-0">
+                                        <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
+                                </summary>
+                                <div class="faq-answer mt-2 pl-9">
+                                    <p class="text-xs text-gray-700 leading-relaxed">Mortgage amortization is the process of paying off your home loan over time with regular, fixed payments. Each payment is split between principal (the amount you borrowed) and interest (the cost of borrowing). An amortization schedule shows you exactly how this split works for every payment.</p>
                                 </div>
-                            </div>
+                            </details>
                             
                             <!-- FAQ 2 -->
-                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary">
-                                <div class="flex items-start">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">2</span>
-                                    <div>
+                            <details class="group bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary faq-item">
+                                <summary class="flex justify-between items-center font-semibold text-left text-gray-800 cursor-pointer list-none">
+                                    <div class="flex items-start">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">2</span>
                                         <h3 class="text-sm font-bold text-gray-900 mb-2">How much of my payment goes to interest vs principal?</h3>
-                                        <p class="text-xs text-gray-700 leading-relaxed">At the beginning of your loan, a larger portion of your payment goes toward interest because your loan balance is at its highest. As you pay down the balance, the interest portion shrinks, and more of your payment goes toward the principal. Our "Amortisation in Action" chart visualizes this shift perfectly.</p>
                                     </div>
+                                    <span class="plus-minus-icon text-primary ml-2 flex-shrink-0">
+                                        <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
+                                </summary>
+                                <div class="faq-answer mt-2 pl-9">
+                                    <p class="text-xs text-gray-700 leading-relaxed">At the beginning of your loan, a larger portion of your payment goes toward interest because your loan balance is at its highest. As you pay down the balance, the interest portion shrinks, and more of your payment goes toward the principal. Our "Amortisation in Action" chart visualizes this shift perfectly.</p>
                                 </div>
-                            </div>
+                            </details>
 
                             <!-- FAQ 3 -->
-                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary">
-                                <div class="flex items-start">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">3</span>
-                                    <div>
+                            <details class="group bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary faq-item">
+                                <summary class="flex justify-between items-center font-semibold text-left text-gray-800 cursor-pointer list-none">
+                                    <div class="flex items-start">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">3</span>
                                         <h3 class="text-sm font-bold text-gray-900 mb-2">How can I pay off my mortgage faster?</h3>
-                                        <p class="text-xs text-gray-700 leading-relaxed">The most effective way is to make extra payments directly to the principal. This can be done by adding a little extra to your monthly payment, making a one-time lump-sum payment (like from a bonus), or switching to a bi-weekly payment schedule.</p>
                                     </div>
+                                    <span class="plus-minus-icon text-primary ml-2 flex-shrink-0">
+                                        <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
+                                </summary>
+                                <div class="faq-answer mt-2 pl-9">
+                                    <p class="text-xs text-gray-700 leading-relaxed">The most effective way is to make extra payments directly to the principal. This can be done by adding a little extra to your monthly payment, making a one-time lump-sum payment (like from a bonus), or switching to a bi-weekly payment schedule.</p>
                                 </div>
-                            </div>
+                            </details>
 
                             <!-- FAQ 4 -->
-                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary">
-                                <div class="flex items-start">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">4</span>
-                                    <div>
+                            <details class="group bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary faq-item">
+                                <summary class="flex justify-between items-center font-semibold text-left text-gray-800 cursor-pointer list-none">
+                                    <div class="flex items-start">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">4</span>
                                         <h3 class="text-sm font-bold text-gray-900 mb-2">What’s the difference between amortized and interest-only loans?</h3>
-                                        <p class="text-xs text-gray-700 leading-relaxed">An amortized loan (like the one this calculator models) includes both principal and interest in each payment, ensuring the loan is fully paid off by the end of the term. An interest-only loan requires you to pay only the interest for a set period, which results in lower initial payments but doesn't reduce your loan balance.</p>
                                     </div>
+                                    <span class="plus-minus-icon text-primary ml-2 flex-shrink-0">
+                                        <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
+                                </summary>
+                                <div class="faq-answer mt-2 pl-9">
+                                    <p class="text-xs text-gray-700 leading-relaxed">An amortized loan (like the one this calculator models) includes both principal and interest in each payment, ensuring the loan is fully paid off by the end of the term. An interest-only loan requires you to pay only the interest for a set period, which results in lower initial payments but doesn't reduce your loan balance.</p>
                                 </div>
-                            </div>
+                            </details>
                             
                              <!-- FAQ 5 -->
-                            <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary">
-                                <div class="flex items-start">
-                                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">5</span>
-                                    <div>
+                            <details class="group bg-white border border-gray-200 rounded-lg p-4 shadow-sm border-l-4 border-primary faq-item">
+                                <summary class="flex justify-between items-center font-semibold text-left text-gray-800 cursor-pointer list-none">
+                                    <div class="flex items-start">
+                                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs mr-3 mt-0.5">5</span>
                                         <h3 class="text-sm font-bold text-gray-900 mb-2">Can I change amortization terms mid-loan?</h3>
-                                        <p class="text-xs text-gray-700 leading-relaxed">Yes, the most common way to change your amortization term is by refinancing your mortgage. For example, you could refinance a 30-year loan into a 15-year loan to pay it off faster, which will create a new amortization schedule.</p>
                                     </div>
+                                    <span class="plus-minus-icon text-primary ml-2 flex-shrink-0">
+                                        <svg class="w-5 h-5 plus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                                        <svg class="w-5 h-5 minus-icon" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" /></svg>
+                                    </span>
+                                </summary>
+                                <div class="faq-answer mt-2 pl-9">
+                                    <p class="text-xs text-gray-700 leading-relaxed">Yes, the most common way to change your amortization term is by refinancing your mortgage. For example, you could refinance a 30-year loan into a 15-year loan to pay it off faster, which will create a new amortization schedule.</p>
                                 </div>
-                            </div>
+                            </details>
                         </div>
                     </section>
                 </div>
@@ -686,5 +716,23 @@
     <script src="../js/utils.js" defer></script>
     <script src="../global-elements.js" defer></script>
     <script src="mortgage-amortisation-calculator.js" defer></script>
+    <!-- Simple script for accordion logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const details = document.querySelectorAll('details.faq-item');
+            details.forEach(targetDetail => {
+                targetDetail.addEventListener('click', () => {
+                    // Close other details when one is opened
+                    if (!targetDetail.open) { // It's about to open
+                         details.forEach(detail => {
+                            if (detail !== targetDetail && detail.open) {
+                                detail.open = false;
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
