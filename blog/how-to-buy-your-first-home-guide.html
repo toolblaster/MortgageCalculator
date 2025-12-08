@@ -158,7 +158,7 @@
               "text": "Hire an inspector to find any hidden problems with the home (for you). Your lender will hire an appraiser to ensure the home is worth the price (for them)."
             },
             {
-              "@type":Am: "HowToStep",
+              "@type": "HowToStep",
               "name": "Step 9: Finalize Your Loan and Do a Final Walkthrough",
               "text": "Your lender will give the 'clear to close' on your loan. Right before closing, you'll walk through the house one last time to ensure it's in the agreed-upon condition."
             },
@@ -220,8 +220,25 @@
 </head>
 <body class="bg-gray-100">
     <main class="content-wrapper">
+        <!-- Breadcrumb (Visible, Left Aligned) -->
+        <nav aria-label="Breadcrumb" class="container-global mt-4 mb-1 text-xs text-gray-500">
+            <ol class="list-none p-0 inline-flex">
+                <li class="flex items-center">
+                    <a href="https://mortgageplanner.toolblaster.com/" class="hover:text-primary">Home</a>
+                    <svg class="w-3 h-3 mx-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                </li>
+                <li class="flex items-center">
+                    <a href="https://mortgageplanner.toolblaster.com/blog/" class="hover:text-primary">Blog</a>
+                    <svg class="w-3 h-3 mx-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                </li>
+                <li>
+                    <span class="text-gray-800 font-semibold" aria-current="page">First-Time Home Buyer's Guide</span>
+                </li>
+            </ol>
+        </nav>
+
         <!-- UPDATED: Replaced max-w-7xl and padding with .container-global -->
-        <div class="container-global my-4 md:my-8">
+        <div class="container-global mt-3 mb-8">
             <!-- UPDATED: Replaced relative max-w-4xl mx-auto with blog-layout-grid -->
             <div class="blog-layout-grid">
                 <!-- Main Article Content -->
@@ -308,6 +325,7 @@
                         <!-- ADDED: New DTI Chart Section -->
                         <section class="my-6 p-4 bg-white rounded-lg border border-gray-200 shadow-xl">
                             <h3 class="text-base font-bold text-primary text-center">Visualizing a Healthy DTI Ratio (36%)</h3>
+                            
                             <div class="relative h-48 max-w-xs mx-auto">
                                 <canvas id="dtiBreakdownChart"></canvas>
                             </div>
@@ -509,13 +527,13 @@
                                     </summary>
                                     <div class="faq-answer">
                                         <div class="p-4 pt-0 text-gray-600 text-xs">
-                                            <p>The inspection is for YOU. It's a detailed check of the home's condition to uncover any potential problems. The appraisal is for the LENDER. It's an assessment of the home's value to ensure the bank isn't lending more money than the property is worth.</p>
+                                            <p>The inspection is for YOU. You hire an inspector to find any problems with the home (bad roof, plumbing issues, etc.). The appraisal is for the LENDER. The bank hires an appraiser to make sure the home is worth the price you're paying, protecting their investment.</p>
                                         </div>
                                     </div>
                                 </details>
                             </div>
                         </section>
-
+                        
                         <!-- Final CTA -->
                         <section class="mt-8">
                             <!-- ADDED: not-prose, gradient background, shadow-lg, and !text-white -->
@@ -540,7 +558,6 @@
         <div id="mobile-sidebar-placeholder"></div>
     </main>
     <script src="../global-elements.js" defer></script>
-    <!-- UNCOMMENTED SCRIPT BLOCK and removed downPaymentChart logic -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // --- Chart Rendering ---
