@@ -2,18 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Determine the root path based on the current page's location
     let rootPath = './';
     const path = window.location.pathname;
+    
     // If the path contains /blog/ or /calculators/, the root is one level up
     if (path.includes('/blog/') || path.includes('/calculators/')) {
         rootPath = '../';
     }
 
-    // UPDATED: Paths reflect the new structure
-    const homePath = rootPath; // This is index.html (Planning Hub)
-    // UPDATED: Changed planner.html to all-in-one-mortgage-planner.html
-    const plannerPath = `${rootPath}all-in-one-mortgage-planner.html`; // This is the new All-in-One Planner page
+    const homePath = rootPath; 
+    const plannerPath = `${rootPath}all-in-one-mortgage-planner.html`; 
     const quizPath = `${rootPath}Refinance-Readiness-Quiz.html`;
     const calcHubPath = `${rootPath}calculators/`;
-    // DEPRECATED: planningHubPath is no longer needed, as homePath is the hub.
     const legalPath = `${rootPath}contact-us-and-legal.html`;
     const blogPath = `${rootPath}blog/`;
     
@@ -22,32 +20,21 @@ document.addEventListener('DOMContentLoaded', function() {
     /**
      * Dynamically loads all necessary favicon links into the <head>.
      * Uses the calculated rootPath to ensure links work from any directory depth.
-     * @param {string} basePath - The relative path to the site root (e.g., './' or '../').
      */
     function loadFavicons(basePath) {
-        console.log('Loading favicons with base path:', basePath);
         const favicons = [
-            // Standard PWA/Android
             { rel: 'manifest', href: `${basePath}favicon/site.webmanifest` },
             { rel: 'icon', type: 'image/png', sizes: '192x192', href: `${basePath}favicon/android-chrome-192x192.png` },
             { rel: 'icon', type: 'image/png', sizes: '512x512', href: `${basePath}favicon/android-chrome-512x512.png` },
-            
-            // Apple iOS
             { rel: 'apple-touch-icon', sizes: '180x180', href: `${basePath}favicon/apple-touch-icon.png` },
-            
-            // Standard Browser
             { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${basePath}favicon/favicon-32x32.png` },
-            // Note: 48x48 and 96x96 are non-standard but included since they exist
             { rel: 'icon', type: 'image/png', sizes: '48x48', href: `${basePath}favicon/favicon-48x48.png` },
             { rel: 'icon', type: 'image/png', sizes: '96x96', href: `${basePath}favicon/favicon-96x96.png` },
-            
-            // Fallback .ico
             { rel: 'icon', type: 'image/x-icon', href: `${basePath}favicon/favicon.ico` }
         ];
 
         const head = document.head;
         favicons.forEach(linkInfo => {
-            // Check if a similar link already exists (to avoid duplicates, though unlikely)
             if (!document.querySelector(`link[rel="${linkInfo.rel}"][href="${linkInfo.href}"]`)) {
                 const link = document.createElement('link');
                 link.rel = linkInfo.rel;
@@ -67,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            font-weight: 600; /* semibold */
+            font-weight: 600;
             transition: background 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.375rem; /* gap-1.5 */
+            gap: 0.375rem;
           }
           .menu-link-gradient:hover {
             background: linear-gradient(to right, #166534 0%, #1C768F 100%);
@@ -80,96 +67,79 @@ document.addEventListener('DOMContentLoaded', function() {
             background-clip: text;
             text-fill-color: transparent;
           }
-          /* Ensure SVG icons inherit the gradient text color behavior on hover */
           .menu-link-gradient svg {
-             color: #1C768F; /* Default color */
+             color: #1C768F;
              transition: color 0.3s ease;
           }
           .menu-link-gradient:hover svg {
-             color: #166534; /* Hover color */
+             color: #166534;
           }
-
-           /* Slide-out Menu Links - Compact Version */
            .slide-out-link {
             display: flex;
             align-items: center;
-            gap: 0.625rem; /* 10px */
-            padding: 0.625rem 1rem; /* Reduced padding for cleaner look */
+            gap: 0.625rem;
+            padding: 0.625rem 1rem;
             border-radius: 0.375rem;
-            font-size: 0.875rem; /* text-sm */
+            font-size: 0.875rem;
             font-weight: 500;
-            color: #374151; /* gray-700 */
+            color: #374151;
             border-left: 3px solid transparent;
             transition: all 0.2s ease-in-out;
            }
            .slide-out-link:hover {
-            background-color: #f0f9ff; /* sky-50 */
-            color: #1C768F; /* primary */
+            background-color: #f0f9ff;
+            color: #1C768F;
             border-left-color: #1C768F;
            }
-
-          /* UPDATED: Desktop Sidebar Title Gradient */
           .sidebar-title-gradient {
             background: linear-gradient(to right, #1C768F 0%, #166534 100%);
-            color: white; /* Make text white */
-            font-size: 0.875rem; /* text-sm */
+            color: white;
+            font-size: 0.875rem;
             font-weight: 700;
-            padding: 0.25rem 0.75rem; /* UPDATED: Reduced vertical padding */
+            padding: 0.25rem 0.75rem;
             margin-bottom: 0.75rem;
-            border-radius: 0.25rem; /* Add rounded corners */
-            text-align: center; /* Center the text */
+            border-radius: 0.25rem;
+            text-align: center;
           }
-
-          /* NEW: Mobile Sidebar Title Gradient */
           .mobile-sidebar-title-gradient {
             background: linear-gradient(to right, #1C768F 0%, #166534 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-fill-color: transparent;
-            font-weight: 700; /* bold */
-            font-size: 0.875rem; /* text-sm */
+            font-weight: 700;
+            font-size: 0.875rem;
           }
-
-          /* NEW: Smooth shadow for sidebar widget */
           .sidebar-shadow {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
           }
         </style>
-        <!-- UPDATED: Changed background from bg-white/80 to a light blue/green gradient -->
         <header class="bg-gradient-to-r from-sky-50 to-green-50 backdrop-blur-lg shadow-sm no-print md:static top-0 z-40 rounded-b-lg md:rounded-b-xl border-glow-primary relative">
-            <!-- UPDATED: Replaced Tailwind width/padding classes with .container-global -->
             <nav class="container-global">
                 <div class="flex items-center justify-between h-14">
                     <a href="${homePath}" class="flex items-center space-x-2 text-primary hover:opacity-90 transition-opacity">
-                        <!-- UPDATED: Logo size decreased from h-8 w-8 to h-7 w-7 -->
                         <svg class="h-7 w-7" aria-hidden="true">
                             <use href="${logoIconPath}"></use>
                         </svg>
-                        <!-- UPDATED: Logo text size decreased from text-lg to text-base for better alignment -->
-                        <!-- UPDATED: Adjusted font weights and removed pb-0.5 for cleaner alignment -->
                         <span class="font-bold text-base text-gray-800">
                             <span class="border-b-4 border-accent">Strategic</span>
                             <span class="text-gray-600 font-semibold">Mortgage Planner</span>
                         </span>
                     </a>
-                    <!-- Desktop Menu -->
-                    <!-- UPDATED: Font size changed from text-xs to text-sm -->
-                    <!-- UPDATED: Changed hover color to text-accent -->
                     <div class="hidden md:flex items-center space-x-4">
-                        <!-- UPDATED: Added Homepage link with Icon -->
                         <a href="${homePath}" class="text-sm menu-link-gradient">
                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                             Home
                         </a>
                         <a href="${plannerPath}" class="text-sm menu-link-gradient">
-                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                             <!-- UPDATED: Clipboard Plan Icon -->
+                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
                             Mortgage Planner
                         </a>
-                        <!-- UPDATED: Removed redundant Planning Hub link -->
                         <a href="${calcHubPath}" class="text-sm menu-link-gradient">
-                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
-                            Calculator's
+                             <!-- UPDATED: Calculator Icon -->
+                             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                            Calculators
                         </a>
                         <a href="${blogPath}" class="text-sm menu-link-gradient">
                              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
@@ -180,10 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             Contact & Legal
                         </a>
                     </div>
-                    
-                    <!-- Mobile menu button (Hamburger Only) -->
                     <div class="md:hidden flex items-center">
-                        <!-- UPDATED: Compact, engaging Menu button design -->
                         <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center px-2.5 py-1 border border-primary/30 rounded-full text-primary hover:bg-primary/5 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary transition-all duration-200 group" aria-label="Open main menu">
                             <span class="mr-1.5 font-bold text-[10px] uppercase tracking-widest group-hover:text-primary-dark">Menu</span>
                             <svg id="hamburger-icon" class="block h-4 w-4 group-hover:scale-110 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -195,14 +162,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </nav>
         </header>
         
-        <!-- NEW: Mobile Slide-Out Menu Overlay -->
         <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-40 hidden md:hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"></div>
 
-        <!-- NEW: Mobile Slide-Out Menu Container -->
         <div id="mobile-menu" class="fixed inset-y-0 right-0 z-50 w-64 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col h-full">
-            <!-- Menu Header -->
             <div class="flex items-center justify-between p-3 border-b border-gray-100 bg-gradient-to-r from-sky-50 to-green-50">
-                <!-- UPDATED: Replaced text with the same Menu Button Design for consistency -->
                 <div class="inline-flex items-center justify-center px-2.5 py-1 border border-primary/30 rounded-full text-primary bg-white/50">
                     <span class="mr-1.5 font-bold text-[10px] uppercase tracking-widest">Menu</span>
                     <svg class="block h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,19 +179,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
             </div>
             
-            <!-- Menu Links -->
             <div class="flex-1 overflow-y-auto py-3 px-2 space-y-0.5">
                 <a href="${homePath}" class="slide-out-link">
                      <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                     Home
                 </a>
                 <a href="${plannerPath}" class="slide-out-link">
-                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                     <!-- UPDATED: Clipboard Plan Icon -->
+                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
                     Mortgage Planner
                 </a>
                 <a href="${calcHubPath}" class="slide-out-link">
-                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
-                    Calculator's
+                     <!-- UPDATED: Calculator Icon -->
+                     <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                    Calculators
                 </a>
                 <a href="${blogPath}" class="slide-out-link">
                      <svg class="w-4 h-4 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" /></svg>
@@ -239,8 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     Contact & Legal
                 </a>
             </div>
-
-            <!-- Menu Footer -->
             <div class="p-3 border-t border-gray-100 bg-gray-50 text-center text-[10px] text-gray-500">
                 &copy; ${new Date().getFullYear()} Strategic Mortgage Planner
             </div>
@@ -249,40 +211,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const footerHTML = `
         <footer class="bg-gray-800 text-gray-400 text-sm no-print rounded-t-lg md:rounded-t-xl border-glow-primary">
-            <!-- UPDATED: Reduced py-6 to py-4 for a more compact footer -->
             <div class="container-global py-4">
-                
-                <!-- NEW: Social Share Bar (Moved Inside Footer) -->
-                <!-- UPDATED: Changed border-gray-700 to border-gray-600 to make it darker/more visible -->
                 <section class="border-b border-gray-600 pb-4 mb-4">
-                    <!-- UPDATED: Reduced gap-4 to gap-3 for mobile -->
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
-                        <!-- MODIFIED: Changed text size from text-sm to text-xs as requested by user -->
                         <h3 class="text-xs font-semibold text-gray-300">Found this page helpful? Share it:</h3>
-                        <!-- UPDATED: Reduced gap-3 to gap-2.5 for icons -->
                         <div class="flex items-center gap-2.5">
-                            <!-- UPDATED: Reduced padding to p-2 and icon size to w-3.5 h-3.5 -->
                             <a id="global-share-x" href="#" target="_blank" rel="noopener noreferrer" title="Share on X" class="p-2 bg-black text-white rounded-full hover:bg-gray-700 transition-colors shadow-md">
                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75z"/></svg>
                             </a>
-                            <!-- RE-ADDED: Facebook Icon with compact styling -->
                             <a id="global-share-fb" href="#" target="_blank" rel="noopener noreferrer" title="Share on Facebook" class="p-2 bg-[#1877F2] text-white rounded-full hover:bg-[#166fe5] transition-colors shadow-md">
                                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/></svg>
                             </a>
-                            <!-- UPDATED: Reduced padding to p-2 and icon size to w-3.5 h-3.5. FIXED typo class_l to class -->
                             <a id="global-share-li" href="#" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="p-2 bg-[#0077B5] text-white rounded-full hover:bg-[#006097] transition-colors shadow-md">
                                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                             </a>
-                            <!-- UPDATED: Reduced padding to p-2 and icon size to w-3.5 h-3.5 -->
                             <a id="global-share-wa" href="#" target="_blank" rel="noopener noreferrer" title="Share on WhatsApp" class="p-2 bg-[#25D366] text-white rounded-full hover:bg-[#1ebe59] transition-colors shadow-md">
                                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 01-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.31-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
                             </a>
                         </div>
                     </div>
                 </section>
-                <!-- End Social Share Bar -->
 
-                <!-- NEW: Added Logo to Footer -->
                 <div class="flex justify-center mb-4">
                     <a href="${homePath}" class="flex items-center space-x-2 text-primary hover:opacity-90 transition-opacity">
                         <svg class="h-7 w-7" aria-hidden="true">
@@ -294,13 +243,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         </span>
                     </a>
                 </div>
-                <!-- END: Added Logo to Footer -->
 
-                <!-- UPDATED: Reordered content and changed line width -->
                 <div class="text-center text-xs space-y-1">
                     <p>&copy; <span id="copyright-year"></span> Strategic Mortgage Planner. All Rights Reserved.</p>
                     <p><strong>Disclaimer:</strong> This tool is for informational purposes only. Consult a financial professional before making decisions.</p>
-                    <!-- UPDATED: Thin line moved here and width changed to w-1/2 -->
                     <hr class="border-t border-gray-700 w-1/2 mx-auto my-3">
                     <p>A proud part of the <a href="https://toolblaster.com" target="_blank" rel="noopener noreferrer" class="text-white hover:underline font-semibold">toolblaster.com</a> Network <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 inline-block text-red-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" /></svg></p>
                 </div>
@@ -329,15 +275,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 
-    // *** CALL THE NEW FAVICON FUNCTION ***
-    loadFavicons(rootPath); // Load all the favicon links
+    loadFavicons(rootPath);
 
     const copyrightYearEl = document.getElementById('copyright-year');
     if (copyrightYearEl) {
         copyrightYearEl.textContent = new Date().getFullYear();
     }
     
-    // --- NEW: Updated Mobile Slide-Out Logic ---
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -347,20 +291,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const openMenu = () => {
             mobileMenu.classList.remove('translate-x-full');
             mobileMenuOverlay.classList.remove('hidden');
-            // Small delay to allow display:block to apply before opacity transition
             requestAnimationFrame(() => {
                 mobileMenuOverlay.classList.remove('opacity-0');
                 mobileMenuOverlay.classList.add('opacity-100');
             });
-            document.body.classList.add('overflow-hidden'); // Prevent body scroll
+            document.body.classList.add('overflow-hidden');
         };
 
         const closeMenu = () => {
             mobileMenu.classList.add('translate-x-full');
             mobileMenuOverlay.classList.remove('opacity-100');
             mobileMenuOverlay.classList.add('opacity-0');
-            
-            // Wait for transition to finish before hiding (300ms matches duration-300)
             setTimeout(() => {
                 mobileMenuOverlay.classList.add('hidden');
                 document.body.classList.remove('overflow-hidden');
@@ -372,7 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenuOverlay.addEventListener('click', closeMenu);
     }
 
-    // --- NEW: Centralized Social Sharing ---
     function setupGlobalShareLinks() {
         const pageUrl = encodeURIComponent(window.location.href);
         const pageTitle = encodeURIComponent(document.title);
@@ -382,28 +322,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const fbLink = document.getElementById('global-share-fb');
         const liLink = document.getElementById('global-share-li');
         const waLink = document.getElementById('global-share-wa');
-        const emLink = document.getElementById('global-share-em');
 
         if (xLink) xLink.href = `https://x.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
         if (fbLink) fbLink.href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
         if (liLink) liLink.href = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}&title=${pageTitle}&source=${pageSource}`;
         if (waLink) waLink.href = `https://api.whatsapp.com/send?text=${pageTitle}%20${pageUrl}`;
-        if (emLink) emLink.href = `mailto:?subject=${pageTitle}&body=Check out this helpful tool: ${pageUrl}`;
     }
 
-    // --- UPDATED: Centralized Related Articles & Calculators ---
     function setupRelatedArticles() {
         const desktopPlaceholder = document.getElementById('desktop-sidebar-placeholder');
         const mobilePlaceholder = document.getElementById('mobile-sidebar-placeholder');
         const fullPath = window.location.pathname;
 
-        // --- Check 1: Exit on index pages ---
         if (fullPath.endsWith('/calculators/index.html') || fullPath.endsWith('/calculators/') ||
             fullPath.endsWith('/blog/index.html') || fullPath.endsWith('/blog/')) {
             return; 
         }
 
-        // --- Check 2: Exit if no placeholders exist ---
         if (!desktopPlaceholder && !mobilePlaceholder) {
             return;
         }
@@ -413,9 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let sidebarTitle = "";
         let links = [];
 
-        // --- Check 3: Determine which sidebar to show ---
         if (fullPath.includes('/blog/')) {
-            // --- BLOG PAGE: Show Related Guides ---
             sidebarTitle = "Related Guides";
             const articles = [
                 { href: "how-to-buy-your-first-home-guide.html", file: "how-to-buy-your-first-home-guide.html", title: "First-Time Home Buyer Guide", desc: "A step-by-step overview." },
@@ -427,7 +360,6 @@ document.addEventListener('DOMContentLoaded', function() {
             links = articles.filter(article => article.file !== currentPage).slice(0, 5);
 
         } else {
-            // --- CALCULATOR PAGE: Show Other Calculators ---
             sidebarTitle = "Other Calculators";
             const allTools = [
                 { href: `${rootPath}all-in-one-mortgage-planner.html`, file: 'all-in-one-mortgage-planner.html', title: "All-in-One Planner", desc: "Main mortgage planner." },
@@ -444,7 +376,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (links.length === 0) return;
 
-        // --- Generate Desktop Sidebar Links ---
         const generateDesktopLinksHTML = (links) => {
             return links.map((link, index) => {
                 const linkHref = fullPath.includes('/blog/') ? `${rootPath}blog/${link.href}` : link.href;
@@ -461,11 +392,8 @@ document.addEventListener('DOMContentLoaded', function() {
             `}).join('');
         };
 
-        // --- NEW: Related Calculator Widget (Desktop Only, Blog Pages Only) ---
         let relatedToolHTML = '';
         if (fullPath.includes('/blog/')) {
-            
-            // Default Calculator (Fallback)
             const defaultRelatedCalc = {
                 href: `${rootPath}all-in-one-mortgage-planner.html`,
                 title: 'All-in-One Mortgage Planner',
@@ -473,8 +401,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`
             };
 
-            // Mapping of Blog Pages to their specific related Calculator
-            // Keys match the filename of the blog post
             const blogToCalcMap = {
                 'how-much-house-can-i-afford.html': {
                     href: `${rootPath}all-in-one-mortgage-planner.html#affordability-tab`,
@@ -532,7 +458,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             };
 
-            // UPDATED: Use mapping or fallback to default
             const relatedCalc = blogToCalcMap[currentPage] || defaultRelatedCalc;
 
             relatedToolHTML = `
@@ -570,20 +495,17 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
         }
 
-        // --- Generate Mobile Sidebar ---
         if (mobilePlaceholder && !fullPath.includes('/blog/')) {
             const generateMobileLinksHTML = (links) => {
-                // Define icons for calculators
                 const icons = {
                     "all-in-one-mortgage-planner.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>`,
                     "down-payment-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25-2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3" /></svg>`,
                     "extra-payment-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-                    "mortgage-amortisation-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>`,
+                    "mortgage-amortisation-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>`,
                     "home-equity-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>`,
                     "property-tax-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
                     "closing-cost-calculator.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621.504-1.125-1.125-1.125H3.375z" /></svg>`,
                     "Refinance-Readiness-Quiz.html": `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-                    // Article icons
                     "how-to-buy-your-first-home-guide.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" /></svg>`,
                     "mortgage-amortization-explained.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>`,
                     "fixed-vs-variable-mortgage-guide.html": `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" /></svg>`,
@@ -597,9 +519,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const defaultIcon = `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 16.382V5.618a1 1 0 00-1.447-.894L15 7m-6 13v-8.5" /></svg>`;
 
                 return links.map(link => {
-                    // Use `file` for icon lookup, `href` for the link
                     const iconKey = link.file || link.href;
-                    // For blog articles, the href needs to be prefixed with the blog path.
                     const linkHref = fullPath.includes('/blog/') ? `${rootPath}blog/${link.href}` : link.href;
                     const iconSVG = icons[iconKey] || defaultIcon;
                     return `
@@ -632,36 +552,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 const showSidebar = () => { if (!sidebarShown) { mobileSidebar.classList.remove('translate-y-full'); sidebarShown = true; } };
                 const hideSidebar = () => { mobileSidebar.classList.add('translate-y-full'); sidebarShown = false; };
                 closeButton.addEventListener('click', hideSidebar);
-                // Show the bar when user scrolls towards the bottom 60% of the page
                 window.addEventListener('scroll', () => { if (!sidebarShown && window.scrollY > (document.body.scrollHeight * 0.6)) { showSidebar(); } }, { passive: true });
             }
         }
     }
 
-    // --- NEW: Back to Top Button ---
-    /**
-     * Creates and manages a "Back to Top" button.
-     * The button appears on scroll and smoothly scrolls to the top on click.
-     */
     function setupBackToTopButton() {
-        // Create the button element
         const backToTopButton = document.createElement('button');
-        backToTopButton.classList.add('back-to-top'); // Uses style from style.css
+        backToTopButton.classList.add('back-to-top');
         backToTopButton.setAttribute('title', 'Back to top');
         backToTopButton.setAttribute('aria-label', 'Back to top');
         
-        // Add SVG icon
         backToTopButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
             </svg>
         `;
 
-        // Set initial state (hidden). The CSS transition will handle the fade-in.
         backToTopButton.style.visibility = 'hidden';
         backToTopButton.style.opacity = '0';
         
-        // Add click event listener to scroll to top
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -669,9 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Add scroll event listener to show/hide button
         window.addEventListener('scroll', () => {
-            // Show button after scrolling 200px
             if (window.pageYOffset > 200) {
                 backToTopButton.style.visibility = 'visible';
                 backToTopButton.style.opacity = '1';
@@ -679,17 +587,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 backToTopButton.style.visibility = 'hidden';
                 backToTopButton.style.opacity = '0';
             }
-        }, { passive: true }); // Use passive listener for better scroll performance
+        }, { passive: true });
 
-        // Add the button to the body
         document.body.appendChild(backToTopButton);
     }
     
-    // --- Run on page load ---
-    // --- REMOVED old setupSocialSharing() call ---
     setupRelatedArticles();
-    // --- ADDED call to new global share link function ---
     setupGlobalShareLinks();
-    // --- ADDED call for Back to Top button ---
     setupBackToTopButton();
 });
