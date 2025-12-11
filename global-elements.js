@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    /* FIX: Changed md:static and relative to absolute top-0 w-full.
+       This ensures the header overlays the space reserved by the body padding,
+       preventing Cumulative Layout Shift (CLS) when the JS injects it.
+    */
     const headerHTML = `
         <style>
           .menu-link-gradient {
@@ -114,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
           }
         </style>
-        <header class="bg-gradient-to-r from-sky-50 to-green-50 backdrop-blur-lg shadow-sm no-print md:static top-0 z-40 rounded-b-lg md:rounded-b-xl border-glow-primary relative">
+        <header class="bg-gradient-to-r from-sky-50 to-green-50 backdrop-blur-lg shadow-sm no-print absolute top-0 w-full z-40 rounded-b-lg md:rounded-b-xl border-glow-primary">
             <nav class="container-global">
                 <div class="flex items-center justify-between h-14">
                     <a href="${homePath}" class="flex items-center space-x-2 text-primary hover:opacity-90 transition-opacity">
