@@ -1,4 +1,9 @@
 /* Global Site Styles */
+:root {
+    /* CLS Prevention: Reserve height for the injected header (matches h-14/56px) */
+    --header-height: 3.5rem; 
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -9,6 +14,8 @@ body {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* FIX: Reserve space for the JS-injected header to prevent CLS */
+    padding-top: var(--header-height);
 }
 
 main.content-wrapper {
@@ -273,6 +280,8 @@ input, select {
         color: #000;
         -webkit-print-color-adjust: exact; /* Force background colors for charts */
         print-color-adjust: exact;
+        /* Reset header reservation for print */
+        padding-top: 0;
     }
 
     /* Override layout to be single-column */
